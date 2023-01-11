@@ -17,7 +17,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com/">
 	<link rel="preconnect" href="https://fonts.gstatic.com/">
 	<!-- preloading icon font is helping to speed up a little bit -->
-	<link rel="preload" href="assets/fonts/flaticon/Flaticon.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href= "assets/fonts/flaticon/Flaticon.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="stylesheet" href="assets/css/vendor.datatables.css">
 	<link rel="stylesheet" href="assets/css/core.min.css">
 	<link rel="stylesheet" href="assets/css/vendor_bundle.min.css">

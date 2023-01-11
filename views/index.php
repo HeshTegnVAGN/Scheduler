@@ -1,7 +1,7 @@
-<?php include 'inc/header.php'; ?>
+<?php include ROOT.'/views/inc/header.php'; ?>
 
 <div class="container">
-	<button type="button" class="btn btn-warning text-white mt-3">Новая задача</button>
+	<button type="button" class="btn btn-warning text-white mt-3" data-bs-toggle="modal" data-bs-target="#exampleModalMd">Новая задача</button>
 
 	<div class="row mt-3">
 		<div class="col-md-4 col-sm-6">
@@ -144,6 +144,32 @@
 </div>
 
 
+	<div class="modal fade" id="exampleModalMd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelMd" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
 
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabelMd">Добавить задачу</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
 
-<?php include 'inc/footer.php';
+				<div class="modal-body">
+					<form action=""></form>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary">
+						<i class="fi fi-check"></i>
+						Save changes
+					</button>
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+						<i class="fi fi-close"></i>
+						Close
+					</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+<?php include ROOT.'/views/inc/footer.php';
