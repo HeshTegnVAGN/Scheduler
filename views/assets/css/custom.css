@@ -1,0 +1,9 @@
+body{
+	width: 1400px;
+	margin: 0 auto;
+	background: #000 url(bg-main.jpg);
+	color: #fff;
+	background-attachment: fixed;
+	background-repeat: repeat-x repeat-y;
+	background-size: 100%;
+}
