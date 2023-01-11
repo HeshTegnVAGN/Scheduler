@@ -1,9 +1,9 @@
 <?php
 
 
-use models\DB;
+//use models\DB;
 
-$db = new DB();
+//$db = new DB();
 
 
 include ROOT.'/views/index.php';
