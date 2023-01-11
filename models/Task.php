@@ -30,16 +30,16 @@ class Task extends DB
 	public function add($title, $responsible, $text = '', $priority=5)
 	{
 			$this->title= $title;
-			$this->responsibile= $responsible;
+			$this->responsibile= new User($responsible);
 			$this->text= $text;
 			$this->priority= $priority;
 			$this->status= self::NEW;
-			$this->conn->query("INSERT INTO tasks (`responsible`, `title`, `text`, `status`, `priority`, `time`) values($res)")
+			$this->conn->query("INSERT INTO tasks (`responsible`, `title`, `text`, `status`, `priority`, `time`) values('$responsible', '$title','$text', ".self::NEW.", '$priority', 0)");
 	}
 
 	public function save()
 	{
-		$this->conn->query("")
+		$this->conn->query("update");
 	}
 
 

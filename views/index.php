@@ -154,7 +154,62 @@
 				</div>
 
 				<div class="modal-body">
-					<form action=""></form>
+					<div id="alert_success" class="alert alert-success hide-force">
+					Thank you! Data Sumbmited!
+				</div>
+
+				<!-- error inline message -->
+				<div id="alert_error" class="alert alert-danger hide-force">
+					Please, review your data and try again!
+				</div>
+
+				<!--
+					NOTE: WE USE method="GET" insted of "POST" because this is a pure html demo
+				-->
+				<form class="js-ajax bs-validate" novalidate
+							action="assets/js/ajax/new_task.php"
+							method="POST"
+
+							data-ajax-inline-alert-succes="#alert_success"
+							data-ajax-inline-alert-error="#alert_error"
+
+							data-ajax-update-url="true"
+							data-ajax-show-loading-icon="true"
+
+							data-error-scroll-up="true"
+							data-ajax-callback-function="">
+
+
+					<div class="form-floating mb-3">
+						<input required type="text" class="form-control" name="TaskTitle" id="TaskTitle" placeholder="Название">
+						<label for="TaskTitle">Название</label>
+					</div>
+
+					<div class="form-floating mb-3">
+						<select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+							<option value="1">Данил</option>
+							<option value="2">Влад</option>
+						</select>
+						<label for="floatingSelect">Ответственный</label>
+					</div>
+
+					<div class="form-floating mb-3">
+						<textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+						<label for="floatingTextarea2">Описание</label>
+					</div>
+
+					<div class="form-floating mb-3">
+						<label for="customRange1" class="form-label">Приоритет: <span id="priorityVal"></span></label>
+						<input type="range" class="form-range" id="priority" name="priority">
+					</div>
+
+					<div class="form-floating">
+						<input type="email" class="form-control is-valid" id="floatingInputInvalid" placeholder="name@example.com" value="test@example.com">
+						<label for="floatingInputInvalid">Valid input</label>
+					</div>
+
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
 				</div>
 
 				<div class="modal-footer">
