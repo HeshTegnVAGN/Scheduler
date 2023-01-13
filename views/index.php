@@ -1,4 +1,5 @@
-<?php include ROOT.'views/inc/header.php'; ?>
+<?php
+include ROOT.'views/inc/header.php'; ?>
 
 	<div class="container">
 		<button type="button" class="btn btn-warning text-white mt-3" data-bs-toggle="modal" data-bs-target="#exampleModalMd">Новая задача</button>
@@ -19,10 +20,14 @@
 						</div>
 					</div>
 					<div class="pb-4">
-						<?php foreach($tasks as $task): ?>
-						<div class="list-group sortable" data-shared-group="client-list">
-
-							<div class="row mx-3 bg-white text-dark rounded-3 mb-2">
+                        <div class="list-group sortable" data-shared-group="client-list"
+                             data-ajax-update-url="assets/js/ajax/sort.php"
+                             data-ajax-update-identifier="client_list_1"
+                             data-ajax-update-params="['action','update']"
+                             data-update-toast-success="Order Saved!"
+                             data-update-toast-position="bottom-center">
+						<?php foreach($tasks[1] as $task): ?>
+							<div data-id="<?=$task->id?>" class="row mx-3 bg-white text-dark rounded-3 mb-2">
 								<div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
 									<i class="fi fi fi-arrow-end-full fs-5 fs-5"></i>
 								</div>
@@ -39,9 +44,9 @@
 								</div>
 							</div>
 
-						</div>
-						<?php endforeach; ?>
 
+						<?php endforeach; ?>
+                        </div>
 					</div>
 				</div>
 
@@ -61,57 +66,38 @@
 						</div>
 					</div>
 
-					<div class="list-group sortable" data-shared-group="client-list2" data-pull-mode="clone">
-						<div class="pb-4">
-							<!-- list 1 -->
-							<div class="list-group sortable" data-shared-group="client-list">
+                    <div class="pb-4">
+                        <div class="list-group sortable" data-shared-group="client-list"
+                             data-ajax-update-url="assets/js/ajax/sort.php"
+                             data-ajax-update-identifier="client_list_2"
+                             data-ajax-update-params="['action','update']"
+                             data-update-toast-success="Order Saved!"
+                             data-update-toast-position="bottom-center">
+                            <?php foreach($tasks[2] as $task): ?>
+                                <div  data-id="<?=$task->id?>"  class="row mx-3 bg-white text-dark rounded-3 mb-2">
+                                    <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
+                                        <i class="fi fi fi-arrow-end-full fs-5 fs-5"></i>
+                                    </div>
+                                    <div class="col py-2">
+                                        <div class="row">
+                                            <?=$task->title?>
+                                        </div>
+                                        <div class="row">
+                                            <!--										--><?php //=print_r((new \DateTime('now', new DateTimeZone('Europe/Moscow')))->diff($task->created_at)->format('%h:%i:%s'), 1)?>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 py-2">
+                                        <i class="fi fi-search"></i>
+                                    </div>
+                                </div>
 
-								<div class="row mx-3 bg-white text-dark rounded-3 mb-2">
-									<div class="col-10 py-2">
-										Почти разобрался 1
-									</div>
-									<div class="col-2 py-2">
-										<i class="fi fi-search"></i>
-									</div>
-								</div>
 
-							</div>
-							<!-- list 1 -->
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
 
-							<!-- list 2 -->
-							<div class="list-group sortable" data-shared-group="client-list">
 
-								<div class="row mx-3 bg-white text-dark rounded-3 mb-2">
-									<div class="col-10 py-2">
-										Почти разобрался 2
-									</div>
-									<div class="col-2 py-2">
-										<i class="fi fi-search"></i>
-									</div>
-								</div>
-
-							</div>
-
-							<!-- list 2 -->
-
-							<!-- list 3 -->
-							<div class="list-group sortable" data-shared-group="client-list">
-
-								<div class="row mx-3 bg-white text-dark rounded-3 mb-2">
-									<div class="col-10 py-2">
-										Почти разобрался 3
-									</div>
-									<div class="col-2 py-2">
-										<i class="fi fi-search"></i>
-									</div>
-								</div>
-
-							</div>
-							<!-- list 3 -->
-						</div>
-					</div>
-
-				</div>
+                </div>
 
 			</div>
 			<div class="col-md-4 col-sm-6">
@@ -129,54 +115,37 @@
 						</div>
 					</div>
 
-					<div class="pb-4">
-						<!-- list 1 -->
-						<div class="list-group sortable" data-shared-group="client-list">
+                    <div class="pb-4">
+                        <div class="list-group sortable" data-shared-group="client-list">
+                            <?php foreach($tasks[3] as $task): ?>
+                                <div data-id="<?=$task->id?>"  class="row mx-3 bg-white text-dark rounded-3 mb-2"
+                                     data-ajax-update-url="assets/js/ajax/sort.php"
+                                     data-ajax-update-identifier="client_list_3"
+                                     data-ajax-update-params="['action','update']"
+                                     data-update-toast-success="Order Saved!"
+                                     data-update-toast-position="bottom-center">
+                                    <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
+                                        <i class="fi fi fi-arrow-end-full fs-5 fs-5"></i>
+                                    </div>
+                                    <div class="col py-2">
+                                        <div class="row">
+                                            <?=$task->title?>
+                                        </div>
+                                        <div class="row">
+                                            <!--										--><?php //=print_r((new \DateTime('now', new DateTimeZone('Europe/Moscow')))->diff($task->created_at)->format('%h:%i:%s'), 1)?>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 py-2">
+                                        <i class="fi fi-search"></i>
+                                    </div>
+                                </div>
 
-							<div class="row mx-3 bg-white text-dark rounded-3 mb-2">
-								<div class="col-10 py-2">
-									Разобрался 1
-								</div>
-								<div class="col-2 py-2">
-									<i class="fi fi-search"></i>
-								</div>
-							</div>
 
-						</div>
-						<!-- list 1 -->
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
 
-						<!-- list 2 -->
-						<div class="list-group sortable" data-shared-group="client-list">
-
-							<div class="row mx-3 bg-white text-dark rounded-3 mb-2">
-								<div class="col-10 py-2">
-									Разобрался 2
-								</div>
-								<div class="col-2 py-2">
-									<i class="fi fi-search"></i>
-								</div>
-							</div>
-
-						</div>
-
-						<!-- list 2 -->
-
-						<!-- list 3 -->
-						<div class="list-group sortable" data-shared-group="client-list">
-
-							<div class="row mx-3 bg-white text-dark rounded-3 mb-2">
-								<div class="col-10 py-2">
-									Разобрался 3
-								</div>
-								<div class="col-2 py-2">
-									<i class="fi fi-search"></i>
-								</div>
-							</div>
-
-						</div>
-						<!-- list 3 -->
-					</div>
-				</div>
+                </div>
 
 			</div>
 		</div>
