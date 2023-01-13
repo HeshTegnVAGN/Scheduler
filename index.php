@@ -1,6 +1,6 @@
 <?php
+error_reporting(E_ALL);
+define('ROOT', $_SERVER['DOCUMENT_ROOT'].'/scheduler/');
 
-define('ROOT', $_SERVER['DOCUMENT_ROOT'].'/Scheduler');
-
-//include 'config/config.php';
+include 'config/config.php';
 include 'controller/controller.php';
