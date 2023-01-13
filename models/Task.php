@@ -21,6 +21,7 @@ class Task extends DB
 	public DateTime $updated_at;
 
 	public int $priority;
+	public string $ui_created;
 
 	public function __construct()
 	{
@@ -36,6 +37,7 @@ class Task extends DB
 			$this->status= self::NEW;
 			$this->conn->query("INSERT INTO tasks (`responsible`, `title`, `text`, `status`, `priority`, `time`) values('$responsible', '$title','$text', ".self::NEW.", '$priority', 0)");
 	}
+
 
 	public function save()
 	{
