@@ -32,7 +32,7 @@ include ROOT.'views/inc/header.php'; ?>
                              data-update-toast-success="Order Saved!"
                              data-update-toast-position="bottom-center">
 						<?php foreach($tasks[1] as $task): ?>
-							<div data-id="<?=$task->id?>" data-title="<?=$task->title?> "class="row bg-white mb-2 mx-3 rounded-3 text-dark list-item">
+							<div data-id="<?=$task->id?>" data-title="<?=$task->title?> " data-text="<?=$task->text?>" data-priority="<?=$task->priority?> "class="row bg-white mb-2 mx-3 rounded-3 text-dark list-item">
 								<div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
 									<i class="fi fi fi-arrow-end-full fs-5 fs-5"></i>
 								</div>
@@ -50,7 +50,7 @@ include ROOT.'views/inc/header.php'; ?>
 									</div>
 								</div>
 								<div class="col-2 py-2">
-									<i class="fi fi-search" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalTask"></i>
+									<i class="fi fi-search edit-task" type="button" ></i>
 								</div>
 							</div>
 
@@ -296,7 +296,7 @@ include ROOT.'views/inc/header.php'; ?>
                         NOTE: WE USE method="GET" insted of "POST" because this is a pure html demo
                     -->
                     <form class="js-ajax bs-validate" novalidate
-                          action="assets/js/ajax/new_task.php"
+                          action="assets/js/ajax/edit_task.php"
                           method="POST"
 
                           data-ajax-inline-alert-succes="#alert_success"
@@ -310,12 +310,12 @@ include ROOT.'views/inc/header.php'; ?>
 
 
                         <div class="form-floating mb-3">
-                            <input required type="text" class="form-control" name="TaskTitle" id="TaskTitle" placeholder="Название">
+                            <input required type="text" class="form-control" name="edit_title" id="TaskTitle" placeholder="Название">
                             <label for="TaskTitle">Название</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelect" name="responsible" aria-label="Floating label select example">
+                            <select class="form-select" id="floatingSelect" name="edit_responsible" aria-label="Floating label select example">
                                 <option value="1">Данил</option>
                                 <option value="2">Влад</option>
                             </select>
@@ -323,7 +323,7 @@ include ROOT.'views/inc/header.php'; ?>
                         </div>
 
                         <div class="form-floating mb-3">
-						<textarea name="descr" id="editor-decr-new"class="summernote-editor w-100"
+						<textarea name="edit_descr" id="editor-decr-new"class="summernote-editor w-100"
                                   data-summernote-config='{
 						"placeholder":	"Напишите текст...",
 						"focus":		false,
@@ -365,7 +365,7 @@ include ROOT.'views/inc/header.php'; ?>
 
                         <div class="form-floating mb-3">
                             <label for="customRange1" class="form-label">Приоритет: <span id="priorityVal">Средний</span></label>
-                            <input type="range" class="form-range" id="priority" name="priority">
+                            <input type="range" class="form-range" id="priority" name="edit_priority">
                         </div>
 
 

@@ -19,12 +19,17 @@ var target = document.querySelector('[data-type="1"]'),
 // later, you can stop observing
 // observer.disconnect();
 $(document).ready(function () {
+	//Счетчик приоритета
 	$('input#priority').on('change', function(){
 		$('span#priorityVal').text(getPriority($(this).val())[0])
 	});
+
+	//флаг приоритета
 	$('.priority-flag').each(function( index ) {
 		$(this).find('i').addClass(getPriority($(this).data('priority'))[1]);
 	});
+
+	//Заголовок задачи
 	$('.input-group-over').blur(function (e) {
 		let id = $(this).parents('.list-item').data('id');
 		let title = $(this).parents('.list-item').data('title').trim();
@@ -50,6 +55,22 @@ $(document).ready(function () {
 
 	})
 
+
+	//Модалка для редактирования
+	$('.edit-task').on('click', function () {
+		console.log($(this).parents('.list-item').data('title'));
+		$('[name="edit_title"]').empty();
+		$('[name="edit_descr"]').empty();
+		$('[name="edit_priority"]').empty();
+		$('#exampleModalTask').modal('show');
+
+		$('[name="edit_title"]').val($(this).parents('.list-item').data('title').trim());
+		$('[name="edit_descr"]').next().children('.note-editing-area').children('.note-placeholder').remove();
+		$('[name="edit_descr"]').next().children('.note-editing-area').children('.card-block').empty().append($(this).parents('.list-item').data('text'));
+
+		$('select[name="edit_responsible"]option#U'+$(this).parents('.list-item').data('responsible')).attr('selected');
+		$('[name="edit_priority"]').val($(this).parents('.list-item').data('priority'));
+	});
 });
 
 function getPriority(number)
@@ -69,3 +90,4 @@ function getPriority(number)
 		return ['Низкий', 'text-success'];
 	}
 }
+
