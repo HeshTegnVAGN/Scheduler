@@ -32,7 +32,7 @@ include ROOT.'views/inc/header.php'; ?>
                              data-update-toast-success="Order Saved!"
                              data-update-toast-position="bottom-center">
 						<?php foreach($tasks[1] as $task): ?>
-							<div data-id="<?=$task->id?>" class="row bg-white mb-2 mx-3 rounded-3 text-dark">
+							<div data-id="<?=$task->id?>" data-title="<?=$task->title?> "class="row bg-white mb-2 mx-3 rounded-3 text-dark list-item">
 								<div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
 									<i class="fi fi fi-arrow-end-full fs-5 fs-5"></i>
 								</div>
@@ -81,7 +81,7 @@ include ROOT.'views/inc/header.php'; ?>
                              data-update-toast-success="Order Saved!"
                              data-update-toast-position="bottom-center">
                             <?php foreach($tasks[2] as $task): ?>
-                                <div  data-id="<?=$task->id?>"  class="row mx-3 bg-white text-dark rounded-3 mb-2">
+                                <div  data-id="<?=$task->id?>" data-data="<?=json_encode($task)?>" class="row mx-3 bg-white text-dark  list-item rounded-3 mb-2">
                                     <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
                                         <i class="fi fi fi-arrow-end-full fs-5 fs-5"></i>
                                     </div>
@@ -124,7 +124,7 @@ include ROOT.'views/inc/header.php'; ?>
                     <div class="pb-4">
                         <div class="list-group sortable" data-shared-group="client-list">
                             <?php foreach($tasks[3] as $task): ?>
-                                <div data-id="<?=$task->id?>"  class="row mx-3 bg-white text-dark rounded-3 mb-2"
+                                <div data-id="<?=$task->id?>"  class="row mx-3 bg-white text-dark rounded-3 mb-2  list-item"
                                      data-ajax-update-url="assets/js/ajax/sort.php"
                                      data-ajax-update-identifier="client_list_3"
                                      data-ajax-update-params="['action','update']"
@@ -423,4 +423,30 @@ include ROOT.'views/inc/header.php'; ?>
 <!--    </a>-->
 </div>
 <!--/Редактор поля. Над ним нужно поработать-->
+
+    <div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelSm" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    Вы уверены?
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="button" id="confirm-true" class="btn text-white btn-success">
+                        <i class="fi fi-check"></i>
+                        Да. сохранить
+                    </button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                        <i class="fi fi-close"></i>
+                        Закрыть
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 <?php include ROOT.'/views/inc/footer.php';
