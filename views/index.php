@@ -306,14 +306,20 @@ include ROOT.'views/inc/header.php'; ?>
                           data-ajax-show-loading-icon="true"
 
                           data-error-scroll-up="true"
-                          data-ajax-callback-function="">
+                          data-ajax-callback-function="callback1">
 
-
+                        <script>
+                            function callback1(){
+                                $('#exampleModalTask').modal('hide');
+                                $.SOW.core.toast.show('success', '', 'Задача успешно изменена!', 'top-center', 4000, true);
+                            }
+                        </script>
                         <div class="form-floating mb-3">
                             <input required type="text" class="form-control" name="edit_title" id="TaskTitle" placeholder="Название">
                             <label for="TaskTitle">Название</label>
                         </div>
-
+                        <input type="hidden" name="alternate_decr" id="alt_descr">
+                        <input type="hidden" name="id" id="task-id">
                         <div class="form-floating mb-3">
                             <select class="form-select" id="floatingSelect" name="edit_responsible" aria-label="Floating label select example">
                                 <option value="1">Данил</option>

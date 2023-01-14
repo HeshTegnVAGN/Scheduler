@@ -58,13 +58,17 @@ $(document).ready(function () {
 
 	//Модалка для редактирования
 	$('.edit-task').on('click', function () {
-		console.log($(this).parents('.list-item').data('title'));
+		$('input#alt_descr').empty();
+		console.log($(this).parents('.list-item').data('id'));
+		$('#task-id').empty();
+		$('#task-id').val($(this).parents('.list-item').data('id'));
 		$('[name="edit_title"]').empty();
 		$('[name="edit_descr"]').empty();
 		$('[name="edit_priority"]').empty();
 		$('#exampleModalTask').modal('show');
 
 		$('[name="edit_title"]').val($(this).parents('.list-item').data('title').trim());
+		$('input#alt_descr').val($(this).parents('.list-item').data('text'));
 		$('[name="edit_descr"]').next().children('.note-editing-area').children('.note-placeholder').remove();
 		$('[name="edit_descr"]').next().children('.note-editing-area').children('.card-block').empty().append($(this).parents('.list-item').data('text'));
 
