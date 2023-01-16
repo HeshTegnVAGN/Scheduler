@@ -105,7 +105,22 @@
                                             <?=$task->title?>
                                         </div>
                                         <div class="row">
-                                            <!----><?php //=print_r((new \DateTime('now', new DateTimeZone('Europe/Moscow')))->diff($task->created_at)->format('%h:%i:%s'), 1)?>
+																					<time class="sow-util-timeago text-secondary fs-7"
+																								datetime="<?=$task->updated_at->format('Y-m-d\TH:i:d')?>"
+																								data-live="true"
+																								data-lang='{
+		"seconds"	 : "Несколько секунд",
+		"minute"		: "Около минуты",
+		"minutes"	 : "%d минут",
+		"hour"			: "Около часа",
+		"hours"		 : "%d часов",
+		"day"			 : "Вчера",
+		"days"			: "%d дней",
+		"month"		 : "Около месяца",
+		"months"		: "%d месяцев",
+		"year"			: "Около года",
+		"years"		 : "%d лет"
+	}'></time>
                                         </div>
                                     </div>
                                     <div class="col-2 py-2">
