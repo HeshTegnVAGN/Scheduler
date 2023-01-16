@@ -26,11 +26,12 @@ include ROOT . 'views/inc/header.php';
 
 
 
-if(!$_SESSION['user']['id'] and !in_array($page, ['login', 'signup']))
-{
-	header('Location: /scheduler/login');
-}
+//if(!$_SESSION['user']['id'] and !in_array($page, ['login', 'signup']))
+//{
+//	header('Location: /scheduler/login');
+//}
 
 
-include ROOT.'views/'.$page.'.php';
+//include ROOT.'views/'.$page.'.php';
+include ROOT.'views/index.php';
 include ROOT . '/views/inc/footer.php';
