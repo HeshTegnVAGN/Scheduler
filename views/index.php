@@ -2,12 +2,7 @@
 include ROOT.'views/inc/header.php'; ?>
 
 	<div class="container">
-		<button type="button" class="btn btn-warning text-white mt-3" data-bs-toggle="modal" data-bs-target="#exampleModalMd">Новая задача</button>
-        <p>
-            1. Оставь пометку, где найти task->priority и отредактировать его. Я хочу для каждого приоритета сделать что-то другое, возможно не треугольником а чем-то другим.
-            <br>
-            И оставь ток 3 приоритета: низкий, средний и высокий (либо пока жи мне где это делается)
-        </p>
+		<button type="button" class="btn btn-warning mt-3" data-bs-toggle="modal" data-bs-target="#exampleModalMd">Новая задача</button>
 
 <!--Пометка для меня-->
 <!--Изменить $task->title так, что появлялись границы блока названия задачи, нельзя было делать слишком длинное название-->
@@ -15,12 +10,12 @@ include ROOT.'views/inc/header.php'; ?>
         <div class="row mt-3">
 			<div class="col-md-4 col-sm-6">
 
-				<div class="bg-secondary rounded-3">
+				<div class="bg-Grey rounded-3">
 
 					<div class="row mx-0">
-						<div class="col-1 p-3 fi fi-bell-active text-warning fs-5">
+						<div class="col-1 p-3 fi fi-bell-active text-yellow-700 fs-5">
 						</div>
-						<div class="col p-3 text-warning fs-5">
+						<div class="col p-3 text-yellow-700 fs-5">
 							Новое
 						</div>
 					</div>
@@ -36,15 +31,14 @@ include ROOT.'views/inc/header.php'; ?>
 								<div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
 									<i class="fi fi fi-arrow-end-full fs-5 fs-5"></i>
 								</div>
+
 								<div class="col py-2">
 									<div class="row">
-
-                                        <div class="input-group-over" id="task_edit" contenteditable="true">
+                                        <div class="input-group-over edit" id="task_edit" contenteditable="true">
                                             <?=$task->title?>
                                         </div>
-
-
 									</div>
+
 									<div class="row">
 <!--										--><?php //=print_r((new \DateTime('now', new DateTimeZone('Europe/Moscow')))->diff($task->created_at)->format('%h:%i:%s'), 1)?>
 									</div>
@@ -63,12 +57,12 @@ include ROOT.'views/inc/header.php'; ?>
 			</div>
 			<div class="col-md-4 col-sm-6">
 
-				<div class="bg-secondary rounded-3">
+				<div class="bg-Grey rounded-3">
 
 					<div class="row mx-0">
-						<div class="col-1 p-3 fi fi-circle-spin text-warning fs-5">
+						<div class="col-1 p-3 fi fi-circle-spin text-yellow-700 fs-5">
 						</div>
-						<div class="col p-3 text-warning fs-5">
+						<div class="col p-3 text-yellow-700 fs-5">
 							В работе
 						</div>
 					</div>
@@ -85,18 +79,21 @@ include ROOT.'views/inc/header.php'; ?>
                                     <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
                                         <i class="fi fi fi-arrow-end-full fs-5 fs-5"></i>
                                     </div>
+
                                     <div class="col py-2">
                                         <div class="row">
-                                            <?=$task->title?>
+                                            <div class="input-group-over edit" id="task_edit" contenteditable="true">
+                                                <?=$task->title?>
+                                            </div>
                                         </div>
+
                                         <div class="row">
                                             <!----><?php //=print_r((new \DateTime('now', new DateTimeZone('Europe/Moscow')))->diff($task->created_at)->format('%h:%i:%s'), 1)?>
                                         </div>
                                     </div>
+
                                     <div class="col-2 py-2">
-
-                                        <i class="fi fi-search"></i>
-
+                                        <i class="fi fi-search" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalTask"></i>
                                     </div>
                                 </div>
 
@@ -111,12 +108,12 @@ include ROOT.'views/inc/header.php'; ?>
 			</div>
 			<div class="col-md-4 col-sm-6">
 
-				<div class="bg-secondary rounded-3">
+				<div class="bg-Grey rounded-3">
 
 					<div class="row mx-0">
-						<div class="col-1 p-3 fi fi-box-checked text-warning fs-5">
+						<div class="col-1 p-3 fi fi-box-checked text-yellow-700 fs-5">
 						</div>
-						<div class="col p-3 text-warning fs-5">
+						<div class="col p-3 text-yellow-700 fs-5">
 							Выполнено
 						</div>
 					</div>
@@ -135,14 +132,17 @@ include ROOT.'views/inc/header.php'; ?>
                                     </div>
                                     <div class="col py-2">
                                         <div class="row">
-                                            <?=$task->title?>
+                                            <div class="input-group-over edit" id="task_edit" contenteditable="true">
+                                                <?=$task->title?>
+                                            </div>
                                         </div>
+
                                         <div class="row">
                                             <!--										--><?php //=print_r((new \DateTime('now', new DateTimeZone('Europe/Moscow')))->diff($task->created_at)->format('%h:%i:%s'), 1)?>
                                         </div>
                                     </div>
                                     <div class="col-2 py-2">
-                                        <i class="fi fi-search"></i>
+                                        <i class="fi fi-search" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalTask"></i>
                                     </div>
                                 </div>
 
@@ -372,9 +372,29 @@ include ROOT.'views/inc/header.php'; ?>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger text-white">
-                        <i class="fi fi-check"></i>
-                        Заморозить
+
+                    <button type="submit" class="btn btn-danger">
+                        <a href="#" data-href="plugins-sow-ajax-confirm.html?action=delete&item_id=1"
+                           class="js-ajax-confirm text-white"
+
+                           data-ajax-confirm-mode="regular"
+
+                           data-ajax-confirm-size="modal-md"
+                           data-ajax-confirm-centered="false"
+
+                           data-ajax-confirm-title="Заморозить?"
+                           data-ajax-confirm-body="Вы уверены, что хотите поставить задачу на паузу? <br > Время её выполнения временно остановится!"
+
+                           data-ajax-confirm-btn-yes-class="btn-primary"
+                           data-ajax-confirm-btn-yes-text="Подтвердить"
+                           data-ajax-confirm-btn-yes-icon="fi fi-check"
+
+                           data-ajax-confirm-btn-no-class="btn-light"
+                           data-ajax-confirm-btn-no-text="Отменить"
+                           data-ajax-confirm-btn-no-icon="fi fi-close">
+                            <i class="fi fi-check"></i>
+                            Заморозить
+                        </a>
                     </button>
                     <button type="submit" class="btn btn-success text-white">
                         <i class="fi fi-check"></i>
@@ -391,36 +411,4 @@ include ROOT.'views/inc/header.php'; ?>
     </div>
     <!--/Modal edit task-->
 
-
-<!--Редактор поля. Над ним нужно поработать-->
-<div>
-<!--    <div class="form-floating">-->
-<!--        <input required readonly placeholder="text" id="task_name" name="Task Name" type="text" class="form-control" value="">-->
-<!--    </div>-->
-<!---->
-<!--    <a id="task_edit_show" href="#" class="btn transition-none sow-util-action"-->
-<!--       data-util-self-ignore="true"-->
-<!--       data-util-target-hide="#task_edit_show"-->
-<!--       data-util-target-show="#task_edit_hide, #task_edit_password_request"-->
-<!--       data-util-target-readonly-off="#task_name"-->
-<!---->
-<!--       data-util-target-input="#task_name"-->
-<!--       data-util-target-input-val=""-->
-<!---->
-<!--       data-util-target-focus="#task_name">-->
-<!--        <i class="fi fi-pencil m-0"></i>-->
-<!--    </a>-->
-<!---->
-<!--    <a id="task_edit_hide" href="#" class="btn transition-none sow-util-action hide"-->
-<!--       data-util-self-ignore="true"-->
-<!--       data-util-target-hide="#task_edit_hide, #task_edit_password_request"-->
-<!--       data-util-target-show="#task_edit_show"-->
-<!--       data-util-target-readonly-on="#task_name"-->
-<!---->
-<!--       data-util-target-input="#task_name"-->
-<!--       data-util-target-input-val="">-->
-<!--        <i class="fi fi-close m-0"></i>-->
-<!--    </a>-->
-</div>
-<!--/Редактор поля. Над ним нужно поработать-->
 <?php include ROOT.'/views/inc/footer.php';

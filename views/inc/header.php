@@ -3,7 +3,7 @@
 <html lang="en" dir="ltr">
 <head>
 
-	<title>Page title</title>
+	<title>Надежный план</title>
 	<meta name="description" content="...">
 
 	<meta charset="utf-8">
