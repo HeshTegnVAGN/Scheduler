@@ -1,5 +1,4 @@
-<?php
-include ROOT.'views/inc/header.php'; ?>
+
 
 	<div class="container">
 		<button type="button" class="btn btn-warning text-white mt-3" data-bs-toggle="modal" data-bs-target="#exampleModalMd">Новая задача</button>
@@ -30,7 +29,8 @@ include ROOT.'views/inc/header.php'; ?>
                              data-ajax-update-identifier="client_list_1"
                              data-ajax-update-params="['action','update']"
                              data-update-toast-success="Order Saved!"
-                             data-update-toast-position="bottom-center">
+                             data-update-toast-position="bottom-center"
+												data-type="1">
 						<?php foreach($tasks[1] as $task): ?>
 							<div data-id="<?=$task->id?>" data-title="<?=$task->title?> " data-text="<?=$task->text?>" data-priority="<?=$task->priority?> "class="row bg-white mb-2 mx-3 rounded-3 text-dark list-item">
 								<div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
@@ -46,10 +46,25 @@ include ROOT.'views/inc/header.php'; ?>
 
 									</div>
 									<div class="row">
-<!--										--><?php //=print_r((new \DateTime('now', new DateTimeZone('Europe/Moscow')))->diff($task->created_at)->format('%h:%i:%s'), 1)?>
+										<time class="sow-util-timeago text-secondary fs-7"
+													datetime="<?=$task->created_at->format('Y-m-d\TH:i:d')?>"
+													data-live="true"
+													data-lang='{
+		"seconds"	 : "Несколько секунд назад",
+		"minute"		: "Около минуты назад",
+		"minutes"	 : "%d минут назад",
+		"hour"			: "Около часа назад",
+		"hours"		 : "Около %d часов назад",
+		"day"			 : "Вчера",
+		"days"			: "%d дней назад",
+		"month"		 : "Около месяца назад",
+		"months"		: "%d месяцев назад",
+		"year"			: "Около года назад",
+		"years"		 : "%d лет назад"
+	}'></time>
 									</div>
 								</div>
-								<div class="col-2 py-2">
+								<div class="col-2 py-2 d-flex align-items-center">
 									<i class="fi fi-search edit-task" type="button" ></i>
 								</div>
 							</div>
@@ -79,11 +94,11 @@ include ROOT.'views/inc/header.php'; ?>
                              data-ajax-update-identifier="client_list_2"
                              data-ajax-update-params="['action','update']"
                              data-update-toast-success="Order Saved!"
-                             data-update-toast-position="bottom-center">
+                             data-update-toast-position="bottom-center" data-type="2">
                             <?php foreach($tasks[2] as $task): ?>
-                                <div  data-id="<?=$task->id?>" data-data="<?=json_encode($task)?>" class="row mx-3 bg-white text-dark  list-item rounded-3 mb-2">
+                                <div  data-id="<?=$task->id?>" data-upd="<?=(new \DateTime('now', new DateTimeZone('Europe/Moscow')))->diff($task->updated_at)->format('%h:%i:%s')?>" class="row mx-3 bg-white text-dark  list-item rounded-3 mb-2">
                                     <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
-                                        <i class="fi fi fi-arrow-end-full fs-5 fs-5"></i>
+																			<i class="fs-1 fi fi-spin fi-circle-spin text-primary fs-5"></i>
                                     </div>
                                     <div class="col py-2">
                                         <div class="row">
@@ -122,14 +137,14 @@ include ROOT.'views/inc/header.php'; ?>
 					</div>
 
                     <div class="pb-4">
-                        <div class="list-group sortable" data-shared-group="client-list">
+                        <div class="list-group sortable" data-shared-group="client-list"data-ajax-update-url="assets/js/ajax/sort.php"
+														 data-ajax-update-identifier="client_list_3"
+														 data-ajax-update-params="['action','update']"
+														 data-update-toast-success="Order Saved!"
+														 data-update-toast-position="bottom-center" data-type="3">
                             <?php foreach($tasks[3] as $task): ?>
                                 <div data-id="<?=$task->id?>"  class="row mx-3 bg-white text-dark rounded-3 mb-2  list-item"
-                                     data-ajax-update-url="assets/js/ajax/sort.php"
-                                     data-ajax-update-identifier="client_list_3"
-                                     data-ajax-update-params="['action','update']"
-                                     data-update-toast-success="Order Saved!"
-                                     data-update-toast-position="bottom-center">
+                                     >
                                     <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
                                         <i class="fi fi fi-arrow-end-full fs-5 fs-5"></i>
                                     </div>
@@ -455,4 +470,4 @@ include ROOT.'views/inc/header.php'; ?>
         </div>
     </div>
 
-<?php include ROOT.'/views/inc/footer.php';
+
