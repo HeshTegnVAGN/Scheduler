@@ -1,20 +1,17 @@
 .rad-10{
     border-radius: 10px!important;
 }
-
-.bg-Grey {
-    background: #23282b;
+.fs-7
+{
+    font-size: 0.8rem !important;
 }
 
 .edit{
 
 }
 
-.edit:focus{
-    border: 1px solid #2c3e50;
-    border-radius: 0.35rem!important;
-}
-
-.btn-task{
-    background-color: ;
+.edit:focus {
+    border: 1px solid #6c757d!important;
+    border-radius: 0.45rem!important;
+    box-shadow: 0 0px 5px rgb(0, 0, 0, 0.4);
 }

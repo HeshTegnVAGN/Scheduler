@@ -1,24 +1,70 @@
 
-window.MutationObserver = window.MutationObserver
-	|| window.WebKitMutationObserver
-	|| window.MozMutationObserver;
-// Find the element that you want to "watch"
-var target = document.querySelector('[data-type="1"]'),
-// create an observer instance
-	observer = new MutationObserver(function(mutation, observer) {
-		console.log(mutation[0])
 
-	}),
-// configuration of the observer:
-	config = {
-		attributes: true, // this is to watch for attribute changes.
-		childList: true
-	};
-// pass in the element you wanna watch as well as the options
-// observer.observe(target, config);
-// later, you can stop observing
-// observer.disconnect();
 $(document).ready(function () {
+	if($('[data-type="2"]').length && $('[data-type="1"]').length)
+	{
+		//region second-col-observer
+		window.MutationObserver = window.MutationObserver
+			|| window.WebKitMutationObserver
+			|| window.MozMutationObserver;
+// Find the element that you want to "watch"
+		var target = document.querySelector('[data-type="2"]'),
+// create an observer instance
+			observer = new MutationObserver(function(mutation, observer) {
+				let id = $(mutation[0].addedNodes[0]).data('id');
+				$.ajax(
+					{
+						url: 'assets/js/ajax/change_status.php',
+						method: 'post',
+						data: {id: id, status: 2},
+						success: function (ans) {
+							$.SOW.core.toast.show('success', '', 'Задача успешно изменена!', 'top-center', 4000, true);
+						}
+					}
+				)
+
+			}),
+// configuration of the observer:
+			config = {
+				attributes: true, // this is to watch for attribute changes.
+				childList: true
+			};
+//endregion
+		//
+		// region third-col-observer
+		window.MutationObserver1 = window.MutationObserver
+			|| window.WebKitMutationObserver
+			|| window.MozMutationObserver;
+		// Find the element that you want to "watch"
+		var target1 = document.querySelector('[data-type="3"]'),
+			// create an observer instance
+			observer1 = new MutationObserver(function(mutation, observer) {
+				let id = $(mutation[0].addedNodes[0]).data('id');
+				$.ajax(
+					{
+						url: 'assets/js/ajax/change_status.php',
+						method: 'post',
+						data: {id: id, status: 3},
+						success: function (ans) {
+							$.SOW.core.toast.show('success', '', 'Задача успешно изменена!', 'top-center', 4000, true);
+						}
+					}
+				)
+
+			}),
+			// configuration of the observer:
+			config1 = {
+				attributes: true, // this is to watch for attribute changes.
+				childList: true
+			};
+		//endregion
+
+		observer.observe(target, config);
+		observer1.observe(target1, config1);
+	}
+
+
+
 	//Счетчик приоритета
 	$('input#priority').on('change', function(){
 		$('span#priorityVal').text(getPriority($(this).val())[0])
@@ -75,13 +121,15 @@ $(document).ready(function () {
 		$('select[name="edit_responsible"]option#U'+$(this).parents('.list-item').data('responsible')).attr('selected');
 		$('[name="edit_priority"]').val($(this).parents('.list-item').data('priority'));
 	});
+
+	
 });
 
 function getPriority(number)
 {
 	if(number> 70)
 	{
-		return ['Высокий', 'text-red-400'];
+		return ['Высокий', 'text-danger'];
 	}else if(number> 35)
 	{
 		return ['Средний', 'text-blue-500'];
@@ -90,4 +138,9 @@ function getPriority(number)
 		return ['Низкий', 'text-success'];
 	}
 }
+
+
+
+
+
 

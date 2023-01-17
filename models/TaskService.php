@@ -28,7 +28,7 @@ class TaskService extends DB
                 $task->title = $row['title'];
                 $task->responsibile = new User($row['responsible']);
                 $task->status = $row['status'];
-                $task->time = $row['time'];
+                $task->time = new \DateTime($row['time'], new DateTimeZone('Europe/Moscow'));
                 $task->created_at = new \DateTime($row['created_at'], new DateTimeZone('Europe/Moscow'));
                 $task->updated_at = new \DateTime($row['updated_at'], new DateTimeZone('Europe/Moscow'));
                 $task->priority = $row['priority'];
