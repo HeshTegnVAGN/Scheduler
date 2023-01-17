@@ -17,4 +17,6 @@ class User extends DB
         $this->id = $row['id'];
         $this->status = $row['status'];
 	}
+
+
 }

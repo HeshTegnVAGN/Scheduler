@@ -19,7 +19,7 @@
 
 			<div class="col-12 col-sm-8 col-md-8 col-lg-6 offset-sm-2 offset-md-2 offset-lg-3">
 
-				<form novalidate="" action="#" method="POST" class="bs-validate p-4 p-md-5 rounded shadow-xs">
+				<form novalidate="" action="<?=PATH?>controller/login.php" method="POST" class="bs-validate p-4 p-md-5 rounded shadow-xs">
 
 
 					<!--
@@ -30,13 +30,13 @@
 
 
 					<div class="form-floating mb-3">
-						<input required="" placeholder="Email" id="account_email" name="account_email" type="email" class="form-control">
+						<input required="" placeholder="Email" id="account_email" name="email" type="email" class="form-control">
 						<label for="account_email">Email</label>
 					</div>
 
 					<div class="input-group-over">
 						<div class="form-floating mb-3">
-							<input required="" placeholder="Password" id="account_password" name="account_password" type="password" class="form-control">
+							<input required="" placeholder="Password" id="account_password" name="password" type="password" class="form-control">
 							<label for="account_password">Password</label>
 						</div>
 
@@ -52,13 +52,13 @@
 
 						<div class="col-12 col-md-6 mt-4">
 							<button type="submit" class="btn btn-primary w-100 fw-medium">
-								Sign In
+								Войти
 							</button>
 						</div>
 
 						<div class="col-12 col-md-6 mt-4 text-align-end text-center-xs">
 							<a href="/scheduler/signup" class="btn px-0 link-normal">
-								Don't have an account yet?
+								Не зарегистрированы?
 							</a>
 						</div>
 

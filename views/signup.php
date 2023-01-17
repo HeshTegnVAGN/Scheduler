@@ -20,7 +20,7 @@
 
 			<div class="col-12 col-sm-8 col-md-8 col-lg-6 offset-sm-2 offset-md-2 offset-lg-3">
 
-				<form class="bs-validate p-4 p-md-5 rounded shadow-xs" novalidate="" method="post" action="#" data-error-toast-text="<i class='fi fi-circle-spin fi-spin float-start'></i> Please, complete all required fields!" data-error-toast-delay="3000" data-error-toast-position="top-right">
+				<form class="bs-validate p-4 p-md-5 rounded shadow-xs" novalidate="" method="post" action="<?=PATH?>controller/register.php" data-error-toast-text="<i class='fi fi-circle-spin fi-spin float-start'></i> Заолните все поля!" data-error-toast-delay="3000" data-error-toast-position="top-right">
 
 
 					<!--
@@ -31,29 +31,28 @@
 
 
 					<div class="form-floating mb-3">
-						<input required="" placeholder="First Name" id="account_first_name" name="account_first_name" type="text" class="form-control">
+						<input required="" placeholder="First Name" id="account_first_name" name="name" type="text" class="form-control">
 						<label for="account_first_name">Имя</label>
 					</div>
 
 					<div class="form-floating mb-3">
-						<input required="" placeholder="Email" id="account_email" name="account_email" type="email" class="form-control">
+						<input required="" placeholder="Email" id="account_email" name="email" type="email" class="form-control">
 						<label for="account_email">Email</label>
 					</div>
 
 					<div class="input-group-over">
 						<div class="form-floating mb-3">
-							<input required="" placeholder="Password" id="account_password" type="password" class="form-control">
-							<label for="account_password">Пароль</label>
+							<input placeholder="Account Password" id="account_password" name="password" type="password" class="form-control">
+							<label for="account_password">Account Password</label>
 						</div>
 
-						<!-- `SOW : Form Advanced` plugin used -->
-						<a href="account-simple-signin-password.html" class="btn smaller btn-password-type-toggle js-form_advanced_type_toggle" data-bs-target="#account_password">
-										<span class="group-icon">
-											<i class="fi fi-eye m-0"></i>
-											<i class="fi fi-close m-0"></i>
-										</span>
+						<!-- Show Password -->
+						<a href="#" class="btn btn-password-type-toggle" data-target="#account_password">
+			<span class="group-icon">
+				<i class="fi fi-eye m-0"></i>
+				<i class="fi fi-close m-0"></i>
+			</span>
 						</a>
-
 					</div>
 
 
