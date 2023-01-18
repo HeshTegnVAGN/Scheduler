@@ -22,11 +22,12 @@
 				<form novalidate="" action="<?=PATH?>controller/login.php" method="POST" class="bs-validate p-4 p-md-5 rounded shadow-xs">
 
 
-					<!--
+				<?php if($_SESSION['error']): ?>
 					<p class="text-danger">
-						Ups! Please check again
+						<?=$_SESSION['error']?>
 					</p>
-					-->
+                <?php endif; unset($_SESSION['error']); ?>
+
 
 
 					<div class="form-floating mb-3">
@@ -67,6 +68,7 @@
 				</form>
 
 			</div>
+            <a href="/scheduler/reset" class="text-center mt-2">Забыли пароль?</a>
 
 		</div>
 

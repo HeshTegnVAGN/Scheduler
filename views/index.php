@@ -55,7 +55,7 @@
 									</div>
 								</div>
 								<div class="col-2 py-2 d-flex align-items-center">
-									<i class="fi fi-search edit-task" type="button"></i>
+									<i class="fi fi-search edit-task" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalTask"></i>
 								</div>
 							</div>
 						<?php endforeach; ?>
@@ -82,7 +82,7 @@
                              data-update-toast-success="Order Saved!"
                              data-update-toast-position="bottom-center" data-type="2">
                             <?php foreach($tasks[2] as $task): ?>
-                                <div data-id="<?=$task->id?>" data-upd="<?=(new \DateTime('now', new DateTimeZone('Europe/Moscow')))->diff($task->updated_at)->format('%h:%i:%s')?>" class="row mx-3 bg-white text-dark list-item rounded-3 mb-2">
+                                <div data-id="<?=$task->id?>" data-title="<?=$task->title?>" data-text="<?=$task->text?>" data-upd="<?=(new \DateTime('now', new DateTimeZone('Europe/Moscow')))->diff($task->updated_at)->format('%h:%i:%s')?>" class="row mx-3 bg-white text-dark list-item rounded-3 mb-2">
                                        <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
                                            <i class="fs-1 fi fi-spin fi-circle-spin text-primary fs-5"></i>
                                         </div>
@@ -112,115 +112,8 @@
                                         </div>
                                     </div>
                                     <div class="col-2 py-2">
-                                        <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"><i class="fi fi-search"></i></button>
+                                        <button class="btn edit-task" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"><i class="fi fi-search"></i></button>
 
-                                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
-                                            <div class="offcanvas-header">
-                                                <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">Редактировать задачу</h5>
-                                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                            </div>
-                                            <div class="offcanvas-body">
-                                                <div id="alert_success" class="alert alert-success hide-force">
-                                                    Задача успешно изменена!
-                                                </div>
-
-                                                <!-- error inline message -->
-                                                <div id="alert_error" class="alert alert-danger hide-force">
-                                                    Пожалуйста, заполните это поле!
-                                                </div>
-
-                                                <form class="js-ajax bs-validate" novalidate action="assets/js/ajax/edit_task.php" method="POST"
-
-                                                      data-ajax-inline-alert-succes="#alert_success"
-                                                      data-ajax-inline-alert-error="#alert_error"
-
-                                                      data-ajax-update-url="true"
-                                                      data-ajax-show-loading-icon="true"
-
-                                                      data-error-scroll-up="true"
-                                                      data-ajax-callback-function="callback1">
-
-                                                    <script>
-                                                        function callback1(){
-                                                            $('#exampleModalTask').modal('hide');
-                                                            $.SOW.core.toast.show('success', '', 'Задача успешно изменена!', 'top-center', 4000, true);
-                                                        }
-                                                    </script>
-                                                    <div class="form-floating mb-3">
-                                                        <input required type="text" class="form-control" name="edit_title" id="TaskTitle" placeholder="Название" autocomplete="off">
-                                                        <label for="TaskTitle">Название</label>
-                                                    </div>
-                                                    <input type="hidden" name="alternate_decr" id="alt_descr">
-                                                    <input type="hidden" name="id" id="task-id">
-                                                    <div class="form-floating mb-3">
-                                                        <select class="form-select" id="floatingSelect" name="edit_responsible" aria-label="Floating label select example">
-                                                            <option value="1">Данил</option>
-                                                            <option value="2">Влад</option>
-                                                        </select>
-                                                        <label for="floatingSelect">Ответственный</label>
-                                                    </div>
-                                                    <div class="form-floating mb-3">
-                                                        <textarea name="edit_descr" id="editor-decr-new"class="summernote-editor w-100"
-                                                                  data-summernote-config='{
-                                                        "placeholder":	"Напишите текст...",
-                                                        "focus":		false,
-                                                        "lang":			"en-US",
-                                                        "minHeight":	 300,
-                                                        "maxHeight":	 1500,
-
-                                                        " styleTags": ["h2","h3","h4","h5","h6"
-
-                                                            ,{
-                                                                "title"		:"Paragraph",
-                                                                "tag"		:"p",
-                                                                "value"		:"p",
-                                                                "className"	:""
-                                                            }
-
-                                                            ,{
-                                                                "title"		:"Paragraph Lead",
-                                                                "tag"		:"p",
-                                                                "value"		:"p",
-                                                                "className"	:"lead"
-                                                            }
-
-                                                        ],
-
-                                                        "toolbar": [
-                                                            ["font", ["bold", "italic", "underline", "clear"]],
-                                                            ["para", ["ul", "ol", "paragraph"]],
-                                                            ["insert", ["link", "picture", "video", "hr"]],
-                                                            ["view", ["fullscreen", "codeview", "help"]]
-                                                        ],
-
-                                                        "disableDragAndDrop":	 false,
-                                                        "codeviewFilter":		 false,
-                                                        "codeviewIframeFilter":	 true
-                                                    }'></textarea>
-
-                                                    </div>
-
-                                                    <div class="form-floating mb-3">
-                                                        <label for="customRange1" class="form-label">Приоритет: <span id="priorityVal">Средний</span></label>
-                                                        <input type="range" class="form-range" id="priority" name="edit_priority">
-                                                    </div>
-
-
-                                                    <button type="submit" class="btn btn-success text-white float-end">
-                                                        <i class="fi fi-check"></i>
-                                                        Изменить
-                                                    </button>
-                                                    <button type="button" class="btn btn-secondary float-end" data-bs-dismiss="modal">
-                                                        <i class="fi fi-close"></i>
-                                                        Закрыть
-                                                    </button>
-                                                    <button type="submit" class="btn btn-danger text-white float-end">
-                                                        <i class="fi fi-check"></i>
-                                                        Заморозить
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -249,7 +142,7 @@
 														 data-update-toast-success="Order Saved!"
 														 data-update-toast-position="bottom-center" data-type="3">
                             <?php foreach($tasks[3] as $task): ?>
-                                <div data-id="<?=$task->id?>" class="row mx-3 bg-white text-dark rounded-3 mb-2 list-item">
+                                <div data-id="<?=$task->id?>" data-title="<?=$task->title?>" data-text="<?=$task->text?>" class="row mx-3 bg-white text-dark rounded-3 mb-2 list-item">
                                     <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
                                         <i class="fi fi-arrow-end-full fs-5 fs-5"></i>
                                     </div>
@@ -262,7 +155,8 @@
                                         </div>
                                     </div>
                                     <div class="col-2 py-2">
-                                        <i class="fi fi-search"></i>
+                                        <button class="btn edit-task" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"><i class="fi fi-search"></i></button>
+
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -391,7 +285,7 @@
     <!--/Modal new task-->
 
     <!--Modal edit task-->
-        <div class="modal fade" id="exampleModalTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalTask" aria-hidden="true">
+    <div class="modal fade" id="exampleModalTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalTask" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
 
@@ -513,9 +407,61 @@
 
     <!--/Modal edit task-->
 
+
+<!--    offcanvas block-->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">Просмотр задачи</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+
+            <form class="js-ajax bs-validate" novalidate action="assets/js/ajax/edit_task.php" method="POST">
+                <div class="form-floating mb-3">
+                    <input required readonly type="text" class="form-control" name="edit_title" id="TaskTitle" placeholder="Название" autocomplete="off">
+                    <label for="TaskTitle">Заголовок</label>
+
+                </div>
+                <input type="hidden" name="alternate_decr" id="alt_descr">
+                <input disabled type="hidden" name="id" id="task-id">
+                <div class="form-floating mb-3">
+                    <select disabled class="form-select" id="floatingSelect" name="edit_responsible" aria-label="Floating label select example">
+                        <option value="1">Данил</option>
+                        <option value="2">Влад</option>
+                    </select>
+                    <label for="floatingSelect">Ответственный</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <div class="border-gray-500 descr-show p-2">
+
+                    </div>
+
+                </div>
+
+                <div class="form-floating mb-3">
+                    <label for="customRange1" class="form-label">Приоритет: <span id="priorityVal">Средний</span></label>
+                    <input disabled type="range" class="form-range" id="priority" name="edit_priority">
+                </div>
+
+
+
+                <button type="button" class="btn btn-secondary float-end" data-bs-dismiss="offcanvas">
+                    <i class="fi fi-close"></i>
+                    Закрыть
+                </button>
+                <button type="submit" class="btn btn-danger text-white float-end">
+                    <i class="fi fi-check"></i>
+                    Заморозить
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!--    /offcanvas block-->
+
 <!-- Вариант блока задачи с цветовым фоном вместо спина-->
 
-<!--    <div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelSm" aria-hidden="true">
+    <div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelSm" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
 
@@ -540,7 +486,7 @@
         </div>
     </div>
 
-    <div data-id="15" data-upd="0:22:29" class="bg-primary list-item mb-2 mx-3 px-2 rounded-3 row text-dark text-white">
+   <!-- <div data-id="15" data-upd="0:22:29" class="bg-primary list-item mb-2 mx-3 px-2 rounded-3 row text-dark text-white">
 
         <div class="col py-2">
             <div class="row">

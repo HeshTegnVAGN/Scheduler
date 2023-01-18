@@ -7,9 +7,10 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 $bd = new \models\DB();
+$msg = $_POST['name'].', благодарим за регистрацию на нашем сервисе! По всем техническим вопросам обращайтесь к администратору по адресу service@imdibil.ru';
 $pw = md5($_POST['password']);
 $bd->conn->query("INSERT INTO `users`(`name`, `status`, `password`, `email`) VALUES ('{$_POST['name']}', '1', '$pw', '{$_POST['email']}')");
-sendEmail($_POST['email'], $_POST['name']);
+sendEmail($_POST['email'], $_POST['name'], $msg);
 session_start();
 
 $_SESSION['user'] = $bd->conn->insert_id;
@@ -22,7 +23,7 @@ header("Location: https://imdibil.ru/scheduler");
 
 
 
-function sendEmail($email, $name)
+function sendEmail($email, $name, $text)
 {
 	$mail = new PHPMailer(true);
 
@@ -69,8 +70,8 @@ $mail->isSMTP();                                            //Send using SMTP
 	//Content
 //	$mail->isHTML(true);                                  //Set email format to HTML
 	$mail->Subject = 'Регистрация на сервисе Scheduler';
-	$mail->Body ='Благодарим за регистрацию на нашем сервисе! По всем техническим вопросам обращайтесь к администратору по адресу service@imdibil.ru';
-	$mail->AltBody = $name.', благодарим за регистрацию на нашем сервисе! По всем техническим вопросам обращайтесь к администратору по адресу service@imdibil.ru';
+	$mail->Body = $text;
+	$mail->AltBody = $text;
 
 
 	$mail->send();
