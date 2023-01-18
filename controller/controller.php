@@ -24,14 +24,15 @@ $tasks = $task->get(1);
 include ROOT . 'views/inc/header.php';
 
 
-//
-//if(!$_SESSION['user']['id'])
-//{
-//	header('Location: /scheduler/login');
-//}
+if(!$_SESSION['user'] and !in_array($page, ['login', 'signup']))
+{
+	header('Location: https://imdibil.ru/scheduler/login');
+}
 //die('views/'.$page.'.php');
-
-
+if(!file_exists(ROOT.'views/'.$page.'.php'))
+{
+	$page = 'index';
+}
 include ROOT.'views/'.$page.'.php';
 //include ROOT.'views/index.php';
 include ROOT . '/views/inc/footer.php';

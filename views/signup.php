@@ -2,12 +2,9 @@
 	<div class="px-2 max-w-800 mx-auto text-center">
 
 		<h1 class="display-4 fw-bold">
-			Create Account
+			Зарегистрируйтесь
 		</h1>
 
-		<p class="lead m-0">
-			It's free and easy!
-		</p>
 
 	</div>
 </div>
@@ -43,7 +40,7 @@
 					<div class="input-group-over">
 						<div class="form-floating mb-3">
 							<input placeholder="Account Password" id="account_password" name="password" type="password" class="form-control">
-							<label for="account_password">Account Password</label>
+							<label for="account_password">Пароль</label>
 						</div>
 
 						<!-- Show Password -->
@@ -60,7 +57,7 @@
 
 						<div class="col-12 col-md-6 mt-4">
 							<button type="submit" class="btn btn-primary w-100 fw-medium">
-								Sign Up
+								Зарегистрироваться
 							</button>
 						</div>
 
