@@ -1,8 +1,40 @@
+<?php
 
+$t1 = count($tasks[1]);
+$t2 = count($tasks[2]);
+$t3 = count($tasks[3]);
+
+?>
 
 	<div class="container">
-		<button type="button" class="btn btn-warning text-white mt-3" data-bs-toggle="modal" data-bs-target="#exampleModalMd">Новая задача</button>
+<div class="row mt-3">
+    <div class="col-2">
+        <button type="button" class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#exampleModalMd">Новая задача</button>
+    </div>
+    <div class="col text-end">
+        <div class="d-inline-block">
+            <div class="row text-center mb-2">
+                <div class="col-auto h-100 py-2 px-lg-3 px-xl-4 lh-sm text-dark">
+                    <span class="fs-6"><?=$t1?></span>
+                    <p class="small mb-0">В очереди</p>
+                </div>
+                <div class="col-auto h-100 py-2 px-lg-3 px-xl-4 border-start lh-sm text-muted">
+                    <span class="fs-6"><?=$t2?></span>
+                    <p class="small mb-0">В работе</p>
+                </div>
+                <div class="col-auto h-100 py-2 px-lg-3 px-xl-4 border-start lh-sm text-success">
+                    <span class="fs-6"><?=$t3?></span>
+                    <p class="small mb-0">Выполнено</p>
+                </div>
+            </div>
 
+            <!-- project progress -->
+            <div class="progress" style="height: 4px;">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: <?=($t3/($t1+$t2+$t3))*100?>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+    </div>
+</div>
         <div class="row mt-3">
 			<div class="col-md-4 col-sm-6">
 
@@ -25,7 +57,7 @@
 												data-type="1">
 						<?php foreach($tasks[1] as $task): ?>
 
-							<div data-id="<?=$task->id?>" data-title="<?=$task->title?>" data-text="<?=$task->text?>" data-priority="<?=$task->priority?>" class="row bg-white mb-2 mx-3 rounded-3 text-dark list-item">
+							<div data-id="<?=$task->id?>" data-title="<?=$task->title?>" data-text="<?=htmlspecialchars($task->text)?>" data-priority="<?=$task->priority?>" class="row bg-white mb-2 mx-3 rounded-3 text-dark list-item">
 								<div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
 									<i class="fi fi fi-arrow-end-full fs-5 fs-5"></i>
 								</div>
@@ -82,7 +114,7 @@
                              data-update-toast-success="Order Saved!"
                              data-update-toast-position="bottom-center" data-type="2">
                             <?php foreach($tasks[2] as $task): ?>
-                                <div data-id="<?=$task->id?>" data-title="<?=$task->title?>" data-text="<?=$task->text?>" data-upd="<?=(new \DateTime('now', new DateTimeZone('Europe/Moscow')))->diff($task->updated_at)->format('%h:%i:%s')?>" class="row mx-3 bg-white text-dark list-item rounded-3 mb-2">
+                                <div data-id="<?=$task->id?>" data-title="<?=$task->title?>" data-text="<?=htmlspecialchars($task->text)?>" data-upd="<?=(new \DateTime('now', new DateTimeZone('Europe/Moscow')))->diff($task->updated_at)->format('%h:%i:%s')?>" class="row mx-3 bg-white text-dark list-item rounded-3 mb-2">
                                        <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
                                            <i class="fs-1 fi fi-spin fi-circle-spin text-primary fs-5"></i>
                                         </div>
@@ -142,7 +174,7 @@
 														 data-update-toast-success="Order Saved!"
 														 data-update-toast-position="bottom-center" data-type="3">
                             <?php foreach($tasks[3] as $task): ?>
-                                <div data-id="<?=$task->id?>" data-title="<?=$task->title?>" data-text="<?=$task->text?>" class="row mx-3 bg-white text-dark rounded-3 mb-2 list-item">
+                                <div data-id="<?=$task->id?>" data-title="<?=$task->title?>" data-text="<?=htmlspecialchars($task->text)?>" class="row mx-3 bg-white text-dark rounded-3 mb-2 list-item">
                                     <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
                                         <i class="fi fi-arrow-end-full fs-5 fs-5"></i>
                                     </div>
@@ -415,45 +447,76 @@
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
+            <div class="row">
+                <form class="js-ajax bs-validate" novalidate action="assets/js/ajax/edit_task.php" method="POST">
+                    <div class="form-floating mb-3">
+                        <input required readonly type="text" class="form-control" name="edit_title" id="TaskTitle" placeholder="Название" autocomplete="off">
+                        <label for="TaskTitle">Заголовок</label>
 
-            <form class="js-ajax bs-validate" novalidate action="assets/js/ajax/edit_task.php" method="POST">
-                <div class="form-floating mb-3">
-                    <input required readonly type="text" class="form-control" name="edit_title" id="TaskTitle" placeholder="Название" autocomplete="off">
-                    <label for="TaskTitle">Заголовок</label>
+                    </div>
+                    <input type="hidden" name="alternate_decr" id="alt_descr">
+                    <input disabled type="hidden" name="id" id="task-id">
+                    <div class="form-floating mb-3">
+                        <select disabled class="form-select" id="floatingSelect" name="edit_responsible" aria-label="Floating label select example">
+                            <option value="1">Данил</option>
+                            <option value="2">Влад</option>
+                        </select>
+                        <label for="floatingSelect">Ответственный</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <div class="border-gray-500 descr-show p-2">
 
-                </div>
-                <input type="hidden" name="alternate_decr" id="alt_descr">
-                <input disabled type="hidden" name="id" id="task-id">
-                <div class="form-floating mb-3">
-                    <select disabled class="form-select" id="floatingSelect" name="edit_responsible" aria-label="Floating label select example">
-                        <option value="1">Данил</option>
-                        <option value="2">Влад</option>
-                    </select>
-                    <label for="floatingSelect">Ответственный</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <div class="border-gray-500 descr-show p-2">
+                        </div>
 
                     </div>
 
-                </div>
-
-                <div class="form-floating mb-3">
-                    <label for="customRange1" class="form-label">Приоритет: <span id="priorityVal">Средний</span></label>
-                    <input disabled type="range" class="form-range" id="priority" name="edit_priority">
-                </div>
+                    <div class="form-floating mb-3">
+                        <label for="customRange1" class="form-label">Приоритет: <span id="priorityVal">Средний</span></label>
+                        <input disabled type="range" class="form-range" id="priority" name="edit_priority">
+                    </div>
 
 
 
-                <button type="button" class="btn btn-secondary float-end" data-bs-dismiss="offcanvas">
-                    <i class="fi fi-close"></i>
-                    Закрыть
-                </button>
-                <button type="submit" class="btn btn-danger text-white float-end">
-                    <i class="fi fi-check"></i>
-                    Заморозить
-                </button>
+                    <button type="button" class="btn btn-secondary float-end" data-bs-dismiss="offcanvas">
+                        <i class="fi fi-close"></i>
+                        Закрыть
+                    </button>
+                    <button type="submit" class="btn btn-danger text-white float-end">
+                        <i class="fi fi-check"></i>
+                        Заморозить
+                    </button>
+                </form>
+
+            </div>
+            <div class="comments mt-2">
+
+            </div>
+            <div id="alert_error" class="alert alert-danger hide-force">
+                Please, review your data and try again!
+            </div>
+
+            <!--
+                NOTE: WE USE method="GET" insted of "POST" because this is a pure html demo
+            -->
+            <form class="js-ajax bs-validate p-4" novalidate
+                  action="assets/js/ajax/new_comment.php"
+                  method="POST"
+
+                  data-ajax-inline-alert-succes="#alert_success"
+                  data-ajax-inline-alert-error="#alert_error"
+
+                  data-ajax-update-url="false"
+                  data-ajax-show-loading-icon="true"
+
+                  data-error-scroll-up="true"
+                  data-ajax-callback-function="">
+                <input type="text">
+                <textarea type="text" name="test_optional" placeholder="Комментарий" class="form-control mb-3"></textarea>
+                <button type="submit" class="btn btn-warning">Отправить</button>
             </form>
+
+
+
         </div>
     </div>
 
