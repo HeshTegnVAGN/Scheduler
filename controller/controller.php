@@ -24,7 +24,7 @@ $tasks = $task->get(1);
 include ROOT . 'views/inc/header.php';
 
 
-if(!$_SESSION['user'] and !in_array($page, ['login', 'signup']))
+if(!$_SESSION['user'] and !in_array($page, ['login', 'signup', 'reset']))
 {
 	header('Location: https://imdibil.ru/scheduler/login');
 }
