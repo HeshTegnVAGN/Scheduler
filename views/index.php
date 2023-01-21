@@ -7,34 +7,7 @@ $t3 = count($tasks[3]);
 ?>
 
 	<div class="container">
-<div class="row mt-3">
-    <div class="col-2">
-        <button type="button" class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#exampleModalMd">Новая задача</button>
-    </div>
-    <div class="col text-end">
-        <div class="d-inline-block">
-            <div class="row text-center mb-2">
-                <div class="col-auto h-100 py-2 px-lg-3 px-xl-4 lh-sm text-dark">
-                    <span class="fs-6"><?=$t1?></span>
-                    <p class="small mb-0">В очереди</p>
-                </div>
-                <div class="col-auto h-100 py-2 px-lg-3 px-xl-4 border-start lh-sm text-muted">
-                    <span class="fs-6"><?=$t2?></span>
-                    <p class="small mb-0">В работе</p>
-                </div>
-                <div class="col-auto h-100 py-2 px-lg-3 px-xl-4 border-start lh-sm text-success">
-                    <span class="fs-6"><?=$t3?></span>
-                    <p class="small mb-0">Выполнено</p>
-                </div>
-            </div>
 
-            <!-- project progress -->
-            <div class="progress" style="height: 4px;">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: <?=($t3/($t1+$t2+$t3))*100?>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
-    </div>
-</div>
         <div class="row mt-3">
 			<div class="col-md-4 col-sm-6">
 
@@ -46,6 +19,16 @@ $t3 = count($tasks[3]);
 						<div class="col p-3 text-warning fs-5">
 							Новое
 						</div>
+                        <div class="col text-end">
+                            <span data-bs-toggle="tooltip" data-bs-placement="top" title="Добавить задачу">
+                                 <i class="fi fi-plus py-3 fs-5 text-warning" type="button"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModalMd"
+                                 >
+                            </i>
+                            </span>
+
+
+                        </div>
 					</div>
 					<div class="pb-4">
                         <div class="list-group sortable" data-shared-group="client-list"
