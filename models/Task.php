@@ -52,7 +52,7 @@ class Task extends DB
 
         $res = $this->conn->query("SELECT * FROM tasks where id = '$id'");
         $row = $res->fetch_assoc();
-        $this->text = $row['text'];
+        $this->text = $row['text'] ?: '';
         $this->id = $row['id'];
         $this->title = $row['title'];
         $this->responsibile = new User($row['responsible']);

@@ -5,7 +5,6 @@ function dd($arr)
 	print_r($arr);
 	echo '</pre>';
 }
-session_start();
 
 use models\DB;
 use models\TaskService;
@@ -19,7 +18,7 @@ $uri = explode('/',$_SERVER['REQUEST_URI']);
 $GLOBALS['sitemap'] = array (
 	'_404' => 'page404.php',   // Страница 404</span>
 	'' => 'index.php',   // Главная страница
-	'profile/?(.*)?' => 'profile/'
+	'profile/?(.*)?' => 'profile.php'
 
 	// Больше правил
 );
@@ -91,19 +90,17 @@ class uSitemap {
 	}
 }
 $sm = new uSitemap();
-
 $routed_file = $sm->classname; // Получаем имя файла для подключения через require()
-
 if(!$routed_file)
 {
 	$routed_file = $page = $uri[2].'.php';
 }
-
 $db = new DB();
-
 $task = new TaskService();
+
 $tasks = $task->get(1);
-if(!($_SESSION['user']) and !in_array($routed_file, ['login', 'signup', 'reset']))
+
+if(!($_SESSION['user']) and !in_array($routed_file, ['login.php', 'signup.php', 'reset.php']))
 {
 	ob_start();
 
@@ -111,6 +108,7 @@ if(!($_SESSION['user']) and !in_array($routed_file, ['login', 'signup', 'reset']
 
 	ob_end_flush();
 }
+
 include ROOT . 'views/inc/header.php';
 
 
