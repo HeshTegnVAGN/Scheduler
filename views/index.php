@@ -9,7 +9,7 @@ $t3 = count($tasks[3]);
 	<div class="container">
 
         <div class="row mt-3">
-			<div class="col-md-4 col-sm-6">
+			<div class="col-6 col-sm-6 col-md-4 mb-4-xs">
 
 				<div class="bg-secondary rounded-3">
 
@@ -79,7 +79,7 @@ $t3 = count($tasks[3]);
 				</div>
 
 			</div>
-			<div class="col-md-4 col-sm-6">
+			<div class="col-6 col-sm-6 col-md-4 mb-4-xs">
 				<div class="bg-secondary rounded-3">
 					<div class="row mx-0">
 						<div class="col-1 p-3 fi fi-circle-spin fi-spin text-warning fs-5">
@@ -126,8 +126,8 @@ $t3 = count($tasks[3]);
                                             }'></time>
                                         </div>
                                     </div>
-                                    <div class="col-2 py-2">
-                                        <button class="btn edit-task" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"><i class="fi fi-search"></i></button>
+                                    <div class="col-2 py-2 my-auto">
+                                        <button class="btn edit-task mx-n3" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"><i class="fi fi-search"></i></button>
 
                                     </div>
                                 </div>
@@ -138,7 +138,7 @@ $t3 = count($tasks[3]);
                 </div>
 
 			</div>
-			<div class="col-md-4 col-sm-6">
+			<div class="col-6 col-sm-6 col-md-4">
 
 				<div class="bg-secondary rounded-3">
 
@@ -169,8 +169,8 @@ $t3 = count($tasks[3]);
                                             <!----><?php //=print_r((new \DateTime('now', new DateTimeZone('Europe/Moscow')))->diff($task->created_at)->format('%h:%i:%s'), 1)?>
                                         </div>
                                     </div>
-                                    <div class="col-2 py-2">
-                                        <button class="btn edit-task" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"><i class="fi fi-search"></i></button>
+                                    <div class="col-2 py-2 my-auto">
+                                        <button class="btn edit-task mx-n3" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"><i class="fi fi-search"></i></button>
 
                                     </div>
                                 </div>

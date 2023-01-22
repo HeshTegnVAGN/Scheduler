@@ -24,10 +24,10 @@ $t3 = count($tasks[3]);
 	<link rel="preconnect" href="https://fonts.googleapis.com/">
 	<link rel="preconnect" href="https://fonts.gstatic.com/">
 	<!-- preloading icon font is helping to speed up a little bit -->
-	<link rel="preload" href= "assets/fonts/flaticon/Flaticon.woff2" as="font" type="font/woff2" crossorigin>
-	<link rel="stylesheet" href="assets/css/core.min.css">
-	<link rel="stylesheet" href="assets/css/vendor_bundle.min.css">
-	<link rel="stylesheet" href="assets/css/custom.css">
+	<link rel="preload" href="<?=PATH?>assets/fonts/flaticon/Flaticon.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="stylesheet" href="<?=PATH?>assets/css/core.min.css">
+	<link rel="stylesheet" href="<?=PATH?>assets/css/vendor_bundle.min.css">
+	<link rel="stylesheet" href="<?=PATH?><?=PATH?>assets/css/custom.css">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 </head>
@@ -36,18 +36,10 @@ $t3 = count($tasks[3]);
 
 	<!-- /TOP BAR -->
 
-
-
-
 	<!-- Navbar -->
 	<div class="container position-relative">
 
 		<!-- /SEARCH -->
-
-
-
-
-
 		<nav class="navbar navbar-expand-lg navbar-light justify-content-lg-between justify-content-md-inherit">
 
 			<div class="collapse navbar-collapse navbar-animate-fadein" id="navbarMainNav">
@@ -72,8 +64,6 @@ $t3 = count($tasks[3]);
 
 				</div>
 				<!-- /navbar : mobile menu -->
-
-
 
 				<!-- navbar : navigation -->
 				<ul class="navbar-nav">
