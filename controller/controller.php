@@ -18,7 +18,7 @@ $uri = explode('/',$_SERVER['REQUEST_URI']);
 $GLOBALS['sitemap'] = array (
 	'_404' => 'page404.php',   // Страница 404</span>
 	'' => 'index.php',   // Главная страница
-	'profile/?(.*)?' => 'profile.php'
+	'profile/?(.*)?' => 'profile/index.php'
 
 	// Больше правил
 );
@@ -91,6 +91,7 @@ class uSitemap {
 }
 $sm = new uSitemap();
 $routed_file = $sm->classname; // Получаем имя файла для подключения через require()
+
 if(!$routed_file)
 {
 	$routed_file = $page = $uri[2].'.php';
@@ -108,10 +109,9 @@ if(!($_SESSION['user']) and !in_array($routed_file, ['login.php', 'signup.php', 
 
 	ob_end_flush();
 }
-
 include ROOT . 'views/inc/header.php';
 
-
+//die('s');
 if(!file_exists(ROOT.'views/'.$routed_file))
 {
 	die(ROOT.'views/'.$routed_file);
