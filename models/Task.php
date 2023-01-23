@@ -15,7 +15,7 @@ class Task extends DB
 	public int $id;
 	public string $title;
 	public string $text;
-	public User $responsibile;
+	public int $responsibile;
 	public int $status;
 	public DateTime $time;
 	public DateTime $created_at;
@@ -32,7 +32,7 @@ class Task extends DB
 	{
 
 			$this->title= $title;
-			$this->responsibile= new User($responsible);
+			$this->responsibile= $responsible;
 			$this->text= $text;
 			$this->priority= $priority;
 			$this->status= self::NEW;
@@ -44,7 +44,7 @@ class Task extends DB
 	public function save()
 	{
 
-        $this->conn->query("UPDATE `tasks` SET `responsible`='{$this->responsibile->id}',`title`='$this->title',`text`='$this->text',`status`='$this->status',`priority`='$this->priority' WHERE id = '$this->id'");
+        $this->conn->query("UPDATE `tasks` SET `responsible`='{$this->responsibile}',`title`='$this->title',`text`='$this->text',`status`='$this->status',`priority`='$this->priority' WHERE id = '$this->id'");
 	}
 
     public function get($id)
@@ -55,7 +55,7 @@ class Task extends DB
         $this->text = $row['text'] ?: '';
         $this->id = $row['id'];
         $this->title = $row['title'];
-        $this->responsibile = new User($row['responsible']);
+        $this->responsibile = $row['responsible'];
         $this->status = $row['status'];
         $this->time = new \DateTime($row['time'], new DateTimeZone('Europe/Moscow'));
         $this->created_at = new \DateTime($row['created_at'], new DateTimeZone('Europe/Moscow'));

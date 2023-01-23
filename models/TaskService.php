@@ -29,7 +29,7 @@ class TaskService extends DB
                     $task->text = $row['text'] ?: '';
                     $task->id = $row['id'];
                     $task->title = $row['title'];
-                    $task->responsibile = new User($row['responsible']);
+                    $task->responsibile = $row['responsible'];
                     $task->status = $row['status'];
                     $task->time = new \DateTime($row['time'], new DateTimeZone('Europe/Moscow'));
                     $task->created_at = new \DateTime($row['created_at'], new DateTimeZone('Europe/Moscow'));
