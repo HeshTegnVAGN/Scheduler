@@ -18,7 +18,13 @@ $uri = explode('/',$_SERVER['REQUEST_URI']);
 $GLOBALS['sitemap'] = array (
 	'_404' => 'page404.php',   // Страница 404</span>
 	'' => 'index.php',   // Главная страница
-	'profile/?(.*)?' => 'profile/index.php'
+	'profile/' => 'profile/index.php',
+	'profile/settings' => 'profile/settings.php',
+	'profile/blog' => 'profile/blog.php',
+	'profile/access' => 'profile/access.php',
+	'profile/history' => 'profile/history.php',
+	'profile/export' => 'profile/export.php',
+	'profile/design' => 'profile/design.php'
 
 	// Больше правил
 );
@@ -101,16 +107,19 @@ $task = new TaskService();
 
 $tasks = $task->get(1);
 
-if(!($_SESSION['user']) and !in_array($routed_file, ['login.php', 'signup.php', 'reset.php']))
+if(!in_array($routed_file, ['login.php', 'signup.php', 'reset.php']))
 {
-	ob_start();
+    if(!($_SESSION['user']))
+    {
+        ob_start();
 
-	header("Location: https://imdibil.ru/scheduler/login");
+        header("Location: https://imdibil.ru/scheduler/login");
 
-	ob_end_flush();
+        ob_end_flush();
+    }
+
 }
 include ROOT . 'views/inc/header.php';
-
 //die('s');
 if(!file_exists(ROOT.'views/'.$routed_file))
 {

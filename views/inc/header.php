@@ -31,8 +31,9 @@ $t3 = count($tasks[3]);
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 </head>
-<body class="header-sticky header-fixed">
-<header id="header" class="shadow-xs">
+<?php if(!in_array($routed_file, ['login.php', 'signup.php', 'reset.php'])): ?>
+    <body class="header-sticky header-fixed">
+    <header id="header" class="shadow-xs">
 
 	<!-- /TOP BAR -->
 
@@ -207,3 +208,6 @@ $t3 = count($tasks[3]);
 	<!-- /Navbar -->
 
 </header>
+<?php else: ?>
+<body>
+<?php endif; ?>
