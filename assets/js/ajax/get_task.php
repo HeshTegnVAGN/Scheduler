@@ -1,15 +1,10 @@
 <?php
-
-session_start();
 use models\DB;
 use models\Task;
 
 require '../../../config/config.php';
 require '../../../models/Task.php';
 require '../../../models/User.php';
-require '../../../models/Comment.php';
-require '../../../../vendor/autoload.php';
-
 //$_POST =
 //[
 //	'TaskTitle' => 'test',
@@ -17,6 +12,10 @@ require '../../../../vendor/autoload.php';
 //    'descr' => '<p>setsetsetset</p>',
 //	'priority' => 70
 //];
-//$_POST['email'] = 'kochura2017@yandex.ru';
 
-return Comment::add($_POST['text'], $_SESSION['user'], $_POST['id_task']);
+$task = (new Task())
+	->get($_POST['id'])
+	->getComments();
+
+
+echo json_encode((array)$task);

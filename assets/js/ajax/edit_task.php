@@ -12,7 +12,7 @@ $task = new Task();
 $task->get($_POST['id']);
 
 $task->title = $_POST['edit_title'];
-$task->responsibile = new User($_POST['edit_responsible']);
+$task->responsibile = $_POST['edit_responsible'];
 $task->priority = $_POST['edit_priority'];
 $task->text = $_POST['edit_descr'] ?: ($_POST['alternate_decr'] ?: '');
 $task->save();

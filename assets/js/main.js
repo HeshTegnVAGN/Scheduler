@@ -113,30 +113,62 @@ $(document).ready(function () {
 
 	//Модалка для редактирования
 	$('.edit-task').on('click', function () {
-		console.log('sdf')
-		$('input#alt_descr').empty();
-		console.log($(this).parents('.list-item').data('id'));
-		$('#task-id').empty();
-		$('#task-id').val($(this).parents('.list-item').data('id'));
-		$('[name="edit_title"]').empty();
-		$('[name="edit_descr"]').empty();
-		$('[name="edit_priority"]').empty();
+		let id = $(this).parents('.list-item').data('id');
+		$.ajax(
+			{
+				url: 'assets/js/ajax/get_task.php',
+				method: 'post',
+				datatype: 'application/json',
+				data: {id: id},
+				success: function (ans) {
+					let task = JSON.parse(ans);
+					$('input#alt_descr').empty();
+					$('#task-id').empty();
+					$('#task-id').val(id);
+					$('#id_task').val(id);
 
-		$('[name="edit_title"]').val($(this).parents('.list-item').data('title').trim());
-		$('input#alt_descr').val($(this).parents('.list-item').data('text'));
-		if($(this).data('bs-toggle') == 'offcanvas')
-		{
-			$('.descr-show').empty();
-			$('.descr-show').append($(this).parents('.list-item').data('text'));
-		} else
-		{
-			$('[name="edit_descr"]').next().children('.note-editing-area').children('.note-placeholder').remove();
-			$('[name="edit_descr"]').next().children('.note-editing-area').children('.card-block').empty().append($(this).parents('.list-item').data('text'));
-		}
+					$('[name="edit_title"]').empty();
+					$('[name="edit_descr"]').empty();
+					$('[name="edit_priority"]').empty();
 
-		$('select[name="edit_responsible"]option#U'+$(this).parents('.list-item').data('responsible')).attr('selected');
-		$('[name="edit_priority"]').val($(this).parents('.list-item').data('priority'));
-		$('span#priorityVal').text(getPriority($(this).parents('.list-item').data('priority'))[0])
+					$('[name="edit_title"]').val(task.title.trim());
+					$('input#alt_descr').val(task.text);
+					if($(this).data('bs-toggle') == 'offcanvas')
+					{
+						$('.descr-show').empty();
+						$('.descr-show').append(task.text);
+					} else
+					{
+						$('[name="edit_descr"]').next().children('.note-editing-area').children('.note-placeholder').remove();
+						$('[name="edit_descr"]').next().children('.note-editing-area').children('.card-block').empty().append(task.text);
+					}
+					$('.com-block').empty();
+					console.log(task.comments)
+					for(let comment of task.comments)
+					{
+						console.log(comment);
+						$('.com-block').append('<div class="border border-light rounded mb-4 p-4">' +
+							'<div class="row">\n' +
+							'<div class="col-md-3 text-center">\n' +
+							'<div class="avatar avatar-lg rounded-circle" style="background-image:url(https://imdibil.ru/scheduler/assets/images/avatars/av.png)"></div>\n' +
+							'<p class="text-gray-900">\n' +
+							'<span class="d-block fw-medium">'+comment.user_name+'</span>\n' +
+							'</p>\n' +
+							'</div>\n' +
+							'<div class="col-md-9">\n' +
+							'<p class="align-self-center">'+comment.text+'</p>\n' +
+							'</div>\n' +
+							'</div>\n' +
+							'</div>\n')
+					}
+
+					$('select[name="edit_responsible"]option#U'+$(this).parents('.list-item').data('responsible')).attr('selected');
+					$('[name="edit_priority"]').val(task.priority);
+					$('span#priorityVal').text(getPriority(task.priority)[0])
+
+				}
+			});
+
 	});
 
 

@@ -40,7 +40,7 @@ $t3 = count($tasks[3]);
 												data-type="1">
 						<?php foreach($tasks[1] as $task): ?>
 
-							<div data-id="<?=$task->id?>" data-title="<?=$task->title?>" data-text="<?=htmlspecialchars($task->text)?>" data-priority="<?=$task->priority?>" class="row bg-white mb-2 mx-3 rounded-3 text-dark list-item">
+							<div data-id="<?=$task->id?>" class="row bg-white mb-2 mx-3 rounded-3 text-dark list-item">
 								<div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
 									<i class="fi fi fi-arrow-end-full fs-5 fs-5"></i>
 								</div>
@@ -97,7 +97,7 @@ $t3 = count($tasks[3]);
                              data-update-toast-success="Order Saved!"
                              data-update-toast-position="bottom-center" data-type="2">
                             <?php foreach($tasks[2] as $task): ?>
-                                <div data-id="<?=$task->id?>" data-title="<?=$task->title?>" data-text="<?=htmlentities($task->text)?>" data-upd="<?=(new \DateTime('now', new DateTimeZone('Europe/Moscow')))->diff($task->updated_at)->format('%h:%i:%s')?>" class="row mx-3 bg-white text-dark list-item rounded-3 mb-2">
+                                <div data-id="<?=$task->id?>" class="row mx-3 bg-white text-dark list-item rounded-3 mb-2">
                                        <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
                                            <i class="fs-1 fi fi-spin fi-circle-spin text-primary fs-5"></i>
                                         </div>
@@ -157,7 +157,7 @@ $t3 = count($tasks[3]);
 														 data-update-toast-success="Order Saved!"
 														 data-update-toast-position="bottom-center" data-type="3">
                             <?php foreach($tasks[3] as $task): ?>
-                                <div data-id="<?=$task->id?>" data-title="<?=$task->title?>" data-text="<?=htmlspecialchars($task->text)?>" class="row mx-3 bg-white text-dark rounded-3 mb-2 list-item">
+                                <div data-id="<?=$task->id?>" class="row mx-3 bg-white text-dark rounded-3 mb-2 list-item">
                                     <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
                                         <i class="fi fi-arrow-end-full fs-5 fs-5"></i>
                                     </div>
@@ -493,10 +493,14 @@ $t3 = count($tasks[3]);
 
                   data-error-scroll-up="true"
                   data-ajax-callback-function="">
-                <input type="text">
-                <textarea type="text" name="test_optional" placeholder="Комментарий" class="form-control mb-3"></textarea>
+                <input type="hidden" name="id_task" id="id_task">
+                <textarea type="text" name="text" placeholder="Комментарий" class="form-control mb-3"></textarea>
                 <button type="submit" class="btn btn-warning">Отправить</button>
             </form>
+						<div class="row">
+							<div class="col com-block">
+							</div>
+						</div>
 
 
 

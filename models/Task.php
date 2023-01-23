@@ -20,6 +20,7 @@ class Task extends DB
 	public DateTime $time;
 	public DateTime $created_at;
 	public DateTime $updated_at;
+	public array $comments;
 
 	public int $priority;
 
@@ -47,8 +48,8 @@ class Task extends DB
         $this->conn->query("UPDATE `tasks` SET `responsible`='{$this->responsibile}',`title`='$this->title',`text`='$this->text',`status`='$this->status',`priority`='$this->priority' WHERE id = '$this->id'");
 	}
 
-    public function get($id)
-    {
+    public function get($id): Task
+		{
 
         $res = $this->conn->query("SELECT * FROM tasks where id = '$id'");
         $row = $res->fetch_assoc();
@@ -62,10 +63,30 @@ class Task extends DB
         $this->updated_at = new \DateTime($row['updated_at'], new DateTimeZone('Europe/Moscow'));
 
         $this->priority = $row['priority'];
+				return $this;
 
 
     }
 
+	public function getComments(): Task
+	{
+		$res = $this->conn->query("SELECT * FROM `comments` join users on user_id=users.id WHERE task_id = '$this->id'");
+		$comm = [];
+		if($res->num_rows > 0)
+		{
+			while ($row = $res->fetch_assoc())
+			{
+				$arr = [];
+				$arr['text'] = $row['text'];
+				$arr['created_at'] = new \DateTime($row['created_at'], new DateTimeZone('Europe/Moscow'));
+				$arr['user_name'] = $row['name'];
+				$comm[] = $arr;
+			}
+		}
+		$this->comments = $comm;
+		return $this;
+
+	}
 
 	public function __destruct()
 	{
