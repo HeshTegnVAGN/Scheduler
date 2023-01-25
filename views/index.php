@@ -228,8 +228,8 @@ $t3 = count($tasks[3]);
 
 					<div class="form-floating mb-3">
 						<select class="form-select" id="floatingSelect" name="responsible" aria-label="Floating label select example">
-							<option value="1">Данил</option>
-							<option value="2">Влад</option>
+							<option value="3">Данил</option>
+							<option value="15">Влад</option>
 						</select>
 						<label for="floatingSelect">Ответственный</label>
 					</div>
