@@ -6,12 +6,12 @@ $t3 = count($tasks[3]);
 
 ?>
 
-	<div class="container">
+	<div class="container body-dark-theme">
 
         <div class="row mt-3">
 			<div class="col-6 col-sm-6 col-md-4 mb-4-xs">
 
-				<div class="bg-secondary rounded-3">
+				<div class="bg-secondary rounded-3 task-dark-theme">
 
 					<div class="row mx-0">
 						<div class="col-1 p-3 fi fi-bell-active text-warning fs-5">

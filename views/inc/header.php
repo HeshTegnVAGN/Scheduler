@@ -10,7 +10,7 @@ $t3 = count($tasks[3]);
 <html lang="en" dir="ltr">
 <head>
 
-	<title>Планироващик</title>
+	<title>My plan</title>
 	<meta name="description" content="...">
 
 	<meta charset="utf-8">
@@ -27,13 +27,13 @@ $t3 = count($tasks[3]);
 	<link rel="preload" href="<?=PATH?>assets/fonts/flaticon/Flaticon.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="stylesheet" href="<?=PATH?>assets/css/core.min.css">
 	<link rel="stylesheet" href="<?=PATH?>assets/css/vendor_bundle.min.css">
-	<link rel="stylesheet" href="<?=PATH?><?=PATH?>assets/css/custom.css">
+	<link rel="stylesheet" href="<?=PATH?>assets/css/custom.css">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 </head>
 <?php if(!in_array($routed_file, ['login.php', 'signup.php', 'reset.php'])): ?>
-    <body class="header-sticky header-fixed">
-    <header id="header" class="shadow-xs">
+    <body class="header-sticky header-fixed body-dark-theme">
+    <header id="header" class="shadow-xs header-dark-theme">
 
 	<!-- /TOP BAR -->
 

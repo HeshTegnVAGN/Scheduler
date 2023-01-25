@@ -19,3 +19,19 @@
 {
     width: 40%;
 }
+
+/*Для Body*/
+.body-dark-theme{
+    background-color: #292d3c!important;
+}
+/*Для тела задачи*/
+.task-dark-theme{
+    background-color: #5c627c !important;
+    color: rgba(var(--bs-white-rgb),var(--bs-text-opacity))!important;
+}
+
+/*Для хедера*/
+.header-dark-theme{
+    background: #8e8e8e!important;
+    color: #ffffff!important;
+}
