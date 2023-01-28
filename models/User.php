@@ -18,5 +18,15 @@ class User extends DB
         $this->status = $row['status'];
 	}
 
+    public function getAccesssedUsers()
+    {
+        $res = $this->conn->query("SELECT user_admissions.id as aid, users.id as uid, `user_to`, `adding`, `view`, `edit`, `comment`, `name`, `email` FROM `user_admissions` join users on user_to = users.id where user_from = '$this->id'");
+        $arr = [];
+        while ($row = $res->fetch_assoc())
+        {
+            $arr[] = $row;
+        }
+        return $arr;
+    }
 
 }
