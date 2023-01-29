@@ -8,6 +8,7 @@ function dd($arr)
 
 use models\DB;
 use models\TaskService;
+use models\User;
 
 require ROOT.'models/TaskService.php';
 require ROOT.'models/User.php';
@@ -119,6 +120,7 @@ if(!in_array($routed_file, ['login.php', 'signup.php', 'reset.php']))
     }
 
 }
+
 include ROOT . 'views/inc/header.php';
 //die('s');
 if(!file_exists(ROOT.'views/'.$routed_file))
@@ -126,7 +128,9 @@ if(!file_exists(ROOT.'views/'.$routed_file))
 	die(ROOT.'views/'.$routed_file);
 }
 
+$user = new User($_SESSION['user']);
 include ROOT.'views/'.$routed_file;
 
 //include ROOT.'views/index.php';
 include ROOT . '/views/inc/footer.php';
+
