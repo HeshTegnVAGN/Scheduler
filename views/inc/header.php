@@ -32,8 +32,8 @@ $t3 = count($tasks[3]);
 
 </head>
 <?php if(!in_array($routed_file, ['login.php', 'signup.php', 'reset.php'])): ?>
-    <body class="header-sticky header-fixed body-dark-theme">
-    <header id="header" class="shadow-xs header-dark-theme">
+    <body class="header-sticky header-fixed"> <!-- body-dark-theme -->
+    <header id="header" class="shadow-xs header-dark-theme"> <!-- header-dark-theme -->
 
 	<!-- /TOP BAR -->
 
@@ -82,7 +82,7 @@ $t3 = count($tasks[3]);
 					<!-- home -->
 					<li class="nav-item dropdown active">
 
-						<a href="https://imdibil.ru/scheduler/" id="mainNavHome" class="nav-link dropdown-toggle js-stoppropag" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<a href="https://imdibil.ru/scheduler/" id="mainNavHome" class="nav-link dropdown-toggle js-stoppropag" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <!-- text-white -->
 							Главная
 						</a>
 
@@ -113,15 +113,15 @@ $t3 = count($tasks[3]);
                 <div class="col">
                     <div class="d-inline-block">
                         <div class="row text-center mb-2">
-                            <div class="col-auto h-100 py-2 px-lg-3 px-xl-4 lh-sm text-dark">
+                            <div class="col-auto h-100 py-2 px-lg-3 px-xl-4 lh-sm text-dark"> <!-- text-white -->
                                 <span class="fs-6"><?=$t1?></span>
                                 <p class="small mb-0">В очереди</p>
                             </div>
-                            <div class="col-auto h-100 py-2 px-lg-3 px-xl-4 border-start lh-sm text-muted">
+                            <div class="col-auto h-100 py-2 px-lg-3 px-xl-4 border-start lh-sm text-muted"> <!-- text-indigo-800 -->
                                 <span class="fs-6"><?=$t2?></span>
                                 <p class="small mb-0">В работе</p>
                             </div>
-                            <div class="col-auto h-100 py-2 px-lg-3 px-xl-4 border-start lh-sm text-success">
+                            <div class="col-auto h-100 py-2 px-lg-3 px-xl-4 border-start lh-sm text-success"> <!-- text-lime-500 -->
                                 <span class="fs-6"><?=$t3?></span>
                                 <p class="small mb-0">Выполнено</p>
                             </div>

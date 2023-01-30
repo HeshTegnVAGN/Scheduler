@@ -6,12 +6,12 @@ $t3 = count($tasks[3]);
 
 ?>
 
-	<div class="container body-dark-theme">
+	<div class="container">
 
         <div class="row mt-3">
 			<div class="col-6 col-sm-6 col-md-4 mb-4-xs">
 
-				<div class="bg-secondary rounded-3 task-dark-theme">
+				<div class="rounded-3 bg-secondary"> <!-- body-task-dark-theme -->
 
 					<div class="row mx-0">
 						<div class="col-1 p-3 fi fi-bell-active text-warning fs-5">
@@ -22,11 +22,9 @@ $t3 = count($tasks[3]);
                         <div class="col text-end">
                             <span data-bs-toggle="tooltip" data-bs-placement="top" title="Добавить задачу">
                                  <i class="fi fi-plus py-3 fs-5 text-warning" type="button"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModalMd"
-                                 >
+                                    data-bs-toggle="modal" data-bs-target="#exampleModalMd">
                             </i>
                             </span>
-
 
                         </div>
 					</div>
@@ -40,7 +38,7 @@ $t3 = count($tasks[3]);
 												data-type="1">
 						<?php foreach($tasks[1] as $task): ?>
 
-							<div data-id="<?=$task->id?>" class="row bg-white mb-2 mx-3 rounded-3 text-dark list-item">
+							<div data-id="<?=$task->id?>" class="row mb-2 mx-3 rounded-3 list-item bg-white">  <!-- task-dark-theme text-white  -->
 								<div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
 									<i class="fi fi fi-arrow-end-full fs-5 fs-5"></i>
 								</div>
@@ -97,7 +95,7 @@ $t3 = count($tasks[3]);
                              data-update-toast-success="Order Saved!"
                              data-update-toast-position="bottom-center" data-type="2">
                             <?php foreach($tasks[2] as $task): ?>
-                                <div data-id="<?=$task->id?>" class="row mx-3 bg-white text-dark list-item rounded-3 mb-2">
+                                <div data-id="<?=$task->id?>" class="row mx-3 bg-white list-item rounded-3 mb-2">
                                        <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
                                            <i class="fs-1 fi fi-spin fi-circle-spin text-primary fs-5"></i>
                                         </div>
@@ -128,7 +126,6 @@ $t3 = count($tasks[3]);
                                     </div>
                                     <div class="col-2 py-2 my-auto">
                                         <button class="btn edit-task mx-n3" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"><i class="fi fi-search"></i></button>
-
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -157,7 +154,7 @@ $t3 = count($tasks[3]);
 														 data-update-toast-success="Order Saved!"
 														 data-update-toast-position="bottom-center" data-type="3">
                             <?php foreach($tasks[3] as $task): ?>
-                                <div data-id="<?=$task->id?>" class="row mx-3 bg-white text-dark rounded-3 mb-2 list-item">
+                                <div data-id="<?=$task->id?>" class="row mx-3 bg-white rounded-3 mb-2 list-item">
                                     <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
                                         <i class="fi fi-arrow-end-full fs-5 fs-5"></i>
                                     </div>
@@ -182,6 +179,42 @@ $t3 = count($tasks[3]);
 
 			</div>
 		</div>
+
+
+        <!-- Заметки -->
+
+        <div class="accordion mt-3" id="accordionShadow">
+
+            <div class="card mb-2">
+                <div class="card-header mb-0 p-0 border-0 bg-transparent" id="cleanHeadingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link w-100 btn-lg text-align-start text-decoration-none text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#shadowCollapseOne" aria-expanded="true" aria-controls="shadowCollapseOne">
+                            Переключение на тёмную тему
+                            <span class="group-icon float-end">
+						<i class="fi fi-arrow-start-slim"></i>
+						<i class="fi fi-arrow-down-slim"></i>
+					</span>
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="shadowCollapseOne" class="collapse show" aria-labelledby="cleanHeadingOne" data-bs-parent="#accordionShadow">
+                    <div class="card-body">
+                        <p>Я закомментил классы, которые необходимо поставить для тёмной темы</p>
+                        <p><strong>Пути к файлам:</strong></p>
+                        <p>
+                            1. views\index.php -> 14 строка - просто подставить класс <br>
+                            2. views\index.php -> 41 строка - убрать "bg-white", поставить "task-dark-theme text-white" <br>
+                            3. ...
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- /Заметки-->
+
 	</div>
 
     <!--Modal new task-->

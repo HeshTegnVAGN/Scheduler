@@ -22,12 +22,16 @@
 
 /*Для Body*/
 .body-dark-theme{
-    background-color: #292d3c!important;
+    background-color: #0f0f0f!important;
 }
 /*Для тела задачи*/
-.task-dark-theme{
-    background-color: #5c627c !important;
+.body-task-dark-theme{
+    background-color: #272727!important;
     color: rgba(var(--bs-white-rgb),var(--bs-text-opacity))!important;
+}
+
+.task-dark-theme{
+    background-color: #45464f;
 }
 
 /*Для хедера*/
