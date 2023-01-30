@@ -5,7 +5,6 @@ $t2 = count($tasks->work);
 $t3 = count($tasks->done);
 ?>
 
-
 	<div class="container">
 
         <div class="row mt-3">
@@ -23,8 +22,7 @@ $t3 = count($tasks->done);
 								<div class="col text-end">
                             <span data-bs-toggle="tooltip" data-bs-placement="top" title="Добавить задачу">
                                  <i class="fi fi-plus py-3 fs-5 text-warning" type="button"
-																		data-bs-toggle="modal" data-bs-target="#exampleModalMd"
-																 >
+																		data-bs-toggle="modal" data-bs-target="#exampleModalMd">
                             </i>
                             </span>
 
@@ -134,7 +132,6 @@ $t3 = count($tasks->done);
                                     </div>
                                     <div class="col-2 py-2 my-auto">
                                         <button class="btn edit-task mx-n3" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"><i class="fi fi-search"></i></button>
-
                                     </div>
                                 </div>
                             <?php endforeach; ?>

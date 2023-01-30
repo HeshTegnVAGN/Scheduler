@@ -119,7 +119,12 @@
                 <path fill="#ffffff" d="M304.026,144.026h-192c-8.8,0-16,7.2-16,16s7.2,16,16,16h192c8.8,0,16-7.2,16-16S312.826,144.026,304.026,144.026z"></path>
                 <path fill="#ffffff" d="M240.026,208.026h-128c-8.8,0-16,7.2-16,16s7.2,16,16,16h128c8.8,0,16-7.2,16-16S248.826,208.026,240.026,208.026z"></path>
             </svg>
-            <a href="#" class="link-normal text-dashed">Написать в поддержку</a>
+            <a href="#"
+               data-href="assets/js/ajax/feedback.php"
+               data-ajax-modal-size="modal-md"
+               data-ajax-modal-centered="true"
+               data-ajax-modal-callback-function=""
+               class="js-ajax-modal">Написать в поддержку</a>
         </p>
 
     </div>
@@ -127,3 +132,26 @@
 
 
 </aside>
+
+<div class="modal fade" id="exampleTechSupp" tabindex="-1" role="dialog" aria-labelledby="exampleTechSupp" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropTechSupp">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                ...
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+

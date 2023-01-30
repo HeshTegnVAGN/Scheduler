@@ -8,7 +8,6 @@ class Comment extends DB
     public int $task_id;
     public int $user_id;
     public string $text;
-		public DateTime $created_at;
 
     public function __construct()
     {
