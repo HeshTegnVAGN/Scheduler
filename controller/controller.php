@@ -119,6 +119,11 @@ if(!in_array($routed_file, ['login.php', 'signup.php', 'reset.php']))
     }
 	$user = new User($_SESSION['user']);
 	$adm = $user->getAccesssedUsers();
+    $set = $user->getSettings();
+    if($set->picture)
+    {
+        echo "<style>body{background: url(https://imdibil.ru/scheduler/assets/images/uploads/".$set->picture.") no-repeat; background-size: cover;backdrop-filter: blur(0px); background-opacity }</style>";
+    }
 }
 $tasks = new \models\Desk($did);
 

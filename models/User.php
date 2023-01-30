@@ -43,4 +43,15 @@ class User extends DB
         return $arr;
     }
 
+
+    public function getSettings()
+    {
+        $res = $this->conn->query("SELECT * from user_settings where id = '{$this->id}'");
+        if($res->num_rows > 0)
+        {
+            return $res->fetch_object();
+        }
+        return null;
+    }
+
 }
