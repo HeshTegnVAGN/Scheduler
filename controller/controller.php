@@ -25,7 +25,8 @@ $GLOBALS['sitemap'] = array (
 	'profile/access' => 'profile/access.php',
 	'profile/history' => 'profile/history.php',
 	'profile/export' => 'profile/export.php',
-	'profile/design' => 'profile/design.php'
+	'profile/design' => 'profile/design.php',
+	'desk/?(.*)?' => 'index.php'
 
 	// Больше правил
 );
@@ -121,6 +122,8 @@ if(!in_array($routed_file, ['login.php', 'signup.php', 'reset.php']))
 
 }
 
+$user = new User($_SESSION['user']);
+$adm = $user->getAccesssedUsers();
 include ROOT . 'views/inc/header.php';
 //die('s');
 if(!file_exists(ROOT.'views/'.$routed_file))
@@ -128,7 +131,7 @@ if(!file_exists(ROOT.'views/'.$routed_file))
 	die(ROOT.'views/'.$routed_file);
 }
 
-$user = new User($_SESSION['user']);
+
 include ROOT.'views/'.$routed_file;
 
 //include ROOT.'views/index.php';

@@ -83,10 +83,16 @@ $t3 = count($tasks[3]);
 					<li class="nav-item dropdown active">
 
 						<a href="https://imdibil.ru/scheduler/" id="mainNavHome" class="nav-link dropdown-toggle js-stoppropag" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Главная
+							Доски
 						</a>
 
-						<div aria-labelledby="mainNavHome" class="dropdown-menu dropdown-menu-clean dropdown-menu-hover dropdown-mega-md dropdown-fadeinup">
+						<div aria-labelledby="mainNavBlog" class="dropdown-menu dropdown-menu-clean dropdown-menu-hover dropdown-fadeinup">
+							<ul class="list-unstyled m-0 p-0">
+								<li class="dropdown-item fw-bold"><a class="dropdown-link" href="<?=PATH?>">Моя доска</a></li>
+								<?php foreach($user->admissions as $a): ?>
+									<li class="dropdown-item"><a class="dropdown-link" href="<?=PATH?>desk/<?=$a['uid']?>"><?=$a['name']?></a></li>
+								<?php endforeach; ?>
+							</ul>
 						</div>
 
 					</li>
