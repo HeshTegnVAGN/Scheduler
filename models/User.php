@@ -6,6 +6,7 @@ class User extends DB
 {
 	public $name;
 	public $id;
+	public $email;
 	public $status;
 	public array $admissions;
 
@@ -17,6 +18,7 @@ class User extends DB
         $this->name = $row['name'];
         $this->id = $row['id'];
         $this->status = $row['status'];
+        $this->email = $row['email'];
 				$this->admissions = $this->getAdmissions();
 	}
 

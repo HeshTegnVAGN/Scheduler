@@ -7,11 +7,31 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 $bd = new \models\DB();
+session_start();
+
+
+
+$rr = $bd->conn->query("SELECT * from users where email = '{$_POST['email']}'");
+
+if($rr->num_rows > 0)
+{
+	$_SESSION['error'] = 'Пользователь с таким email уже зарегистрирован';
+	header("Location: https://imdibil.ru/scheduler/signup");
+	die();
+
+}
+
+
+
 $msg = $_POST['name'].', благодарим за регистрацию на нашем сервисе! По всем техническим вопросам обращайтесь к администратору по адресу service@imdibil.ru';
 $pw = md5($_POST['password']);
 $bd->conn->query("INSERT INTO `users`(`name`, `status`, `password`, `email`) VALUES ('{$_POST['name']}', '1', '$pw', '{$_POST['email']}')");
-sendEmail($_POST['email'], $_POST['name'], $msg);
-session_start();
+try {
+	sendEmail($_POST['email'], $_POST['name'], $msg);
+} catch (\Exception $e)
+{
+
+}
 
 $_SESSION['user'] = $bd->conn->insert_id;
 

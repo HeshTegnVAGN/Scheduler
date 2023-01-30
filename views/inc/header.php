@@ -1,9 +1,12 @@
 <?php
 
-$t1 = count($tasks[1]);
-$t2 = count($tasks[2]);
-$t3 = count($tasks[3]);
-
+$t1 = count($tasks->new);
+$t2 = count($tasks->work);
+$t3 = count($tasks->done);
+if($t1 and $t2 and  $t3)
+{
+	$counters = true;
+}
 ?>
 <!doctype html>
 <!-- <html lang="ar" dir="rtl"> -->
@@ -32,8 +35,8 @@ $t3 = count($tasks[3]);
 
 </head>
 <?php if(!in_array($routed_file, ['login.php', 'signup.php', 'reset.php'])): ?>
-    <body class="header-sticky header-fixed body-dark-theme">
-    <header id="header" class="shadow-xs header-dark-theme">
+    <body class="header-sticky header-fixed">
+    <header id="header" class="shadow-xs ">
 
 	<!-- /TOP BAR -->
 
@@ -89,7 +92,7 @@ $t3 = count($tasks[3]);
 						<div aria-labelledby="mainNavBlog" class="dropdown-menu dropdown-menu-clean dropdown-menu-hover dropdown-fadeinup">
 							<ul class="list-unstyled m-0 p-0">
 								<li class="dropdown-item fw-bold"><a class="dropdown-link" href="<?=PATH?>">Моя доска</a></li>
-								<?php foreach($user->admissions as $a): ?>
+								<?php foreach($user->admissions	 as $a): ?>
 									<li class="dropdown-item"><a class="dropdown-link" href="<?=PATH?>desk/<?=$a['uid']?>"><?=$a['name']?></a></li>
 								<?php endforeach; ?>
 							</ul>
@@ -116,29 +119,31 @@ $t3 = count($tasks[3]);
 
 			<!-- OPTIONS -->
             <ul class="mx-1 mb-0">
-                <div class="col">
-                    <div class="d-inline-block">
-                        <div class="row text-center mb-2">
-                            <div class="col-auto h-100 py-2 px-lg-3 px-xl-4 lh-sm text-dark">
-                                <span class="fs-6"><?=$t1?></span>
-                                <p class="small mb-0">В очереди</p>
-                            </div>
-                            <div class="col-auto h-100 py-2 px-lg-3 px-xl-4 border-start lh-sm text-muted">
-                                <span class="fs-6"><?=$t2?></span>
-                                <p class="small mb-0">В работе</p>
-                            </div>
-                            <div class="col-auto h-100 py-2 px-lg-3 px-xl-4 border-start lh-sm text-success">
-                                <span class="fs-6"><?=$t3?></span>
-                                <p class="small mb-0">Выполнено</p>
-                            </div>
-                        </div>
+                <?php if(isset($counters)): ?>
+									<div class="col">
+										<div class="d-inline-block">
+											<div class="row text-center mb-2">
+												<div class="col-auto h-100 py-2 px-lg-3 px-xl-4 lh-sm text-dark">
+													<span class="fs-6"><?=$t1?></span>
+													<p class="small mb-0">В очереди</p>
+												</div>
+												<div class="col-auto h-100 py-2 px-lg-3 px-xl-4 border-start lh-sm text-muted">
+													<span class="fs-6"><?=$t2?></span>
+													<p class="small mb-0">В работе</p>
+												</div>
+												<div class="col-auto h-100 py-2 px-lg-3 px-xl-4 border-start lh-sm text-success">
+													<span class="fs-6"><?=$t3?></span>
+													<p class="small mb-0">Выполнено</p>
+												</div>
+											</div>
 
-                        <!-- project progress -->
-                        <div class="progress" style="height: 4px;">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: <?=($t3/($t1+$t2+$t3))*100?>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
+											<!-- project progress -->
+											<div class="progress" style="height: 4px;">
+												<div class="progress-bar bg-warning" role="progressbar" style="width: <?=($t3/($t1+$t2+$t3))*100?>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+											</div>
+										</div>
+									</div>
+<?php endif; ?>
             </ul>
 			<ul class="list-inline list-unstyled mb-0 d-flex align-items-end">
 

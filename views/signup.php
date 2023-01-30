@@ -20,11 +20,12 @@
 				<form class="bs-validate p-4 p-md-5 rounded shadow-xs" novalidate="" method="post" action="<?=PATH?>controller/register.php" data-error-toast-text="<i class='fi fi-circle-spin fi-spin float-start'></i> Заолните все поля!" data-error-toast-delay="3000" data-error-toast-position="top-right">
 
 
-					<!--
+					<?php if($_SESSION['error']): ?>
+
 					<p class="text-danger">
-						Ups! Please check again
+						<?=$_SESSION['error']?>
 					</p>
-					-->
+					<?php endif; unset($_SESSION['error']); ?>
 
 
 					<div class="form-floating mb-3">

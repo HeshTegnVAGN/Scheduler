@@ -32,6 +32,6 @@ else
     $bd->conn->query("UPDATE users set reset_code = '$code' where id = '{$user['id']}'");
     $msg = $user['name'].', зафиксирована попытка сброса пароля. Ваш код подтверждения: '.$code;
 
-    sendEmail($_POST['email'], $user['name'], $msg);
+    sendEmail($_POST['email'], $user['name'], $msg, 'Восстановление пароля');
     die($_POST['email']);
 }

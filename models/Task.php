@@ -31,13 +31,15 @@ class Task extends DB
 
 	public function add($title, $responsible, $text = '', $priority=5)
 	{
+			$uid = $_SESSION['user'];
 
 			$this->title= $title;
 			$this->responsibile= $responsible;
 			$this->text= $text;
 			$this->priority= $priority;
 			$this->status= self::NEW;
-			$this->conn->query("INSERT INTO tasks (`responsible`, `title`, `text`, `status`, `priority`, `time`) values('$responsible', '$title','$text', ".self::NEW.", '$priority', 0)");
+			$this->status= self::NEW;
+			$this->conn->query("INSERT INTO tasks (`responsible`,`created_by`, `title`, `text`, `status`, `priority`, `time`) values('$responsible','$uid', '$title','$text', ".self::NEW.", '$priority', 0)");
             $this->id = $this->conn->insert_id;
 	}
 
@@ -45,7 +47,7 @@ class Task extends DB
 	public function save()
 	{
 
-        $this->conn->query("UPDATE `tasks` SET `responsible`='{$this->responsibile}',`title`='$this->title',`text`='$this->text',`status`='$this->status',`priority`='$this->priority' WHERE id = '$this->id'");
+        $this->conn->query("UPDATE `tasks` SET `responsible`='{$this->responsibile}',`created_by` = '$this->created_by', `title`='$this->title',`text`='$this->text',`status`='$this->status',`priority`='$this->priority' WHERE id = '$this->id'");
 	}
 
     public function get($id): Task
@@ -56,6 +58,7 @@ class Task extends DB
         $this->text = $row['text'] ?: '';
         $this->id = $row['id'];
         $this->title = $row['title'];
+        $this->created_by = $row['created_by'];
         $this->responsibile = $row['responsible'];
         $this->status = $row['status'];
         $this->time = new \DateTime($row['time'], new DateTimeZone('Europe/Moscow'));
