@@ -14,6 +14,8 @@ require ROOT.'models/TaskService.php';
 require ROOT.'models/User.php';
 
 require ROOT.'models/Task.php';
+require ROOT.'models/Desk.php';
+
 
 $uri = explode('/',$_SERVER['REQUEST_URI']);
 $GLOBALS['sitemap'] = array (
@@ -99,16 +101,12 @@ class uSitemap {
 }
 $sm = new uSitemap();
 $routed_file = $sm->classname; // Получаем имя файла для подключения через require()
-
+$did = trim($sm->params[1], '/') ?: $_SESSION['user'];
 if(!$routed_file)
 {
 	$routed_file = $page = $uri[2].'.php';
 }
 $db = new DB();
-$task = new TaskService();
-
-$tasks = $task->get(1);
-
 if(!in_array($routed_file, ['login.php', 'signup.php', 'reset.php']))
 {
     if(!($_SESSION['user']))
@@ -119,11 +117,12 @@ if(!in_array($routed_file, ['login.php', 'signup.php', 'reset.php']))
 
         ob_end_flush();
     }
-
+	$user = new User($_SESSION['user']);
+	$adm = $user->getAccesssedUsers();
 }
+$tasks = new \models\Desk($did);
 
-$user = new User($_SESSION['user']);
-$adm = $user->getAccesssedUsers();
+
 include ROOT . 'views/inc/header.php';
 //die('s');
 if(!file_exists(ROOT.'views/'.$routed_file))
@@ -131,8 +130,7 @@ if(!file_exists(ROOT.'views/'.$routed_file))
 	die(ROOT.'views/'.$routed_file);
 }
 
-
-include ROOT.'views/'.$routed_file;
+require ROOT.'views/'.$routed_file;
 
 //include ROOT.'views/index.php';
 include ROOT . '/views/inc/footer.php';

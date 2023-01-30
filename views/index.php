@@ -1,12 +1,12 @@
 <?php
 
-$t1 = count($tasks[1]);
-$t2 = count($tasks[2]);
-$t3 = count($tasks[3]);
-
+$t1 = count($tasks->new);
+$t2 = count($tasks->work);
+$t3 = count($tasks->done);
 ?>
 
-	<div class="container body-dark-theme">
+
+	<div class="container">
 
         <div class="row mt-3">
 			<div class="col-6 col-sm-6 col-md-4 mb-4-xs">
@@ -19,16 +19,19 @@ $t3 = count($tasks[3]);
 						<div class="col p-3 text-warning fs-5">
 							Новое
 						</div>
-                        <div class="col text-end">
+							<?php if($tasks->add): ?>
+								<div class="col text-end">
                             <span data-bs-toggle="tooltip" data-bs-placement="top" title="Добавить задачу">
                                  <i class="fi fi-plus py-3 fs-5 text-warning" type="button"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModalMd"
-                                 >
+																		data-bs-toggle="modal" data-bs-target="#exampleModalMd"
+																 >
                             </i>
                             </span>
 
 
-                        </div>
+								</div>
+
+						<?php endif; ?>
 					</div>
 					<div class="pb-4">
                         <div class="list-group sortable" data-shared-group="client-list"
@@ -38,7 +41,7 @@ $t3 = count($tasks[3]);
                              data-update-toast-success="Order Saved!"
                              data-update-toast-position="bottom-center"
 												data-type="1">
-						<?php foreach($tasks[1] as $task): ?>
+						<?php foreach($tasks->new as $task): ?>
 
 							<div data-id="<?=$task->id?>" class="row bg-white mb-2 mx-3 rounded-3 text-dark list-item">
 								<div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
@@ -70,7 +73,10 @@ $t3 = count($tasks[3]);
 									</div>
 								</div>
 								<div class="col-2 py-2 d-flex align-items-center">
-									<i class="fi fi-search edit-task" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalTask"></i>
+									<?php if($tasks->edit): ?>
+										<i class="fi fi-search edit-task" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalTask"></i>
+
+									<?php endif; ?>
 								</div>
 							</div>
 						<?php endforeach; ?>
@@ -96,7 +102,7 @@ $t3 = count($tasks[3]);
                              data-ajax-update-params="['action','update']"
                              data-update-toast-success="Order Saved!"
                              data-update-toast-position="bottom-center" data-type="2">
-                            <?php foreach($tasks[2] as $task): ?>
+                            <?php foreach($tasks->work as $task): ?>
                                 <div data-id="<?=$task->id?>" class="row mx-3 bg-white text-dark list-item rounded-3 mb-2">
                                        <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
                                            <i class="fs-1 fi fi-spin fi-circle-spin text-primary fs-5"></i>
@@ -156,7 +162,7 @@ $t3 = count($tasks[3]);
 														 data-ajax-update-params="['action','update']"
 														 data-update-toast-success="Order Saved!"
 														 data-update-toast-position="bottom-center" data-type="3">
-                            <?php foreach($tasks[3] as $task): ?>
+                            <?php foreach($tasks->done as $task): ?>
                                 <div data-id="<?=$task->id?>" class="row mx-3 bg-white text-dark rounded-3 mb-2 list-item">
                                     <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
                                         <i class="fi fi-arrow-end-full fs-5 fs-5"></i>
@@ -208,7 +214,7 @@ $t3 = count($tasks[3]);
 					NOTE: WE USE method="GET" insted of "POST" because this is a pure html demo
 				-->
 				<form class="js-ajax bs-validate" novalidate
-							action="assets/js/ajax/new_task.php"
+							action="<?=PATH?>assets/js/ajax/new_task.php"
 							method="POST"
 
 							data-ajax-inline-alert-succes="#alert_success"
@@ -228,8 +234,12 @@ $t3 = count($tasks[3]);
 
 					<div class="form-floating mb-3">
 						<select class="form-select" id="floatingSelect" name="responsible" aria-label="Floating label select example">
-							<option value="3">Данил</option>
-							<option value="15">Влад</option>
+							<?php foreach($user->admissions as $a): ?>
+								<option value="<?=$user->id?>"><?=$user->name?></option>
+								<?php if($a['adding']): ?>
+									<option value="<?=$a['uid']?>"><?=$a['name']?></option>
+								<?php endif; ?>
+							<?php endforeach; ?>
 						</select>
 						<label for="floatingSelect">Ответственный</label>
 					</div>
@@ -347,8 +357,12 @@ $t3 = count($tasks[3]);
                         <input type="hidden" name="id" id="task-id">
                         <div class="form-floating mb-3">
                             <select class="form-select" id="floatingSelect" name="edit_responsible" aria-label="Floating label select example">
-                                <option value="1">Данил</option>
-                                <option value="2">Влад</option>
+															<?php foreach($user->admissions as $a): ?>
+																<option value="<?=$user->id?>"><?=$user->name?></option>
+																<?php if($a['adding']): ?>
+																	<option value="<?=$a['uid']?>"><?=$a['name']?></option>
+																<?php endif; ?>
+															<?php endforeach; ?>
                             </select>
                             <label for="floatingSelect">Ответственный</label>
                         </div>
@@ -441,8 +455,12 @@ $t3 = count($tasks[3]);
                     <input disabled type="hidden" name="id" id="task-id">
                     <div class="form-floating mb-3">
                         <select disabled class="form-select" id="floatingSelect" name="edit_responsible" aria-label="Floating label select example">
-                            <option value="1">Данил</option>
-                            <option value="2">Влад</option>
+													<?php foreach($user->admissions as $a): ?>
+														<option value="<?=$user->id?>"><?=$user->name?></option>
+														<?php if($a['adding']): ?>
+															<option value="<?=$a['uid']?>"><?=$a['name']?></option>
+														<?php endif; ?>
+													<?php endforeach; ?>
                         </select>
                         <label for="floatingSelect">Ответственный</label>
                     </div>

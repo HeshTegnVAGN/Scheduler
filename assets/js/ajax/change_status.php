@@ -13,8 +13,15 @@ require '../../../models/User.php';
 //    'descr' => '<p>setsetsetset</p>',
 //	'priority' => 70
 //];
+session_start();
+
 $task = new Task();
 $task->get($_POST['id']);
+if($task->responsibile != $_SESSION['user'])
+{
+	http_response_code(505);
+	throw new Exception();
+}
 $task->status = $_POST['status'];
 $task->save();
 echo 'succss';

@@ -14,11 +14,20 @@ $(document).ready(function () {
 				let id = $(mutation[0].addedNodes[0]).data('id');
 				$.ajax(
 					{
-						url: 'assets/js/ajax/change_status.php',
+						url: 'https://imdibil.ru/scheduler/assets/js/ajax/change_status.php',
 						method: 'post',
 						data: {id: id, status: 2},
 						success: function (ans) {
 							$.SOW.core.toast.show('success', '', 'Задача успешно изменена!', 'top-center', 4000, true);
+							console.log(ans);
+							},
+						error: function (e)
+						{
+							if(e.status == 505)
+							{
+								$.SOW.core.toast.show('danger', '', 'У вас нет прав на перемещение задачи!', 'top-center', 4000, true);
+							}
+
 						}
 					}
 				)
@@ -51,6 +60,12 @@ $(document).ready(function () {
 								data: {id: ids, status: 3},
 								success: function (ans) {
 									$.SOW.core.toast.show('success', '', 'Задача успешно выполнена!', 'top-center', 4000, true);
+									console.log(ans)
+								},
+								error: function (e)
+								{
+									$.SOW.core.toast.show('danger', '', 'У вас нет прав на перемещение задачи!', 'top-center', 4000, true);
+
 								}
 							}
 						);
@@ -116,12 +131,13 @@ $(document).ready(function () {
 		let id = $(this).parents('.list-item').data('id');
 		$.ajax(
 			{
-				url: 'assets/js/ajax/get_task.php',
+				url: 'https://imdibil.ru/scheduler/assets/js/ajax/get_task.php',
 				method: 'post',
-				datatype: 'application/json',
 				data: {id: id},
 				success: function (ans) {
 					let task = JSON.parse(ans);
+					console.log(task);
+
 					$('input#alt_descr').empty();
 					$('#task-id').empty();
 					$('#task-id').val(id);
@@ -161,8 +177,11 @@ $(document).ready(function () {
 							'</div>\n' +
 							'</div>\n')
 					}
-
-					$('select[name="edit_responsible"]option#U'+$(this).parents('.list-item').data('responsible')).attr('selected');
+					let opts = $('select[name="edit_responsible"] option[value='+task.responsibile+']');
+					$.each(opts, function (key, value) {
+						console.log(value)
+						$(value).attr('selected', true);
+					})
 					$('[name="edit_priority"]').val(task.priority);
 					$('span#priorityVal').text(getPriority(task.priority)[0])
 
