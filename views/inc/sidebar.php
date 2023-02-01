@@ -119,39 +119,101 @@
                 <path fill="#ffffff" d="M304.026,144.026h-192c-8.8,0-16,7.2-16,16s7.2,16,16,16h192c8.8,0,16-7.2,16-16S312.826,144.026,304.026,144.026z"></path>
                 <path fill="#ffffff" d="M240.026,208.026h-128c-8.8,0-16,7.2-16,16s7.2,16,16,16h128c8.8,0,16-7.2,16-16S248.826,208.026,240.026,208.026z"></path>
             </svg>
-            <a href="#"
-               data-href="assets/js/ajax/feedback.php"
-               data-ajax-modal-size="modal-md"
-               data-ajax-modal-centered="true"
-               data-ajax-modal-callback-function=""
-               class="js-ajax-modal">Написать в поддержку</a>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#feedback" data-modal-size="modal-md" data-modal-centered="true" class="js-ajax-modal">
+                Написать в поддержку
+            </a>
         </p>
 
     </div>
     <!-- /sidebar : footer -->
 
-
 </aside>
 
-<div class="modal fade" id="exampleTechSupp" tabindex="-1" role="dialog" aria-labelledby="exampleTechSupp" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
+<!-- Модальное для feedback -->
+<div id="feedback" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="modalCenteredLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
 
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropTechSupp">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+        <div class="modal-content container">
 
-            <div class="modal-body">
-                ...
-            </div>
+            <form action="">
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
-            </div>
+                <div class="row mx-auto p-4">
 
+                    <div class="col-12 mb-4">
+                        <h3>Написать в поддержку</h3>
+                    </div>
+
+                    <div class="col-12 mb-4">
+                        <fieldset disabled>
+                        <input type="text" id="disabledTextInput" class="form-control" placeholder="'Имя'">
+                        </fieldset>
+                    </div>
+
+                    <div class="col-12 mb-4">
+                        <select class="form-select js-ajax" aria-label="Default select example">
+                            <option selected>Выберите тему обращения</option>
+                            <option value="1">Технический вопрос</option>
+                            <option value="2">Предложение по усовершенствованию планировщика</option>
+                            <option value="3">Вопрос разработчику</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 mb-4">
+                        <textarea name="edit_descr" id="editor-decr-new"class="summernote-editor w-100"
+                                  data-summernote-config='{
+						"placeholder":	"Описание обращения...",
+						"focus":		false,
+						"lang":			"en-US",
+						"minHeight":	 300,
+						"maxHeight":	 1500,
+
+						" styleTags": ["h2","h3","h4","h5","h6"
+
+							,{
+								"title"		:"Paragraph",
+								"tag"		:"p",
+								"value"		:"p",
+								"className"	:""
+							}
+
+							,{
+								"title"		:"Paragraph Lead",
+								"tag"		:"p",
+								"value"		:"p",
+								"className"	:"lead"
+							}
+
+						],
+
+						"toolbar": [
+							["font", ["bold", "italic", "underline", "clear"]],
+							["para", ["ul", "ol", "paragraph"]],
+							["insert", ["link", "picture", "video", "hr"]],
+							["view", ["fullscreen", "codeview", "help"]]
+						],
+
+						"disableDragAndDrop":	 false,
+						"codeviewFilter":		 false,
+						"codeviewIframeFilter":	 true
+					}'></textarea>
+                    </div>
+
+                    <div class="col-12 mb-4 text-end">
+                        <button type="submit" class="btn btn-success text-white">
+                            <i class="fi fi-check"></i>
+                            Отправить
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="fi fi-close"></i>
+                            Закрыть
+                        </button>
+                    </div>
+
+                </div>
+
+            </form>
         </div>
+
     </div>
 </div>
-
+<!-- /Модальное для feedback -->
