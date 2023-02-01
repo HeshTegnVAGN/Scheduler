@@ -461,12 +461,6 @@ $t3 = count($tasks->done);
                         </select>
                         <label for="floatingSelect">Ответственный</label>
                     </div>
-                    <div class="form-floating mb-3">
-                        <div class="border-gray-500 descr-show p-2">
-
-                        </div>
-
-                    </div>
 
                     <div class="form-floating mb-3">
                         <label for="customRange1" class="form-label">Приоритет: <span id="priorityVal">Средний</span></label>
