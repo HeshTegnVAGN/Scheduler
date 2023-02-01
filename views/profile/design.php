@@ -20,7 +20,7 @@ $set = $user->getSettings();
                        data-file-exist-err-msg="File already exists:"
                        data-file-size-err-item-msg="File too large!"
                        data-file-size-err-total-msg="Total allowed size exceeded!"
-                       data-file-size-err-max-msg="Maximum allowed files:"
+                       data-file-size-err-max-msg="Максимально количество файлов:"
                        data-file-toast-position="bottom-center"
                        data-file-preview-container=".js-file-input-container-multiple-ajax-dynamic-progress"
                        data-file-preview-img-height="120"
@@ -37,8 +37,8 @@ $set = $user->getSettings();
                        data-file-ajax-delete-params="['action','delete_file']"
 
 
-                       data-file-ajax-toast-success-txt="Successfully Uploaded!"
-                       data-file-ajax-toast-error-txt="One or more files not uploaded!"
+                       data-file-ajax-toast-success-txt="Успешно загружено!"
+                       data-file-ajax-toast-error-txt="Ошибка!"
                        data-file-ajax-callback-function=""
                        data-file-ajax-progressbar-custom=""
                        data-file-ajax-progressbar-disable="false"
@@ -49,7 +49,7 @@ $set = $user->getSettings();
 		<i class="fi fi-circle-spin fi-spin"></i>
 	</span>
 
-                <span>Ajax : Dynamic Progressbar</span>
+                <span>Персональный фон</span>
 
             </label>
 

@@ -39,3 +39,13 @@
     background: #8e8e8e!important;
     color: #ffffff!important;
 }
+
+body.dark-theme
+{
+    background-color: #0f0f0f!important;
+}
+body.dark-theme>header, body.dark-theme aside
+{
+    background-color: #181818!important;
+
+}

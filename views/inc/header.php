@@ -3,7 +3,7 @@
 $t1 = count($tasks->new);
 $t2 = count($tasks->work);
 $t3 = count($tasks->done);
-if($t1 and $t2 and  $t3)
+if($t1 or $t2 or  $t3)
 {
 	$counters = true;
 }
