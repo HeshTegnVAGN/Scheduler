@@ -1,4 +1,4 @@
-<aside id="aside-main" class="aside-start aside-hide-xs bg-white shadow-sm d-flex flex-column px-2 h-auto">
+<aside id="aside-main" class="aside-start aside-hide-xs bg-white shadow-sm d-flex flex-column px-2 h-auto" style="border-bottom-right-radius: 10px;">
 
 
     <!-- sidebar : logo -->
@@ -145,7 +145,7 @@
 
                     <div class="col-12 mb-4">
                         <fieldset disabled>
-                        <input type="text" id="disabledTextInput" class="form-control" placeholder="'Имя'">
+                        <input type="text" id="disabledTextInput" class="form-control" placeholder="<?=$user->name?>">
                         </fieldset>
                     </div>
 

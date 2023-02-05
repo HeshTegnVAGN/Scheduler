@@ -72,30 +72,40 @@ $set = $user->getSettings();
                             </span>
                         </a>
 
-                                        <!-- info : header -->
+                        <!-- info : header -->
                         <span class="js-file-input-preview-header text-white position-absolute w-100 top-0 left-0 right-0 clearfix overlay-dark overlay-opacity-2">
                             <span class="text-truncate d-block smaller px-2">
                                 <?=$set->picture?>
                             </span>
                         </span>
 
-                                        <!-- info : footer -->
-                                        <!--
-                                            image
+                        <!-- info : footer -->
+                        <!--
+                            image
 
-                                            height="120"	 same with file input attribute: data-file-preview-img-height="120"
-                                            It's adjusted if not set but there is a small delay so height is recommended to avoid "jump" effect!
+                            height="120"	 same with file input attribute: data-file-preview-img-height="120"
+                            It's adjusted if not set but there is a small delay so height is recommended to avoid "jump" effect!
 
-                                        -->
+                        -->
                         <img height="120" src="https://imdibil.ru/scheduler/assets/images/uploads/<?=$set->picture?>" alt="...">
 
                     </span>
                 <?php endif; ?>
 
             </div>
-        <button class="btn-dark-them-click bg-gradient-dark mb-3 mt-4 p-2 rad-10 text-center w-250 text-white border-0">
-            Перейти на тёмную сторону
-        </button>
+
+            <!--
+            <form action="">
+                <label for="exampleColorInput" class="d-block form-label">Color picker</label>
+                <input type="color" class="form-control form-control-color d-inline-block" id="exampleColorInput" value="#563d7c" title="Choose your color">
+            </form>
+            -->
+
+            <button class="btn-dark-them-click bg-gradient-dark mb-3 mt-4 p-2 rad-10 text-center w-250 text-white border-0">
+                Перейти на тёмную сторону
+            </button>
+
+
 
         </div>
     </main>
