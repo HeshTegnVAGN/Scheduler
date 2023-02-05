@@ -146,24 +146,22 @@ $(document).ready(function () {
 					$('[name="edit_title"]').empty();
 					$('[name="edit_descr"]').empty();
 					$('[name="edit_priority"]').empty();
+					$('[name="author"]').empty();
 
 					$('[name="edit_title"]').val(task.title.trim());
 					$('input#alt_descr').val(task.text);
-					if($(this).data('bs-toggle') == 'offcanvas')
-					{
+					$('[name="author"]').val(task.author);
 						$('.descr-show').empty();
 						$('.descr-show').append(task.text);
-					} else
-					{
 						$('[name="edit_descr"]').next().children('.note-editing-area').children('.note-placeholder').remove();
 						$('[name="edit_descr"]').next().children('.note-editing-area').children('.card-block').empty().append(task.text);
-					}
+
 					$('.com-block').empty();
 					console.log(task.comments)
 					for(let comment of task.comments)
 					{
 						console.log(comment);
-						$('.com-block').append('<div class="border border-light rounded mb-4 p-4">' +
+						$('.com-block').append('<div class="border border-light rounded p-4">' +
 							'<div class="row">\n' +
 							'<div class="col-md-3 text-center">\n' +
 							'<div class="avatar avatar-lg rounded-circle" style="background-image:url(https://imdibil.ru/scheduler/assets/images/avatars/av.png)"></div>\n' +
@@ -175,7 +173,7 @@ $(document).ready(function () {
 							'<p class="align-self-center">'+comment.text+'</p>\n' +
 							'</div>\n' +
 							'</div>\n' +
-							'</div>\n')
+							'</div><hr>\n')
 					}
 					let opts = $('select[name="edit_responsible"] option[value='+task.responsibile+']');
 					$.each(opts, function (key, value) {

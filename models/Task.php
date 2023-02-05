@@ -15,8 +15,10 @@ class Task extends DB
 	public int $id;
 	public string $title;
 	public string $text;
+	public string $author;
 	public int $responsibile;
 	public int $status;
+	public int $created_by;
 	public DateTime $time;
 	public DateTime $created_at;
 	public DateTime $updated_at;
@@ -64,7 +66,16 @@ class Task extends DB
         $this->time = new \DateTime($row['time'], new DateTimeZone('Europe/Moscow'));
         $this->created_at = new \DateTime($row['created_at'], new DateTimeZone('Europe/Moscow'));
         $this->updated_at = new \DateTime($row['updated_at'], new DateTimeZone('Europe/Moscow'));
-
+        if($row['created_by'] != $row['responsible'])
+        {
+            $this->created_by = $row['created_by'];
+            $res1 = $this->conn->query("SELECT `name`, `email` from users where id = '{$row['created_by']}'");
+            if($res1->num_rows)
+            {
+                $user = $res1->fetch_object();
+                $this->author = $user->name; //." (".$user->email.")"
+            }
+        }
         $this->priority = $row['priority'];
 				return $this;
 

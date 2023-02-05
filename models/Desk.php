@@ -39,7 +39,12 @@ class Desk extends DB
 					$task->updated_at = new \DateTime($row['updated_at'], new DateTimeZone('Europe/Moscow'));
 					$task->priority = $row['priority'];
 					$diff = (new \DateTime('now', new DateTimeZone('Europe/Moscow')))->diff($task->created_at);
-
+                    if($row['created_by'] != $_SESSION['user'])
+                    {
+                        $res1 = $this->conn->query("SELECT `name`, `email` from users where id = '{$_SESSION['user']}'");
+                        $user = $res1->fetch_object();
+                        $task->author = $user->name; //." (".$user->email.")"
+                    }
 					$tasks[$type][] = $task;
 
 
