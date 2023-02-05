@@ -30,6 +30,10 @@
                 </div>
             </div>
 
+            <div class="mt-3 w-250 bg-warning mb-3 p-2 rad-10 text-center text-white">
+                Редактировать данные
+            </div>
+
             <div class="mt-3 w-250 bg-gradient-linear-danger mb-3 p-2 rad-10 text-center">
                 <a href="/scheduler/reset" class="text-white">Восттановить пароль</a>
             </div>
