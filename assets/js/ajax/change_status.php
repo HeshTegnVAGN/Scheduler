@@ -16,7 +16,6 @@ require '../../../../vendor/autoload.php';
 //	'priority' => 70
 //];
 session_start();
-$_SESSION['user'] = 3;
 $task = new Task();
 $task->get($_POST['id']);
 if($task->responsibile != $_SESSION['user'])
