@@ -27,7 +27,7 @@
           .nav-deep-bordered  bordered links
 
         -->
-        <nav class="nav-deep nav-deep-sm nav-deep-light js-ajaxified">
+        <nav class="nav-deep nav-deep-sm nav-deep-light js-ajaxified mt-4">
             <ul class="nav flex-column">
 
                 <li class="nav-item">
@@ -134,8 +134,20 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
 
         <div class="modal-content container">
+            <form class="js-ajax bs-validate" novalidate
+                  action="<?=PATH?>assets/js/ajax/feedback.php"
+                  method="POST"
 
-            <form action="">
+                  data-ajax-container="#ajax_response_container"
+                  data-ajax-update-url="false"
+                  data-ajax-show-loading-icon="true"
+
+                  data-error-toast-text="<i class='fi fi-circle-spin fi-spin float-start'></i> Please, complete all required fields!"
+                  data-error-toast-delay="3000"
+                  data-error-toast-position="top-center"
+
+                  data-error-scroll-up="true"
+                  data-ajax-callback-function="">
 
                 <div class="row mx-auto p-4">
 
@@ -150,7 +162,7 @@
                     </div>
 
                     <div class="col-12 mb-4">
-                        <select class="form-select js-ajax" aria-label="Default select example">
+                        <select class="form-select js-ajax" required aria-label="Default select example">
                             <option selected>Выберите тему обращения</option>
                             <option value="1">Технический вопрос</option>
                             <option value="2">Предложение по усовершенствованию планировщика</option>
