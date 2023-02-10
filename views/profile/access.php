@@ -26,7 +26,6 @@ $adm = $user->getAccesssedUsers();
 							 data-col-reorder="true"
 							 data-responsive="true"
 							 data-header-fixed="true"
-							 data-select-onclick="true"
 							 data-enable-paging="true"
 							 data-enable-col-sorting="true"
 							 data-autofill="false"
@@ -68,14 +67,14 @@ $adm = $user->getAccesssedUsers();
                             <td><i class="fi fi-<?=$admission['adding'] == 1 ? 'plus text-success' : 'minus text-danger'?>"></i></td>
                             <td><i class="fi fi-<?=$admission['edit'] == 1 ? 'plus text-success' : 'minus text-danger'?>"></i></td>
                             <td><i class="fi fi-<?=$admission['comment'] == 1 ? 'plus text-success' : 'minus text-danger'?>"></i></td>
-                            <td><a href="#">
+                            <td><a href="#" class="edit-admission" data-id="<?=$admission['aid']?>"
+                                   data-add="<?=$admission['adding']?>"
+                                   data-edit="<?=$admission['edit']?>"
+                                   data-comment="<?=$admission['comment']?>"
+                                   data-user="<?=$admission['email']?>"
+                                   data-userid="<?=$admission['uid']?>">
                                     <i class="fi fi-pencil edit-admission text-dark"
-                                       data-id="<?=$admission['aid']?>"
-                                       data-add="<?=$admission['adding']?>"
-                                       data-edit="<?=$admission['edit']?>"
-                                       data-comment="<?=$admission['comment']?>"
-                                       data-user="<?=$admission['email']?>"
-                                       data-userid="<?=$admission['uid']?>"
+
                                     ></i>
                                 </a>
                             </td>
