@@ -36,7 +36,7 @@ if($t1 or $t2 or  $t3)
 </head>
 <?php if(!in_array($routed_file, ['login.php', 'signup.php', 'reset.php'])): ?>
     <body class="header-sticky header-fixed <?=str_contains($routed_file, 'profile') ? 'aside-start aside-sticky' : ''?>">
-    <header id="header" class="shadow-xs ">
+    <header id="header" class="shadow-dark-sm ">
 
 	<!-- /TOP BAR -->
 
