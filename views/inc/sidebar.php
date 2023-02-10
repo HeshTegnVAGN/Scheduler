@@ -29,7 +29,16 @@
         -->
         <nav class="nav-deep nav-deep-sm nav-deep-light js-ajaxified mt-4">
             <ul class="nav flex-column">
-
+                <li class="nav-item">
+                    <div class="row justify-content-center">
+                        <div class="col-7">
+                            <img src="<?=PATH?>assets/images/default.png" class="img-fluid rounded-circle"alt="">
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <h4><?=$user->name?></h4>
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?=PATH?>profile/"  rel="noopener">
                         <svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-file-earmark-medical" viewBox="0 0 16 16">
