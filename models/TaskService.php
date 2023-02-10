@@ -53,4 +53,18 @@ class TaskService extends DB
         }
       	return $tasks;
 	}
+
+
+    public function getFinishedMonth($id)
+    {
+        $tasks = [];
+        $res = $this->conn->query("SELECT title, date(created_at) as created_at, date(finished_at) as finished_at, created_by, priority from tasks where responsible = '$id' and datediff(CURRENT_TIMESTAMP, finished_at) < 30");
+        while($row = $res->fetch_object())
+        {
+            $row->created_by = (new User($row->created_by))->name;
+            $tasks[] = $row;
+        }
+        return $tasks;
+
+    }
 }

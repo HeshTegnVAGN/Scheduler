@@ -1,5 +1,5 @@
 <div id="wrapper">
-    <?php include ROOT.'views/inc/sidebar.php'; ?>
+    <?php include ROOT.'views/inc/sidebar.php';  $ts = new \models\TaskService(); $tasks = $ts->getFinishedMonth($user->id)?>
     <main class="w-100 container">
         <div class="container p-3 py-4">
             <h2>История</h2>
@@ -52,19 +52,19 @@
                     <th>Дата завершения</th>
                     <th>Автор</th>
                     <th>Приоритет</th>
-                    <th>Комментарий</th>
                 </tr>
             </thead>
 
             <tbody>
-                <tr>
-                    <td><?=$task->title?></td>
-                    <td>01.09.1939</td> <!-- <$task->created_at->format('Y-m-d\TH:i:d')> Там специально с ошибкой вставлено, что бы закомментировать получилось-->
-                    <td>03.09.1945</td>
-                    <td><?=$user->name?></td>
-                    <td><?=$task->priority?></td>
-                    <td><?=$task->priority?></td>
-                </tr>
+                <?php foreach($tasks as $task): ?>
+                    <tr>
+                        <td><?=$task->title?></td>
+                        <td><?=$task->created_at?></td> <!-- <$task->created_at->format('Y-m-d\TH:i:d')> Там специально с ошибкой вставлено, что бы закомментировать получилось-->
+                        <td><?=$task->finished_at?></td>
+                        <td><?=$task->created_by?></td>
+                        <td><?=$task->priority?></td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
 
             <tfoot>
