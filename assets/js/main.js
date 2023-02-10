@@ -1,6 +1,42 @@
 
 
 $(document).ready(function () {
+	$('.edit-admission').on("click", function (e) {
+		console.log('s');
+		let id = $(this).data('id');
+		let comm_input = $('#edit-admission').find('input[name="comment"]');
+		let edit_input = $('#edit-admission').find('input[name="edit"]');
+		let add_input = $('#edit-admission').find('input[name="adding"]');
+		let aid_input = $('#edit-admission').find('input[name="admission_id"]');
+		let uname_input = $('#edit-admission').find('span.username');
+
+		comm_input.attr('checked', false);
+		add_input.attr('checked', false);
+		edit_input.attr('checked', false);
+
+		let add = $(this).data('add');
+		let edit = $(this).data('edit');
+		let comment = $(this).data('comment');
+		let user = $(this).data('user');
+
+		if(parseInt(comment) == 1)
+		{
+			$(comm_input).attr('checked', true);
+		}
+		if(add == 1)
+		{
+			add_input.attr('checked',true);
+		}
+		if(edit == 1)
+		{
+			edit_input.attr('checked',true);
+		}
+		uname_input.text(user)
+		aid_input.val(id)
+
+
+		$('#edit-admission').modal('show');
+	});
 	if($('[data-type="2"]').length && $('[data-type="1"]').length)
 	{
 		//region second-col-observer
@@ -20,7 +56,7 @@ $(document).ready(function () {
 						success: function (ans) {
 							$.SOW.core.toast.show('success', '', 'Задача успешно изменена!', 'top-center', 4000, true);
 							console.log(ans);
-							},
+						},
 						error: function (e)
 						{
 							if(e.status == 505)
@@ -86,8 +122,6 @@ $(document).ready(function () {
 		observer.observe(target, config);
 		observer1.observe(target1, config1);
 	}
-
-
 
 	//Счетчик приоритета
 	$('input#priority').on('change', function(){
@@ -213,41 +247,7 @@ $(document).ready(function () {
 		});
 	});
 
-	$('.edit-admission').on("click", function (e) {
-		let id = $(this).data('id');
-		let comm_input = $('#edit-admission').find('input[name="comment"]');
-		let edit_input = $('#edit-admission').find('input[name="edit"]');
-		let add_input = $('#edit-admission').find('input[name="adding"]');
-		let aid_input = $('#edit-admission').find('input[name="admission_id"]');
-		let uname_input = $('#edit-admission').find('span.username');
 
-		comm_input.attr('checked', false);
-		add_input.attr('checked', false);
-		edit_input.attr('checked', false);
-
-		let add = $(this).data('add');
-		let edit = $(this).data('edit');
-		let comment = $(this).data('comment');
-		let user = $(this).data('user');
-
-		if(parseInt(comment) == 1)
-		{
-			$(comm_input).attr('checked', true);
-		}
-		if(add == 1)
-		{
-			add_input.attr('checked',true);
-		}
-		if(edit == 1)
-		{
-			edit_input.attr('checked',true);
-		}
-		uname_input.text(user)
-		aid_input.val(id)
-
-
-		$('#edit-admission').modal('show');
-	});
 
 	
 });
