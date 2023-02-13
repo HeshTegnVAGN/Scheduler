@@ -86,7 +86,7 @@ $t3 = count($tasks->done);
 			<div class="col-6 col-sm-6 col-md-4 mb-4-xs">
 				<div class="bg-secondary rounded-3">
 					<div class="row mx-0">
-						<div class="col-1 p-3 fi fi-circle-spin fi-spin text-warning fs-5">
+						<div class="col-1 p-3 fi fi-power text-warning fs-5">
 						</div>
 						<div class="col p-3 text-warning fs-5">
 							В работе
