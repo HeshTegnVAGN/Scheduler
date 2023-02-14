@@ -54,7 +54,7 @@ $(document).ready(function () {
 						method: 'post',
 						data: {id: id, status: 2},
 						success: function (ans) {
-							$.SOW.core.toast.show('success', '', 'Задача успешно изменена!', 'top-center', 4000, true);
+								$.SOW.core.toast.show('success', '', 'Задача успешно изменена!', 'top-center', 4000, true);
 							console.log(ans);
 						},
 						error: function (e)
