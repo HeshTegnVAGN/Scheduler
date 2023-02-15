@@ -103,7 +103,7 @@ $t3 = count($tasks->done);
                             <?php foreach($tasks->work as $task): ?>
                                 <div data-id="<?=$task->id?>" class="row mx-3 bg-white text-dark list-item rounded-3 mb-2">
                                        <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
-                                           <i class="fs-1 fi fi-spin fi-circle-spin text-primary fs-5"></i>
+                                           <i class="fs-1 fi fi-truck-speed text-primary fs-5"></i>
                                         </div>
                                     <div class="col py-2">
                                         <div class="row">
