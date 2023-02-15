@@ -43,4 +43,47 @@ class User extends DB
         return $arr;
     }
 
+
+    public function getSettings()
+    {
+        $res = $this->conn->query("SELECT * from user_settings where id = '{$this->id}'");
+        if($res->num_rows > 0)
+        {
+            return $res->fetch_object();
+        }
+        return null;
+    }
+
+    public function  getChartsStatistics()
+    {
+        $rr = [];
+        $res = $this->conn->query("SELECT * from (
+                SELECT COUNT(*) as co, date(created_at) as date, status from tasks where status = 1 and datediff(CURRENT_TIMESTAMP, created_at) < 30 and responsible = '$this->id' GROUP BY created_at
+            UNION
+            SELECT   COUNT(*) as co, date(updated_at) as date, status from tasks where status = 2 and datediff(CURRENT_TIMESTAMP, updated_at) < 30 and responsible = '$this->id' GROUP BY updated_at
+            UNION
+            SELECT  COUNT(*) as co, date(finished_at) as date, status from tasks where status = 3 and datediff(CURRENT_TIMESTAMP, finished_at) < 30 and responsible = '$this->id' GROUP BY finished_at
+            ) as s order by date");
+        while($row = $res->fetch_object())
+        {
+            $rr[$row->date][$row->status] = $row;
+        }
+        $d = array();
+        for($i = 0; $i < 30; $i++)
+            $d[] = date("Y-m-d", strtotime('-'. $i .' days'));
+
+        $stat = [];
+        foreach($d as $date)
+        {
+            $stat[0][] = $rr[$date][1]->co ?: 0;
+            $stat[1][] = $rr[$date][2]->co ?: 0;
+            $stat[2][] = $rr[$date][3]->co ?: 0;
+        }
+        $stat[4] = $d;
+        $stat[3] = max([max($stat[0]), max($stat[1]), max($stat[2])]);
+        return $stat;
+    }
+
+
+
 }

@@ -3,7 +3,7 @@
 $t1 = count($tasks->new);
 $t2 = count($tasks->work);
 $t3 = count($tasks->done);
-if($t1 and $t2 and  $t3)
+if($t1 or $t2 or  $t3)
 {
 	$counters = true;
 }
@@ -35,8 +35,8 @@ if($t1 and $t2 and  $t3)
 
 </head>
 <?php if(!in_array($routed_file, ['login.php', 'signup.php', 'reset.php'])): ?>
-    <body class="header-sticky header-fixed">
-    <header id="header" class="shadow-xs ">
+    <body class="header-sticky header-fixed <?=str_contains($routed_file, 'profile') ? 'aside-start aside-sticky' : ''?>">
+    <header id="header" class="shadow-dark-sm ">
 
 	<!-- /TOP BAR -->
 
@@ -187,7 +187,7 @@ if($t1 and $t2 and  $t3)
 							</svg>
 							<span>Мой аккакунт</span>
 						</a>
-						<a class="dropdown-item" href="account-orders.html">
+						<a class="dropdown-item" href="https://imdibil.ru/scheduler/profile/access">
 							<svg class="text-gray-600 float-start" width="18px" height="18px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
 								<path fill-rule="evenodd" d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"></path>
 								<path fill-rule="evenodd" d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zm4.354 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"></path>
@@ -195,7 +195,7 @@ if($t1 and $t2 and  $t3)
 							<span>Мои доски</span>
 						</a>
 
-						<a class="dropdown-item" href="account-settings.html">
+						<a class="dropdown-item" href="https://imdibil.ru/scheduler/profile/design">
 							<svg class="text-gray-600 float-start" width="18px" height="18px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
 								<path fill-rule="evenodd" d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z"></path>
 							</svg>

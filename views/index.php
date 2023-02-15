@@ -41,13 +41,13 @@ $t3 = count($tasks->done);
 												data-type="1">
 						<?php foreach($tasks->new as $task): ?>
 
-							<div data-id="<?=$task->id?>" class="row bg-white mb-2 mx-3 rounded-3 text-dark list-item">
+							<div data-id="<?=$task->id?>" data-title="<?=$task->title?>" class="row bg-white mb-2 mx-3 rounded-3 text-dark list-item">
 								<div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
 									<i class="fi fi fi-arrow-end-full fs-5 fs-5"></i>
 								</div>
 								<div class="col py-2">
 									<div class="row">
-                                        <div class="input-group-over edit" id="task_edit" contenteditable="true">
+                                        <div <?php if($tasks->edit) echo 'class="input-group-over edit" id="task_edit" contenteditable="true"'; ?>>
                                             <?=$task->title?>
                                         </div>
 									</div>
@@ -107,7 +107,7 @@ $t3 = count($tasks->done);
                                         </div>
                                     <div class="col py-2">
                                         <div class="row">
-                                            <div class="input-group-over edit" id="task_edit" contenteditable="true">
+                                            <div class="" id="task_edit" >
                                                 <?=$task->title?>
                                             </div>
                                         </div>
@@ -221,7 +221,7 @@ $t3 = count($tasks->done);
 							data-ajax-show-loading-icon="true"
 
 							data-error-scroll-up="true"
-							data-ajax-callback-function="">
+							data-ajax-callback-function="callback_refresh">
 
 
 					<div class="form-floating mb-3">
@@ -229,17 +229,19 @@ $t3 = count($tasks->done);
 						<label for="TaskTitle">Название</label>
 					</div>
 
-					<div class="form-floating mb-3">
-						<select class="form-select" id="floatingSelect" name="responsible" aria-label="Floating label select example">
-							<?php foreach($user->admissions as $a): ?>
-								<option value="<?=$user->id?>"><?=$user->name?></option>
-								<?php if($a['adding']): ?>
-									<option value="<?=$a['uid']?>"><?=$a['name']?></option>
-								<?php endif; ?>
-							<?php endforeach; ?>
-						</select>
-						<label for="floatingSelect">Ответственный</label>
-					</div>
+					<div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="floatingSelect" name="responsible" aria-label="Floating label select example">
+                                <?php foreach($user->admissions as $a): ?>
+                                    <option value="<?=$user->id?>"><?=$user->name?></option>
+                                    <?php if($a['adding']): ?>
+                                        <option value="<?=$a['uid']?>"><?=$a['name']?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
+                            <label for="floatingSelect">Ответственный</label>
+                        </div>
+                    </div>
 
 					<div class="form-floating mb-3">
 						<textarea name="descr" id="editor-decr-new"class="summernote-editor w-100"
@@ -345,6 +347,11 @@ $t3 = count($tasks->done);
                                 $('#exampleModalTask').modal('hide');
                                 $.SOW.core.toast.show('success', '', 'Задача успешно изменена!', 'top-center', 4000, true);
                             }
+
+                            function callback_refresh()
+                            {
+                                setTimeout(window.location.reload(), 5000);
+                            }
                         </script>
                         <div class="form-floating mb-3">
                             <input required type="text" class="form-control" name="edit_title" id="TaskTitle" placeholder="Название">
@@ -352,18 +359,25 @@ $t3 = count($tasks->done);
                         </div>
                         <input type="hidden" name="alternate_decr" id="alt_descr">
                         <input type="hidden" name="id" id="task-id">
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelect" name="edit_responsible" aria-label="Floating label select example">
-															<?php foreach($user->admissions as $a): ?>
-																<option value="<?=$user->id?>"><?=$user->name?></option>
-																<?php if($a['adding']): ?>
-																	<option value="<?=$a['uid']?>"><?=$a['name']?></option>
-																<?php endif; ?>
-															<?php endforeach; ?>
-                            </select>
-                            <label for="floatingSelect">Ответственный</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="floatingSelect" name="edit_responsible" aria-label="Floating label select example">
+                                        <?php foreach($user->admissions as $a): ?>
+                                            <option value="<?=$user->id?>"><?=$user->name?></option>
+                                            <?php if($a['adding']): ?>
+                                                <option value="<?=$a['uid']?>"><?=$a['name']?></option>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <label for="floatingSelect">Ответственный</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <input required disabled type="text" class="form-control" name="author" id="author" placeholder="Автор">
+                                <label for="author"></label>
+                            </div>
                         </div>
-
 
                         <div class="form-floating mb-3">
 						<textarea name="edit_descr" id="editor-decr-new"class="summernote-editor w-100"
@@ -450,16 +464,25 @@ $t3 = count($tasks->done);
                     </div>
                     <input type="hidden" name="alternate_decr" id="alt_descr">
                     <input disabled type="hidden" name="id" id="task-id">
-                    <div class="form-floating mb-3">
-                        <select disabled class="form-select" id="floatingSelect" name="edit_responsible" aria-label="Floating label select example">
-													<?php foreach($user->admissions as $a): ?>
-														<option value="<?=$user->id?>"><?=$user->name?></option>
-														<?php if($a['adding']): ?>
-															<option value="<?=$a['uid']?>"><?=$a['name']?></option>
-														<?php endif; ?>
-													<?php endforeach; ?>
-                        </select>
-                        <label for="floatingSelect">Ответственный</label>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <select disabled class="form-select" id="floatingSelect" name="edit_responsible" aria-label="Floating label select example">
+                                    <?php foreach($user->admissions as $a): ?>
+                                        <option value="<?=$user->id?>"><?=$user->name?></option>
+                                        <?php if($a['adding']): ?>
+                                            <option value="<?=$a['uid']?>"><?=$a['name']?></option>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </select>
+                                <label for="floatingSelect">Ответственный</label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <input disabled required type="text" class="form-control" name="author" id="author" placeholder="Название">
+                            <label for="author"></label>
+                        </div>
                     </div>
 
                     <div class="form-floating mb-3">
@@ -491,7 +514,7 @@ $t3 = count($tasks->done);
                 NOTE: WE USE method="GET" insted of "POST" because this is a pure html demo
             -->
             <form class="js-ajax bs-validate p-4" novalidate
-                  action="assets/js/ajax/new_comment.php"
+                  action="https://imdibil.ru/scheduler/assets/js/ajax/new_comment.php"
                   method="POST"
 
                   data-ajax-inline-alert-succes="#alert_success"
@@ -501,7 +524,7 @@ $t3 = count($tasks->done);
                   data-ajax-show-loading-icon="true"
 
                   data-error-scroll-up="true"
-                  data-ajax-callback-function="">
+                  data-ajax-callback-function="callback_refresh">
                 <input type="hidden" name="id_task" id="id_task">
                 <textarea type="text" name="text" placeholder="Комментарий" class="form-control mb-3"></textarea>
                 <button type="submit" class="btn btn-warning">Отправить</button>
