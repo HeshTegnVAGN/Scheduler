@@ -61,6 +61,7 @@ class Desk extends DB
 		}
 		$this->new = $tasks[1];
 		$this->work = $tasks[2];
+		array_multisort(array_column($tasks[3], 'finished_at'), SORT_DESC,$tasks[3]);
 		$this->done = $tasks[3];
 
 

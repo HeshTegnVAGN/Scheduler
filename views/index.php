@@ -3,6 +3,7 @@
 $t1 = count($tasks->new);
 $t2 = count($tasks->work);
 $t3 = count($tasks->done);
+
 ?>
 
 	<div class="container">
@@ -51,7 +52,7 @@ $t3 = count($tasks->done);
                                         </div>
 									</div>
 									<div class="row">
-										<span class="text-secondary fs-7"><?=$task->created_at->format('d.m.y H:i:d')?></span>
+										<span class="text-secondary fs-7"><?=$task->created_at->format('d.m.y H:i')?></span>
 <!--										<time class="sow-util-timeago text-secondary fs-7"-->
 <!--													datetime="--><?php //=$task->created_at->format('Y-m-d\TH:i:d')?><!--"-->
 <!--													data-live="true"-->
@@ -169,7 +170,7 @@ $t3 = count($tasks->done);
 																			</div>
 																		</div>
 																		<div class="row">
-																			<span class="text-secondary fs-7"><?=$task->finished_at->format('d.m.y H:i:d')?></span>
+																			<span class="text-secondary fs-7"><?=$task->finished_at->format('d.m.y H:i')?></span>
 																			<!--										<time class="sow-util-timeago text-secondary fs-7"-->
 																			<!--													datetime="--><?php //=$task->created_at->format('Y-m-d\TH:i:d')?><!--"-->
 																			<!--													data-live="true"-->
