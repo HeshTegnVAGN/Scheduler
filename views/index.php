@@ -3,8 +3,7 @@
 $t1 = count($tasks->new);
 $t2 = count($tasks->work);
 $t3 = count($tasks->done);
-
-?>
+    ?>
 
 	<div class="container">
 
@@ -103,7 +102,7 @@ $t3 = count($tasks->done);
                             <?php foreach($tasks->work as $task): ?>
                                 <div data-id="<?=$task->id?>" class="row mx-3 bg-white text-dark list-item rounded-3 mb-2">
                                        <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
-                                           <i class="fs-1 fi fi-truck-speed text-primary fs-5"></i>
+                                           <i class="fi fi-arrow-right-3 text-primary fs-3"></i>
                                         </div>
                                     <div class="col py-2">
                                         <div class="row">
@@ -369,7 +368,7 @@ $t3 = count($tasks->done);
 
                             function callback_refresh()
                             {
-                                setTimeout(window.location.reload(), 5000);
+                                // setTimeout(window.location.reload(), 5000);
                             }
                         </script>
                         <div class="form-floating mb-3">
