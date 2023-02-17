@@ -52,5 +52,32 @@ body.dark-theme
 body.dark-theme>header, body.dark-theme aside
 {
     background-color: #181818!important;
+}
 
+.card-red-theme{
+    background-color: #e17979!important;
+
+    .ml-red{
+        margin-left: 10px!important;
+    }
+    .task-title{
+        color: #FFFFFF!important;
+        opacity: .8!important;
+    }
+    .task-time{
+        color: #d9e2ef!important;
+        opacity: .75!important;
+    }
+}
+
+.card-warning-theme{
+    background-color: #edacac!important;
+}
+
+.card-middle-theme{
+    background-color: #9ba1d9!important;
+}
+
+.card-low-theme{
+    background-color: #c9e7d3!important;
 }

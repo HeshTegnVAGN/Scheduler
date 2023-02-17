@@ -20,12 +20,10 @@ $t3 = count($tasks->done);
 						</div>
 							<?php if($tasks->add): ?>
 								<div class="col text-end">
-                            <span data-bs-toggle="tooltip" data-bs-placement="top" title="Добавить задачу">
-                                 <i class="fi fi-plus py-3 fs-5 text-warning" type="button"
-																		data-bs-toggle="modal" data-bs-target="#exampleModalMd">
-                            </i>
-                            </span>
-
+                                    <span data-bs-toggle="tooltip" data-bs-placement="top" title="Добавить задачу">
+                                         <i class="fi fi-plus py-3 fs-5 text-warning" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalMd">
+                                         </i>
+                                    </span>
 
 								</div>
 
@@ -70,7 +68,7 @@ $t3 = count($tasks->done);
 <!--                                        }'></time>-->
 									</div>
 								</div>
-								<div class="col-2 py-2 d-flex align-items-center">
+								<div class="col-2 py-2 d-flex align-items-center mr-2-xs">
 									<?php if($tasks->edit): ?>
 										<i class="fi fi-search edit-task" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalTask"></i>
 
@@ -162,36 +160,35 @@ $t3 = count($tasks->done);
                                     <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
                                         <i class="fi fi-arrow-end-full fs-5 fs-5"></i>
                                     </div>
-																	<div class="col py-2">
-																		<div class="row">
-																			<div>
-																				<?=$task->title?>
-																			</div>
-																		</div>
-																		<div class="row">
-																			<span class="text-secondary fs-7"><?=$task->finished_at->format('d.m.y H:i')?></span>
-																			<!--										<time class="sow-util-timeago text-secondary fs-7"-->
-																			<!--													datetime="--><?php //=$task->created_at->format('Y-m-d\TH:i:d')?><!--"-->
-																			<!--													data-live="true"-->
-																			<!--													data-lang='{-->
-																			<!--                                            "seconds"	 : "Несколько секунд назад",-->
-																			<!--                                            "minute"		: "Около минуты назад",-->
-																			<!--                                            "minutes"	 : "%d минут назад",-->
-																			<!--                                            "hour"			: "Около часа назад",-->
-																			<!--                                            "hours"		 : "Около %d часов назад",-->
-																			<!--                                            "day"			 : "Вчера",-->
-																			<!--                                            "days"			: "%d дней назад",-->
-																			<!--                                            "month"		 : "Около месяца назад",-->
-																			<!--                                            "months"		: "%d месяцев назад",-->
-																			<!--                                            "year"			: "Около года назад",-->
-																			<!--                                            "years"		 : "%d лет назад"-->
-																			<!--                                        }'></time>-->
-																		</div>
-																	</div>
+                                    <div class="col py-2">
+                                        <div class="row">
+                                            <div>
+                                                <?=$task->title?>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <span class="text-secondary fs-7"><?=$task->finished_at->format('d.m.y H:i')?></span>
+                                            <!--										<time class="sow-util-timeago text-secondary fs-7"-->
+                                            <!--													datetime="--><?php //=$task->created_at->format('Y-m-d\TH:i:d')?><!--"-->
+                                            <!--													data-live="true"-->
+                                            <!--													data-lang='{-->
+                                            <!--                                            "seconds"	 : "Несколько секунд назад",-->
+                                            <!--                                            "minute"		: "Около минуты назад",-->
+                                            <!--                                            "minutes"	 : "%d минут назад",-->
+                                            <!--                                            "hour"			: "Около часа назад",-->
+                                            <!--                                            "hours"		 : "Около %d часов назад",-->
+                                            <!--                                            "day"			 : "Вчера",-->
+                                            <!--                                            "days"			: "%d дней назад",-->
+                                            <!--                                            "month"		 : "Около месяца назад",-->
+                                            <!--                                            "months"		: "%d месяцев назад",-->
+                                            <!--                                            "year"			: "Около года назад",-->
+                                            <!--                                            "years"		 : "%d лет назад"-->
+                                            <!--                                        }'></time>-->
+                                        </div>
+                                    </div>
 
-																	<div class="col-2 py-2 my-auto">
-                                        <button class="btn edit-task mx-n3" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"><i class="fi fi-search"></i></button>
-
+                                    <div class="col-2 py-2 my-auto mr-2-xs">
+                                         <button class="btn edit-task mx-n3" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"><i class="fi fi-search"></i></button>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
