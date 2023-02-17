@@ -5,6 +5,8 @@ use models\Task;
 ini_set('display_errors', true);
 session_start();
 require '../../../config/config.php';
+require '../../../models/TaskModel.php';
+
 require '../../../models/Task.php';
 require '../../../models/User.php';
 require '../../../models/mail.php';

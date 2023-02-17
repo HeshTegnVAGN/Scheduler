@@ -3,8 +3,7 @@
 $t1 = count($tasks->new);
 $t2 = count($tasks->work);
 $t3 = count($tasks->done);
-
-?>
+    ?>
 
 	<div class="container">
 

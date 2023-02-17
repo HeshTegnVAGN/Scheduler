@@ -9,7 +9,7 @@ function dd($arr)
 use models\DB;
 use models\TaskService;
 use models\User;
-
+require ROOT.'models/TaskModel.php';
 require ROOT.'models/TaskService.php';
 require ROOT.'models/User.php';
 
@@ -28,6 +28,7 @@ $GLOBALS['sitemap'] = array (
 	'profile/history' => 'profile/history.php',
 	'profile/export' => 'profile/export.php',
 	'profile/design' => 'profile/design.php',
+	'profile/notifications' => 'profile/notifications.php',
 	'desk/?(.*)?' => 'index.php'
 
 	// Больше правил
@@ -122,7 +123,7 @@ if(!in_array($routed_file, ['login.php', 'signup.php', 'reset.php']))
     $set = $user->getSettings();
     if($set->picture)
     {
-        echo "<style>body{background: url(https://imdibil.ru/scheduler/assets/images/uploads/".$set->picture.") no-repeat; background-size: cover;backdrop-filter: blur(0px); background-opacity }</style>";
+        echo "<style>body{background: url(https://imdibil.ru/scheduler/assets/images/uploads/".$set->picture.") no-repeat; background-size: cover;backdrop-filter: blur(0px); background-attachment: fixed; }</style>";
     }
 }
 $tasks = new \models\Desk($did);
