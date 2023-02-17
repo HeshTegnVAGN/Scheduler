@@ -39,9 +39,9 @@ $set = $user->getSettings();
 
                        data-file-ajax-toast-success-txt="Successfully Uploaded!"
                        data-file-ajax-toast-error-txt="One or more files not uploaded!"
-                       data-file-ajax-callback-function=""
                        data-file-ajax-progressbar-custom=""
                        data-file-ajax-progressbar-disable="false"
+                       data-ajax-callback-function="callback_refresh"
                        class="custom-file-input absolute-full">
 
                 <span class="group-icon">
@@ -97,47 +97,53 @@ $set = $user->getSettings();
         <button class="btn-dark-them-click bg-gradient-dark mb-3 mt-4 p-2 rad-10 text-center w-250 text-white border-0">
             Перейти на тёмную сторону
         </button>
-					<script>
-						function test()
-						{
-							alert(1);
-						}
-					</script>
-					<div class="row">
-						<div class="input-group-over position-realtive z-index-1">
+            <script>
+                function callback_refresh()
+                {
+                    setTimeout(window.location.reload(), 5000);
+                }
+            </script>
+<!--					<script>-->
+<!--						function test()-->
+<!--						{-->
+<!--							alert(1);-->
+<!--						}-->
+<!--					</script>-->
+<!--					<div class="row">-->
+<!--						<div class="input-group-over position-realtive z-index-1">-->
+<!---->
+<!--							<input autocomplete="off" type="text" name="my_picker" class="form-control bg-transparent colorpicker"-->
+<!--										 data-theme="classic"-->
+<!--										 data-color="#ff0000"-->
+<!---->
+<!--										 data-hex="true"-->
+<!--										 data-rgba="true"-->
+<!--										 data-hsla="false"-->
+<!--										 data-hsva="false"-->
+<!--										 data-cmyk="false"-->
+<!---->
+<!--										 data-id="1"-->
+<!--										 data-ajax-url="../demo.files/php/demo.ajax_request.php"-->
+<!--										 data-ajax-params="['action','color_change']['section','customer_invoice']"-->
+<!--										 data-ajax-method="POST"-->
+<!--										 data-toast-success="Sucessfully Updated!"-->
+<!--										 data-toast-position="bottom-center"-->
+<!---->
+<!--										 data-lng-save="Save"-->
+<!--										 data-lng-clear="Clear"-->
+<!---->
+<!--										 data-position="bottom-middle"-->
+<!--										 data-show-always="false"-->
+<!--										 data-use-as-button="true"-->
+<!--										 data-default="HEXA"-->
+<!--							>-->
+<!---->
 
-							<input autocomplete="off" type="text" name="my_picker" class="form-control bg-transparent colorpicker"
-										 data-theme="classic"
-										 data-color="#ff0000"
-
-										 data-hex="true"
-										 data-rgba="true"
-										 data-hsla="false"
-										 data-hsva="false"
-										 data-cmyk="false"
-
-										 data-id="1"
-										 data-ajax-url="../demo.files/php/demo.ajax_request.php"
-										 data-ajax-params="['action','color_change']['section','customer_invoice']"
-										 data-ajax-method="POST"
-										 data-toast-success="Sucessfully Updated!"
-										 data-toast-position="bottom-center"
-
-										 data-lng-save="Save"
-										 data-lng-clear="Clear"
-
-										 data-position="bottom-middle"
-										 data-show-always="false"
-										 data-use-as-button="true"
-										 data-default="HEXA"
-							>
-
-							<!-- optional icon -->
-							<span class="fs-5 mx-3 fi mdi-format_color_fill z-index-n1 text-muted"></span>
-
-						</div>
-
-        </div>
+<!--							<span class="fs-5 mx-3 fi mdi-format_color_fill z-index-n1 text-muted"></span>-->
+<!---->
+<!--						</div>-->
+<!---->
+<!--        </div>-->
     </main>
 </div>
 

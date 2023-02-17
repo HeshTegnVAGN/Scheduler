@@ -34,6 +34,7 @@ if($t1 or $t2 or  $t3)
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 </head>
+
 <?php if(!in_array($routed_file, ['login.php', 'signup.php', 'reset.php'])): ?>
     <body class="header-sticky header-fixed <?=str_contains($routed_file, 'profile') ? 'aside-start aside-sticky' : ''?>">
     <header id="header" class="shadow-dark-sm ">
