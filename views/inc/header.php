@@ -179,7 +179,7 @@ if($t1 or $t2 or  $t3)
 					<!-- dropdown -->
 					<div aria-labelledby="dropdownAccountOptions" class="list-unstyled dropdown-menu dropdown-menu-clean dropdown-click-ignore end-0 py-2 rounded-xl" style="min-width:215px;">
 
-						<div class="dropdown-header px-4 mb-1 text-wrap fw-medium">Данил Кочура</div>
+						<div class="dropdown-header px-4 mb-1 text-wrap fw-medium"><?=$user->name?></div>
 						<div class="dropdown-divider mb-3"></div>
 						<a class="dropdown-item active" href="/scheduler/profile">
 							<svg class="text-gray-600 float-start" width="18px" height="18px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
