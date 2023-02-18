@@ -22,19 +22,30 @@ class User extends DB
 				$this->admissions = $this->getAdmissions();
 	}
 
-	public function getAdmissions()
+	public function getAdmissions($id = null)
 	{
-		$res = $this->conn->query("SELECT `comment`, `edit`, `adding`, users.id as uid, name, email FROM `user_admissions` join users on user_from = users.id where user_to = '$this->id'");
-		$adm = [];
+        $q = "SELECT user_admissions.id as aid, `comment`, `edit`, `adding`, users.id as uid, name, email, finish_note FROM `user_admissions` join users on user_from = users.id where user_to = '$this->id'";
+        if($id)
+        {
+            $q.=" AND user_from = '$id'";
+        }
+		$res = $this->conn->query($q);
+
+        $adm = [];
 		while($row = $res->fetch_assoc())
 		{
 			$adm[] = $row;
 		}
 		return $adm;
 	}
-    public function getAccesssedUsers()
+    public function getAccesssedUsers($id = null)
     {
-        $res = $this->conn->query("SELECT user_admissions.id as aid, users.id as uid, `user_to`, `adding`, `edit`, `comment`, `name`, `email` FROM `user_admissions` join users on user_to = users.id where user_from = '$this->id'");
+        $q = "SELECT user_admissions.id as aid, users.id as uid, `user_to`, `adding`, `edit`, `comment`, `name`, `email`, `add_note`, `comm_note` FROM `user_admissions` join users on user_to = users.id where user_from = '$this->id'";
+        if($id)
+        {
+            $q.=" AND user_to = '$id'";
+        }
+        $res = $this->conn->query($q);
         $arr = [];
         while ($row = $res->fetch_assoc())
         {

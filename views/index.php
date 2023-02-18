@@ -38,7 +38,7 @@ $t3 = count($tasks->done);
 												data-type="1">
 						<?php foreach($tasks->new as $task): ?>
 
-							<div data-id="<?=$task->id?>" data-title="<?=$task->title?>" class="row bg-white mb-2 mx-3 rounded-3 text-dark list-item">
+							<div data-id="<?=$task->id?>" data-title="<?=$task->title?>" data-priority="<?=$task->priority?>" class="row bg-white mb-2 mx-3 rounded-3 text-dark list-item <?=$set->filled ? 'bg-filled' : ''?>">
 								<div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
 									<i class="fi fi fi-arrow-end-full fs-5 fs-5"></i>
 								</div>
@@ -49,7 +49,7 @@ $t3 = count($tasks->done);
                                         </div>
 									</div>
 									<div class="row">
-										<span class="text-secondary fs-7"><?=$task->created_at->format('d.m.y H:i')?></span>
+										<time class="text-secondary fs-7"><?=$task->created_at->format('d.m.y H:i')?></time>
 <!--										<time class="sow-util-timeago text-secondary fs-7"-->
 <!--													datetime="--><?php //=$task->created_at->format('Y-m-d\TH:i:d')?><!--"-->
 <!--													data-live="true"-->
@@ -98,7 +98,7 @@ $t3 = count($tasks->done);
                              data-ajax-update-params="['action','update']"
                              data-update-toast-position="bottom-center" data-type="2">
                             <?php foreach($tasks->work as $task): ?>
-                                <div data-id="<?=$task->id?>" class="row mx-3 bg-white text-dark list-item rounded-3 mb-2">
+                                <div data-id="<?=$task->id?>" data-priority="<?=$task->priority?>" class="row mx-3 bg-white text-dark list-item rounded-3 mb-2 <?=$set->filled ? 'bg-filled' : ''?>">
                                        <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
                                            <i class="fi fi-arrow-right-3 text-primary fs-3"></i>
                                         </div>
@@ -156,18 +156,18 @@ $t3 = count($tasks->done);
 														 data-ajax-update-params="['action','update']"
 														 data-update-toast-position="bottom-center" data-type="3">
                             <?php foreach($tasks->done as $task): ?>
-                                <div data-id="<?=$task->id?>" class="row mx-3 bg-white text-dark rounded-3 mb-2 list-item">
+                                <div data-id="<?=$task->id?>" data-priority="<?=$task->priority?>" class="row mx-3 bg-white text-dark rounded-3 mb-2 list-item <?=$set->filled ? 'bg-filled' : ''?>">
                                     <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
                                         <i class="fi fi-arrow-end-full fs-5 fs-5"></i>
                                     </div>
                                     <div class="col py-2">
                                         <div class="row">
-                                            <div>
+                                            <div id="task_edit">
                                                 <?=$task->title?>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <span class="text-secondary fs-7"><?=$task->finished_at->format('d.m.y H:i')?></span>
+                                            <time class="text-secondary fs-7"><?=$task->finished_at->format('d.m.y H:i')?></time>
                                             <!--										<time class="sow-util-timeago text-secondary fs-7"-->
                                             <!--													datetime="--><?php //=$task->created_at->format('Y-m-d\TH:i:d')?><!--"-->
                                             <!--													data-live="true"-->
