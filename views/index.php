@@ -3,6 +3,7 @@
 $t1 = count($tasks->new);
 $t2 = count($tasks->work);
 $t3 = count($tasks->done);
+$tasks->done = array_slice($tasks->done, 0 ,8);
     ?>
 
 	<div class="container">
