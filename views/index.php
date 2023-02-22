@@ -39,7 +39,7 @@ $t3 = count($tasks->done);
 						<?php foreach($tasks->new as $task): ?>
 
 							<div data-id="<?=$task->id?>" data-title="<?=$task->title?>" data-priority="<?=$task->priority?>" class="row bg-white mb-2 mx-3 rounded-3 text-dark list-item <?=$set->filled ? 'bg-filled' : ''?>">
-								<div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
+								<div class="align-items-center col-1 d-flex priority-flag" data-priority="<?=$task->priority?>">
 									<i class="fi fi fi-arrow-end-full fs-5 fs-5"></i>
 								</div>
 								<div class="col py-2">
@@ -157,7 +157,7 @@ $t3 = count($tasks->done);
 														 data-update-toast-position="bottom-center" data-type="3">
                             <?php foreach($tasks->done as $task): ?>
                                 <div data-id="<?=$task->id?>" data-priority="<?=$task->priority?>" class="row mx-3 bg-white text-dark rounded-3 mb-2 list-item <?=$set->filled ? 'bg-filled' : ''?>">
-                                    <div class="align-items-center col-2 d-flex priority-flag" data-priority="<?=$task->priority?>">
+                                    <div class="align-items-center col-1 d-flex priority-flag" data-priority="<?=$task->priority?>">
                                         <i class="fi fi-arrow-end-full fs-5 fs-5"></i>
                                     </div>
                                     <div class="col py-2">
