@@ -6,7 +6,7 @@ $t3 = count($tasks->done);
 $tasks->done = array_slice($tasks->done, 0 ,8);
     ?>
 
-	<div class="container">
+	<div class="container mb-5">
 
         <div class="row mt-3">
 			<div class="col-6 col-sm-6 col-md-4 mb-4-xs">
@@ -482,7 +482,7 @@ $tasks->done = array_slice($tasks->done, 0 ,8);
                         <label for="TaskTitle">Заголовок</label>
 
                     </div>
-                    <input type="hidden" name="alternate_decr" id="alt_descr">
+                    <p name="alternate_decr" id="alt_descr"></p>
                     <input disabled type="hidden" name="id" id="task-id">
                     <div class="row">
                         <div class="col-md-6">

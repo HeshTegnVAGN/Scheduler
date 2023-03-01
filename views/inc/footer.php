@@ -13,5 +13,14 @@
 
 <!-- Your custom javascripts -->
 
+<div class="bg-secondary" style="min-height: 50px;">
+    <div class="container text-white">
+        <div class="text-center" style="padding-top: .8rem!important;">
+            © 2023 Онлайн планировщик задач "Tusk Runner"
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>
