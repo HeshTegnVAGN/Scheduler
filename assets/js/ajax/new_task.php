@@ -22,8 +22,8 @@ require '../../../../vendor/autoload.php';
 
 
 $task = new Task();
-
-$task->add($_POST['TaskTitle'],$_POST['responsible'],$_POST['descr'],$_POST['priority']);
+$deadline = date('Y-m-d H:i:s', strtotime($_POST['date'].' '.$_POST['hours'].':'.$_POST['minutes']));
+$task->add($_POST['TaskTitle'],$_POST['responsible'],$_POST['descr'],$_POST['priority'], $deadline);
 
 if($_POST['responsible'] != $_SESSION['user'])
 {

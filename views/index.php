@@ -50,8 +50,14 @@ $tasks->done = array_slice($tasks->done, 0 ,8);
                                         </div>
 									</div>
 									<div class="row">
+										<div class="col-6">
 										<time class="text-secondary fs-7"><?=$task->created_at->format('d.m.y H:i')?></time>
-<!--										<time class="sow-util-timeago text-secondary fs-7"-->
+										</div>
+											<?php if($task->deadline): ?>
+											<div class="col-6">
+										<time class="text-end <?=$task->deadline > new DateTime() ? 'text-success' : 'text-danger'?> fs-7"><?=$task->deadline->format('d.m.y H:i')?></time></div>
+										<?php endif;?>
+										<!--										<time class="sow-util-timeago text-secondary fs-7"-->
 <!--													datetime="--><?php //=$task->created_at->format('Y-m-d\TH:i:d')?><!--"-->
 <!--													data-live="true"-->
 <!--													data-lang='{-->
@@ -315,9 +321,52 @@ $tasks->done = array_slice($tasks->done, 0 ,8);
 						<label for="customRange1" class="form-label">Приоритет: <span id="priorityVal">Средний</span></label>
 						<input type="range" class="form-range" id="priority" name="priority">
 					</div>
+					<div class="form-floating mb-3">
+						<div class="row mt-5">
+							<p class="mb-0">Дедлайн</p>
+								<div class="col-7">
+									<input type="text" name="date" class="form-control datepicker"
+												 data-show-weeks="true"
+												 data-today-highlight="true"
+												 data-today-btn="true"
+												 data-clear-btn="false"
+												 data-autoclose="true"
+												 data-date-start="today"
+												 data-format="MM/DD/YYYY">
+								</div>
+								<div class="col-2">
+									<select name="hours"  class="form-select"id="">
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12" selected>12</option>
+										<option value="13">13</option>
+										<option value="14">14</option>
+										<option value="15">15</option>
+										<option value="16">16</option>
+										<option value="17">17</option>
+										<option value="18">18</option>
+										<option value="19">19</option>
+										<option value="20">20</option>
+									</select>
+								</div>
+							<div class="col-3">
+									<select name="minutes"  class="form-select"id="">
+										<option value="00" selected>:00</option>
+										<option value="10">:10</option>
+										<option value="20">:20</option>
+										<option value="30">:30</option>
+										<option value="40">:40</option>
+										<option value="50">:50</option>
 
+									</select>
+								</div>
+						</div>
+					</div>
 
 				</div>
+
 
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-success text-white">
