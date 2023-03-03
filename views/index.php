@@ -6,7 +6,7 @@ $t3 = count($tasks->done);
 $tasks->done = array_slice($tasks->done, 0 ,8);
     ?>
 
-	<div class="container">
+	<div class="container mb-5">
 
         <div class="row mt-3">
 			<div class="col-6 col-sm-6 col-md-4 mb-4-xs">
@@ -204,6 +204,14 @@ $tasks->done = array_slice($tasks->done, 0 ,8);
 			</div>
 		</div>
 	</div>
+
+<div class="bg-secondary position-sticky top-100 mt-7" style="min-height: 50px;">
+    <div class="container text-white">
+        <div class="text-center" style="padding-top: .8rem!important;">
+            2023 Tusk Runner
+        </div>
+    </div>
+</div>
 
     <!--Modal new task-->
 	<div class="modal fade" id="exampleModalMd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelMd" aria-hidden="true">
