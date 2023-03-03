@@ -482,7 +482,7 @@ $tasks->done = array_slice($tasks->done, 0 ,8);
                         <label for="TaskTitle">Заголовок</label>
 
                     </div>
-                    <input type="hidden" name="alternate_decr" id="alt_descr">
+                    <p name="alternate_decr" id="alt_descr"></p>
                     <input disabled type="hidden" name="id" id="task-id">
                     <div class="row">
                         <div class="col-md-6">

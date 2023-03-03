@@ -1,20 +1,21 @@
 <div id="wrapper">
-    <?php include ROOT.'views/inc/sidebar.php'; ?>
+    <?php include ROOT.'views/inc/sidebar.php';
+		?>
     <main class="w-100">
         <div class="container p-3 py-4">
             <h2>Статистика</h2>
             <?php $stat = $user->getChartsstatistics();?>
-            <canvas id="byObject" class="chartjs" data-custom="customChartJs"></canvas>
-            <script>
+<!--            <canvas id="byObject" class="chartjs" data-custom="customChartJs"></canvas>-->
+            <!--<script>
 
                 var customChartJs = {
                     type: 'line',
                     data: {
-                        labels: <?='["'.implode('","',$stat[4]).'"]'?>,
+                        labels: <?php /*='["'.implode('","',$stat[4]).'"]'*/?>,
                         datasets: [
                             {
                                 label: 'Завершено',
-                                data: <?='["'.implode('","',$stat[2]).'"]'?>,
+                                data: <?php /*='["'.implode('","',$stat[2]).'"]'*/?>,
 
                                 pointHoverRadius: 4,
                                 pointHoverBorderWidth: 12,
@@ -28,7 +29,7 @@
                             },
                             {
                                 label: 'Добавлено',
-                                data: <?='["'.implode('","',$stat[0]).'"]'?>,
+                                data: <?php /*='["'.implode('","',$stat[0]).'"]'*/?>,
 
                                 pointHoverRadius: 4,
                                 pointHoverBorderWidth: 12,
@@ -49,7 +50,7 @@
                             },
                             {
                                 label: 'Взято в работу',
-                                data: <?='["'.implode('","',$stat[1]).'"]'?>,
+                                data: <?php /*='["'.implode('","',$stat[1]).'"]'*/?>,
 
                                 pointHoverRadius: 4,
                                 pointHoverBorderWidth: 12,
@@ -103,7 +104,7 @@
                                 },
 
                                 ticks: {
-                                    max:						<?=$stat[3]+1?>,
+                                    max:						<?php /*=$stat[3]+1*/?>,
                                     stepSize:			 1,
                                     display:				true,
                                     beginAtZero:		true,
@@ -146,127 +147,133 @@
                         }
                     }
                 };
-            </script>
-<!--					<div>-->
-<!--						<canvas id="myChart"></canvas>-->
-<!--					</div>-->
+            </script>-->
+					<div>
+						<canvas id="myChart"></canvas>
+					</div>
+
+					<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <!---->
-<!--					<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
+					<script>
+// <!---->
+						const DATA_COUNT = 7;
+						const NUMBER_CFG = {count: DATA_COUNT, min: -100, max: 100};
 <!---->
-<!---->
-<!--					<script>-->
-<!---->
-<!--						const DATA_COUNT = 7;-->
-<!--						const NUMBER_CFG = {count: DATA_COUNT, min: -100, max: 100};-->
-<!---->
-<!--						const labels = --><?php //='["'.implode('","',$stat[4]).'"]'?>//;
-//						const data = {
-//							labels: labels,
-//							datasets: [
-//								{
-//									label: 'Dataset 1',
-//									data: <?php //='["'.implode('","',$stat[2]).'"]'?>//,
-//									borderColor: 'red',
-//								},
-//								{
-//									label: 'Dataset 2',
-//									data: <?php //='["'.implode('","',$stat[0]).'"]'?>//,
-//									borderColor: 'blue',
-//								},
-//								{
-//									label: 'Dataset 3',
-//									data: <?php //='["'.implode('","',$stat[1]).'"]'?>//,
-//									borderColor: 'blue',
-//								}
-//							]
-//						};
-//						const config = {
-//							type: 'line',
-//							data: data,
-//							options: {
-//								responsive: true,
-//
-//
-//
-//								scales: {
-//									xAxes: [{
-//										display: true,
-//										scaleLabel: {
-//											display: false,
-//											labelString: 'Month'
-//										},
-//										ticks: {
-//											display: true,
-//											beginAtZero: true,
-//											fontColor: '#999999',
-//											fontSize: 13,
-//											padding: 10
-//										},
-//										display: true,
-//										gridLines: false,
-//									}],
-//
-//									yAxes: [{
-//										display: true,
-//										scaleLabel: {
-//											display: false,
-//											labelString: 'Value'
-//										},
-//
-//										gridLines: {
-//											color:							'#dddddd',
-//											borderDash:				 [2, 3],
-//											zeroLineBorderDash: [2, 3],
-//											zeroLineWidth: 1,
-//										},
-//
-//										ticks: {
-//											max:						<?php //=$stat[3]+1?>//,
-//											stepSize:			 1,
-//											display:				true,
-//											beginAtZero:		true,
-//											fontColor:			'#999999',
-//											fontSize:			 13,
-//											padding:				10
-//										}
-//									}]
-//								},
-//
-//								title: {
-//									display: false,
-//									text: 'Legend Position: top'
-//								},
-//
-//
-//								tooltips: {
-//									enabled: true,
-//									intersect: false,
-//									mode: 'nearest',
-//									bodySpacing: 5,
-//									yPadding: 10,
-//									xPadding: 15,
-//									caretPadding: 0,
-//									displayColors: false,
-//									backgroundColor: '#121212',
-//									titleFontColor: '#ffffff',
-//									cornerRadius: 4,
-//									footerSpacing: 0,
-//									titleSpacing: 0
-//								},
-//
-//								layout: {
-//									padding: {
-//										left:	 0,
-//										right:	0,
-//										top:		0,
-//										bottom: 0
-//									}
-//								}
-//							}
-//						};
-//						const ctx = document.getElementById('myChart');
-//						new Chart(ctx, config);
-//					</script>
+					const labels = <?php echo '["'.implode('","',$stat[4]).'"]'?>;
+						const data = {
+							labels: labels,
+							datasets: [
+								{
+									label: 'Выполнено',
+									data: <?='["'.implode('","',$stat[2]).'"]'?>,
+									borderColor: 'green',
+									cubicInterpolationMode: 'monotone',
+									tension: 1
+								},
+								{
+									label: 'Взято в работу',
+									data: <?='["'.implode('","',$stat[1]).'"]'?>,
+									borderColor: 'grey',
+									cubicInterpolationMode: 'monotone',
+									tension: 1
+								},
+								{
+									label: 'Добавлено',
+									data: <?='["'.implode('","',$stat[0]).'"]'?>,
+									borderColor: 'blue',
+									cubicInterpolationMode: 'monotone',
+									tension: 1
+								}
+							]
+						};
+						const config = {
+							type: 'line',
+							data: data,
+							options: {
+								responsive: true,
+
+
+
+								scales: {
+									xAxes: [{
+										display: true,
+										scaleLabel: {
+											display: false,
+											labelString: 'Month'
+										},
+										ticks: {
+											display: true,
+											beginAtZero: true,
+											fontColor: '#999999',
+											fontSize: 13,
+											padding: 10
+										},
+										display: true,
+										gridLines: false,
+									}],
+
+									yAxes: [{
+										display: true,
+										scaleLabel: {
+											display: false,
+											labelString: 'Value'
+										},
+
+										gridLines: {
+											color:							'#dddddd',
+											borderDash:				 [2, 3],
+											zeroLineBorderDash: [2, 3],
+											zeroLineWidth: 1,
+										},
+
+										ticks: {
+											max:						<?=$stat[3]+1?>,
+											stepSize:			 1,
+											display:				true,
+											beginAtZero:		true,
+											fontColor:			'#999999',
+											fontSize:			 13,
+											padding:				10
+										}
+									}]
+								},
+
+								title: {
+									display: false,
+									text: 'Legend Position: top'
+								},
+
+
+								tooltips: {
+									enabled: true,
+									intersect: false,
+									mode: 'nearest',
+									bodySpacing: 5,
+									yPadding: 10,
+									xPadding: 15,
+									caretPadding: 0,
+									displayColors: false,
+									backgroundColor: '#121212',
+									titleFontColor: '#ffffff',
+									cornerRadius: 4,
+									footerSpacing: 0,
+									titleSpacing: 0
+								},
+
+								layout: {
+									padding: {
+										left:	 0,
+										right:	0,
+										top:		0,
+										bottom: 0
+									}
+								}
+							}
+						};
+						const ctx = document.getElementById('myChart');
+						new Chart(ctx, config);
+					</script>
         </div>
     </main>
 </div>
