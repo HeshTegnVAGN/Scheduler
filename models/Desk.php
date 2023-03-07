@@ -23,7 +23,7 @@ class Desk extends DB
 		$tasks = [];
 		foreach ([TaskModel::NEW, TaskModel::WORK, TaskModel::ENDED] as $type)
 		{
-			$res = $this->conn->query("SELECT * from tasks where status = '$type' and responsible = '$id' order by priority, deadline desc");
+			$res = $this->conn->query("SELECT * from tasks where status = '$type' and responsible = '$id' order by deadline desc, priority desc");
 
 			if($res->num_rows > 0)
 			{
