@@ -309,6 +309,14 @@ $(document).ready(function () {
 		$('#edit-admissed-notes').modal('show');
 	});
 
+	$('#deadline-accept').on('change', function(){
+		if($(this).attr('checked') == true)
+		{
+			console.log('d');
+		}
+	})
+
+
 });
 
 function getPriority(number)

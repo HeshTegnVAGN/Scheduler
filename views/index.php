@@ -568,7 +568,7 @@ $tasks->done = array_slice($tasks->done, 0 ,8);
                         <input disabled type="range" class="form-range" id="priority" name="edit_priority">
                     </div>
 
-
+										<div id="alt-descr" class ="border border-4 border-dashed descr-show my-3 p-2" name="edit_descr"></div>
 
                     <button type="button" class="btn btn-secondary float-end" data-bs-dismiss="offcanvas">
                         <i class="fi fi-close"></i>
