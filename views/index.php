@@ -268,7 +268,7 @@ $tasks->done = array_slice($tasks->done, 0 ,8);
                                 <?php foreach($user->admissions as $a): ?>
 
                                     <?php if($a['adding']): ?>
-                                        <option value="<?=$a['uid']?>"><?=$a['name']?></option>
+                                        <option value="<?=$a['uid']?>" <?=$did == $a['uid'] ? 'selected' : ''?>><?=$a['name']?></option>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
                             </select>
