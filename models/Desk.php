@@ -14,6 +14,7 @@ class Desk extends DB
 	public bool $edit = true;
 	public bool $comment = true;
 	public bool $add = true;
+	public bool $deadlines = true;
 
 
 	public function __construct($id)
@@ -80,7 +81,7 @@ class Desk extends DB
 		$uid = $_SESSION['user'];
 		if($uid != $id)
 		{
-			$res = $this->conn->query("SELECT adding, edit, comment from user_admissions where user_from = '$id' and user_to = '$uid'");
+			$res = $this->conn->query("SELECT adding, edit, comment, deadlines from user_admissions where user_from = '$id' and user_to = '$uid'");
 			if($res->num_rows < 0)
 			{
 				throw new Exception();
@@ -89,6 +90,7 @@ class Desk extends DB
 			$this->add = $row['adding'] ? true : false;
 			$this->edit = $row['edit'] ? true : false;
 			$this->comment = $row['comment'] ? true : false;
+			$this->deadlines = $row['deadlines'] ? true : false;
 		}
 
 	}
