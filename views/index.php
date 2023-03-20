@@ -214,7 +214,7 @@ $tasks->done = array_slice($tasks->done, 0 ,8);
 <div class="bg-secondary position-sticky top-100 mt-7" style="min-height: 50px;">
     <div class="container text-white">
         <div class="text-center" style="padding-top: .8rem!important;">
-            2023 Tusk Runner
+            2023 TASK RUNNER
         </div>
     </div>
 </div>
