@@ -52,7 +52,7 @@
                     <th>Дата завершения</th>
                     <th>Автор</th>
                     <th>Приоритет</th>
-                    <th>Комментарий</th>
+                    <th>Текст</th>
                 </tr>
             </thead>
 
@@ -64,7 +64,7 @@
                         <td><?=$task->finished_at?></td>
                         <td><?=$task->created_by?></td>
                         <td><?=$task->priority?></td>
-                        <td>[В разработке]</td>
+                        <td><?=$task->text?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
