@@ -79,7 +79,7 @@ if($t1 or $t2 or  $t3)
 						Logo : height: 70px max
 					-->
 					<a class="navbar-brand" href="index.html">
-						<img src="assets/images/logo/logo_dark.svg" width="160" height="60" alt="...">
+						<img src="<?=PATH?>assets/images/logo/logo.png" width="160" height="60" alt="...">
 					</a>
 
 				</div>
@@ -103,18 +103,12 @@ if($t1 or $t2 or  $t3)
 								<?php endforeach; ?>
 							</ul>
 						</div>
+						<hr>
 
 					</li>
 
 					<!-- social icons : mobile only -->
 					<li class="nav-item d-block d-sm-none text-center mb-4">
-
-						<h3 class="h6 text-muted">Follow Us</h3>
-
-						<!-- facebook -->
-						<a href="#" class="btn btn-sm btn-facebook transition-hover-top mb-2 rounded-circle text-white" rel="noopener">
-							<i class="fi fi-social-facebook"></i>
-						</a>
 
 					</li>
 				</ul>
@@ -124,7 +118,7 @@ if($t1 or $t2 or  $t3)
 
 
 			<!-- OPTIONS -->
-            <ul class="mx-1 mb-0">
+            <ul class="mx-1 mb-0 d-none d-md-block">
                 <?php if(isset($counters)): ?>
 									<div class="col">
 										<div class="d-inline-block">

@@ -9,7 +9,7 @@ $tasks->done = array_slice($tasks->done, 0 ,8);
 	<div class="container mb-5">
 
         <div class="row mt-3">
-			<div class="col-6 col-sm-6 col-md-4 mb-4-xs">
+			<div class="col-12 col-md-4 mb-4-xs">
 
 				<div class="bg-secondary rounded-3 task-dark-theme">
 
@@ -88,7 +88,7 @@ $tasks->done = array_slice($tasks->done, 0 ,8);
 				</div>
 
 			</div>
-			<div class="col-6 col-sm-6 col-md-4 mb-4-xs">
+			<div class="col-12  col-md-4 mb-4-xs">
 				<div class="bg-secondary rounded-3">
 					<div class="row mx-0">
 						<div class="col-1 p-3 fi fi-power text-warning fs-5">
@@ -145,7 +145,7 @@ $tasks->done = array_slice($tasks->done, 0 ,8);
                 </div>
 
 			</div>
-			<div class="col-6 col-sm-6 col-md-4">
+			<div class="col-12  col-md-4">
 
 				<div class="bg-secondary rounded-3">
 
