@@ -37,8 +37,8 @@
 
 					<div class="input-group-over">
 						<div class="form-floating mb-3">
-							<input required="" placeholder="Password" id="account_password" name="password" type="password" class="form-control">
-							<label for="account_password">Password</label>
+                            <input required="" placeholder="Password" id="account_password" name="password" type="password" class="form-control">
+							<label for="account_password">Пароль</label>
 						</div>
 
 <!--						<a href="account-simple-signin-password.html" class="btn smaller fw-bold">-->

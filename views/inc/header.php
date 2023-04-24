@@ -10,10 +10,10 @@ if($t1 or $t2 or  $t3)
 ?>
 <!doctype html>
 <!-- <html lang="ar" dir="rtl"> -->
-<html lang="en" dir="ltr">
+<html lang="ru" dir="ltr">
 <head>
 
-	<title>My plan</title>
+	<title>Task Runner</title>
 	<meta name="description" content="...">
 
 	<meta charset="utf-8">
