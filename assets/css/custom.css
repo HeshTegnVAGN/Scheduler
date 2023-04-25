@@ -69,7 +69,6 @@ body.dark-theme>header, body.dark-theme aside
     opacity: .9!important;
 }
 
-
 .card-warning-theme{
     background-color: #ffb9b9!important;
 }
@@ -88,13 +87,13 @@ button#test::before
     content: "";
     background-position: center;
     background-repeat: no-repeat;
-    width: 30px;
+    width: 25px;
     position: absolute;
-    height: 30px;
+    height: 25x;
     z-index: 999;
-    right: 10px;
+    right: 12px;
     background-size: cover;
-    top: 15px;
+    top: 16px;
 }
 
 button#test
