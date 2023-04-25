@@ -81,3 +81,24 @@ body.dark-theme>header, body.dark-theme aside
 .card-low-theme{
     background-color: #c9e7d3!important;
 }
+
+button#test::before
+{
+    background-image: url('https://imdibil.ru/scheduler/assets/images/avatars/eye_b.svg');
+    content: "";
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 30px;
+    position: absolute;
+    height: 30px;
+    z-index: 999;
+    right: 10px;
+    background-size: cover;
+    top: 15px;
+}
+
+button#test
+{
+    padding: 0;
+    border-width: 0;
+}

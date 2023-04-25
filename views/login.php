@@ -30,22 +30,25 @@
 
 
 
-					<div class="form-floating mb-3">
-						<input required="" placeholder="Email" id="account_email" name="email" type="email" class="form-control">
-						<label for="account_email">Email</label>
-					</div>
+                    <div class="form-floating mb-3">
+                        <input required="" placeholder="Email" id="account_email" name="email" type="email" class="form-control">
+                        <label for="account_email">Email</label>
+                    </div>
 
-					<div class="input-group-over">
-						<div class="form-floating mb-3">
+                    <div class="input-group-over position-relative ">
+                        <div class="mb-3 form-floating">
                             <input required="" placeholder="Password" id="account_password" name="password" type="password" class="form-control">
-							<label for="account_password">Пароль</label>
-						</div>
+                            <label for="account_password">Пароль</label>
+                            <button type="button" title="Показать пароль" id="test"></button>
 
-<!--						<a href="account-simple-signin-password.html" class="btn smaller fw-bold">-->
-<!--							RESET?-->
-<!--						</a>-->
+                        </div>
 
-					</div>
+
+                        <!--						<a href="account-simple-signin-password.html" class="btn smaller fw-bold">-->
+                        <!--							RESET?-->
+                        <!--						</a>-->
+
+                    </div>
 
 
 
@@ -75,3 +78,16 @@
 	</div>
 </div>
 
+
+<script>
+    const togglePassword = document.querySelector('#test');
+    const password = document.querySelector('#account_password');
+
+    togglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        // toggle the eye slash icon
+        this.classList.toggle('fa-eye-slash');
+    });
+</script>
