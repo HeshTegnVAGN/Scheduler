@@ -116,9 +116,9 @@ $set = (new \models\DeskSettings()); $set->get($user->id)
 
                 </div>
             </div>
-        <button class="btn-dark-them-click bg-gradient-dark mb-3 mt-4 p-2 rad-10 text-center w-250 text-white border-0">
-            Перейти на тёмную сторону
-        </button>
+<!--        <button class="btn-dark-them-click bg-gradient-dark mb-3 mt-4 p-2 rad-10 text-center w-250 text-white border-0">-->
+<!--            Перейти на тёмную сторону-->
+<!--        </button>-->
             <script>
                 function callback_refresh()
                 {

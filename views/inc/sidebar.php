@@ -52,7 +52,7 @@
                         <span>Личные данные</span>
                     </a>
                 </li>
-
+                <!--
                 <li class="nav-item">
                     <a class="nav-link" href="<?=PATH?>profile/settings">
                         <svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
@@ -61,7 +61,7 @@
                         </svg>
                         <span>Настройки задач</span>
                     </a>
-                </li>
+                </li>-->
                 <li class="nav-item">
                     <a class="nav-link" href="<?=PATH?>profile/notifications">
                         <svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
