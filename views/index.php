@@ -116,10 +116,11 @@ $tasks->done = array_slice($tasks->done, 0 ,8);
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <time class="sow-util-timeago text-secondary fs-7"
-                                                        datetime="<?=$task->updated_at->format('Y-m-d\TH:i:d')?>"
-                                                        data-live="true"
-                                                        data-lang='{
+                                            <div class="col-6">
+																							<time class="sow-util-timeago text-secondary fs-7"
+																										datetime="<?=$task->updated_at->format('Y-m-d\TH:i:d')?>"
+																										data-live="true"
+																										data-lang='{
                                                 "seconds"	 : "Несколько секунд",
                                                 "minute"		: "Около минуты",
                                                 "minutes"	 : "%d минут",
@@ -132,7 +133,13 @@ $tasks->done = array_slice($tasks->done, 0 ,8);
                                                 "year"			: "Около года",
                                                 "years"		 : "%d лет"
                                             }'></time>
+																						</div>
+																					<?php if($task->deadline): ?>
+																						<div class="col-6">
+																							<time class="text-end <?=$task->deadline > new DateTime() ? 'text-success' : 'text-danger'?> fs-7"><?=$task->deadline->format('d.m.y H:i')?></time></div>
+																					<?php endif;?>
                                         </div>
+
                                     </div>
                                     <div class="col-2 py-2 my-auto">
                                         <button class="btn edit-task mx-n3" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"><i class="fi fi-search"></i></button>

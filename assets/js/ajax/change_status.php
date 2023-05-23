@@ -42,6 +42,7 @@ if($task->task->created_by != $_SESSION['user'] and $_POST['status'] == TaskMode
         die();
     }
     try {
+
         sendEmail($user->email, $user->name, 'Задача пользователю '.$resp->name.' выполнена!'.PHP_EOL.'Текст: '.$task->task->text.PHP_EOL, 'Задача выполнена! (#'.$task->id.' '.$task->title);
         file_put_contents(__DIR__.'/0.txt', 'sended', FILE_APPEND);
     } catch (Exception $e)
