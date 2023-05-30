@@ -68,12 +68,12 @@ if($_POST['responsible'] != $_SESSION['user'])
 <body>
     
 
-    <table border="0" cellpadding="0" cellspacing="0" width="600px" style="margin:0; padding:0; background-color:#f8f8f8;color:#000000;font-family:"arial", sans-serif; font-size:16px; margin-right: auto!important; margin-left: auto!important;" class="table">
+    <table border="0" cellpadding="0" cellspacing="0" width="600px" style="padding:0; background-color:#f8f8f8;color:#000000;font-size:16px; margin: 0 auto" class="table">
         <tbody>
             <tr>
                 <td style="padding:60px 45px 60px 45px">
 
-                    <img height="45" src="https://imdibil.ru/scheduler/assets/images/logo/logo.png" width="" style="margin-bottom:15px;margin-left:25px">
+                    <img height="45" src="https://imdibil.ru/scheduler/assets/images/logo/nobg_logo.png" width="" style="margin-bottom:15px;margin-left:25px">
 
                     <table align="center" cellpadding="0" cellspacing="0" width="100%" style="background-color:#fff;border:1px solid #e6e6e6;padding:25px 20px 50px 25px; border-radius: 5px;">
                         <tbody>
@@ -103,11 +103,11 @@ if($_POST['responsible'] != $_SESSION['user'])
                     <table align="center" cellpadding="0" cellspacing="0" width="100%">
                         <tbody>
                             <tr>
-                                <td style="background-image:url(\'/img_1.png\');padding-top:12px"></td>
+                                <td style="background-image:url(\'https://imdibil.ru/scheduler/assets/images/logo/img_1.png\');padding-top:12px"></td>
                             </tr>
 
                             <tr>
-                                <td style="color:#888888; font-family:"arial", sans-serif; font-size:12px; padding-left:30px; padding-right:30px">Пожалуйста, не отвечайте на это письмо. Связаться со службой поддержки Task Runner Вы можете через форму обратной связи в вашем личном кабинете.
+                                <td style="color:#888888; sans-serif; font-size:12px; padding: 0 30px">Пожалуйста, не отвечайте на это письмо. Связаться со службой поддержки Task Runner Вы можете через форму обратной связи в вашем личном кабинете.
                                 </td>
                             </tr>
                         </tbody>
