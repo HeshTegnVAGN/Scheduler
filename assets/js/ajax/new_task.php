@@ -79,21 +79,25 @@ if($_POST['responsible'] != $_SESSION['user'])
                         <tbody>
                             <tr>
                                 <td>
-                                    <p style="color:#000000;font-family:"arial" , sans-serif;font-size:19px; margin-bottom:0;margin-top:16px">
+                                    <p style="color:#000000;font-family: arial, sans-serif; font-size:19px; margin-bottom:0; margin-top:16px>
                                         Вам поставлена новая задача!
                                     </p>
-                                    <p style="color:#000000;font-family:"arial" , sans-serif;font-size:16px; margin-bottom:0;margin-top:16px">
+                                    <p style="color:#000000; font-family: arial, sans-serif; font-size:16px; margin-bottom:0; margin-top:16px;">
                                         Название: '.$task->task->title.'
                                     </p>
-                                    <p style="color:#000000;font-family:"arial" , sans-serif;font-size:16px; margin-bottom:0;margin-top:16px">
+                                    <p style="color:#000000; font-family: arial, sans-serif; font-size:16px; margin-bottom:0; margin-top:16px;">
                                         Дедлайн: <span style="color: rgb(53, 234, 53);">'.$deadline.'</span>
                                     </p>
-                                    <p style="color:#000000;font-family:"arial" , sans-serif;font-size:16px; margin-bottom:0;margin-top:16px">
+                                    <p style="color:#000000;font-family: arial, sans-serif;font-size:16px; margin-bottom:0;margin-top:16px">
                                         Приоритет: '.$prior.'
                                     </p>
-                                    <p style="color:#000000;font-family:"arial" , sans-serif;font-size:16px; margin-bottom:0;margin-top:16px">
-                                        Описание: '.$task->task->text.'
+                                    <p style="color:#000000;font-family: arial, sans-serif;font-size:16px; margin-bottom: 10px; margin-top:16px">
+                                        Описание:
                                     </p>
+                                    
+                                    <div style="background: #e8eaf3; padding: 9px; border-radius: 8px;">
+                                        '.$task->task->text.'
+                                    </div>
 
                                 </td>
                             </tr>
