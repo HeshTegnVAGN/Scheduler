@@ -81,3 +81,8 @@ body.dark-theme>header, body.dark-theme aside
 .card-low-theme{
     background-color: #c9e7d3!important;
 }
+
+#wrapper
+{
+    display: flex;
+}
