@@ -82,7 +82,7 @@
         </table>
 
         <div class="mt-3 w-250 bg-warning mb-3 p-2 rad-10 text-center">
-            <a class="text-white" href="https://imdibil.ru/scheduler/">Добавить задачу</a>
+            <a class="text-white" href="https://scheduler.imdibil.ru/">Добавить задачу</a>
         </div>
 
     </main>

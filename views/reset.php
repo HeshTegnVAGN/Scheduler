@@ -34,7 +34,7 @@
         function callback3()
         {
             setTimeout(()=>{
-                window.location.href = "https://imdibil.ru/scheduler/login";
+                window.location.href = "https://scheduler.imdibil.ru/login";
             }, 3000)
         }
     </script>

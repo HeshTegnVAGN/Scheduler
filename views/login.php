@@ -58,7 +58,7 @@
 						</div>
 
 						<div class="col-12 col-md-6 mt-4 text-align-end text-center-xs">
-							<a href="/scheduler/signup" class="btn px-0 link-normal">
+							<a href="/signup" class="btn px-0 link-normal">
 								Не зарегистрированы?
 							</a>
 						</div>
@@ -68,7 +68,7 @@
 				</form>
 
 			</div>
-            <a href="/scheduler/reset" class="text-center mt-2">Забыли пароль?</a>
+            <a href="/reset" class="text-center mt-2">Забыли пароль?</a>
 
 		</div>
 

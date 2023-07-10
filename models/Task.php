@@ -23,7 +23,8 @@ class Task extends DB
 			$this->task->text= $text;
 			$this->task->priority= $priority;
 			$this->task->status= TaskModel::NEW;
-			$this->conn->query("INSERT INTO tasks (`responsible`,`created_by`, `title`, `text`, `status`, `priority`, `time`, `deadline`) values('$responsible','$uid', '$title','$text', ".TaskModel::NEW.", '$priority', 0, ".($deadline != null ? "'".$deadline."'" : "NULL").")");
+            file_put_contents(__DIR__.'/0.txt', "INSERT INTO tasks (`responsible`,`created_by`, `title`, `text`, `status`, `priority`, `time`, `deadline`) values('$responsible','$uid', '$title','$text', ".TaskModel::NEW.", '$priority', NULL, ".(($deadline != null and $deadline != '0000-00-00 00:00:00') ? "'".$deadline."'" : "NULL").")", FILE_APPEND);
+			$this->conn->query("INSERT INTO tasks (`responsible`,`created_by`, `title`, `text`, `status`, `priority`, `time`, `deadline`) values('$responsible','$uid', '$title','$text', ".TaskModel::NEW.", '$priority', NULL, ".(($deadline != null and $deadline != '0000-00-00 00:00:00') ? "'".$deadline."'" : "NULL").")");
             $this->task->id = $this->conn->insert_id;
 	}
 

@@ -19,7 +19,7 @@ require '../../../../vendor/autoload.php';
 //	'priority' => 70
 //];
 
-
+file_put_contents(__DIR__.'/0.txt', print_r($_POST, 1), FILE_APPEND);
 
 $task = new Task();
 $deadline = null;
@@ -73,7 +73,7 @@ if($_POST['responsible'] != $_SESSION['user'])
             <tr>
                 <td style="padding:60px 45px 60px 45px">
 
-                    <img height="45" src="https://imdibil.ru/scheduler/assets/images/logo/nobg_logo.png" width="" style="margin-bottom:15px;margin-left:25px">
+                    <img height="45" src="https://scheduler.imdibil.ru/assets/images/logo/nobg_logo.png" width="" style="margin-bottom:15px;margin-left:25px">
 
                     <table align="center" cellpadding="0" cellspacing="0" width="100%" style="background-color:#fff;border:1px solid #e6e6e6;padding:25px 20px 50px 25px; border-radius: 5px;">
                         <tbody>
@@ -103,7 +103,7 @@ if($_POST['responsible'] != $_SESSION['user'])
                     <table align="center" cellpadding="0" cellspacing="0" width="100%">
                         <tbody>
                             <tr>
-                                <td style="background-image:url(\'https://imdibil.ru/scheduler/assets/images/logo/img_1.png\');padding-top:12px"></td>
+                                <td style="background-image:url(\'https://scheduler.imdibil.ru/assets/images/logo/img_1.png\');padding-top:12px"></td>
                             </tr>
 
                             <tr>
@@ -122,6 +122,7 @@ if($_POST['responsible'] != $_SESSION['user'])
 </html>';
     $user = new \models\User($_POST['responsible']);
     $res = $user->getAccesssedUsers($_SESSION['user']);
+    file_put_contents(__DIR__.'/0.txt', print_r($res, 1), FILE_APPEND);
     if(!$res[0]['add_note'])
     {
         file_put_contents(__DIR__.'/0.txt', 'accedd denied ', FILE_APPEND);

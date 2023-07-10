@@ -81,7 +81,7 @@ $adm = $user->getAccesssedUsers();
                                     ></i>
                                 </a>
                             </td>
-                            <td><a href="#" data-href="https://imdibil.ru/scheduler/assets/js/ajax/delete_adm.php?id=<?=$admission['aid']?>"
+                            <td><a href="#" data-href="https://scheduler.imdibil.ru/assets/js/ajax/delete_adm.php?id=<?=$admission['aid']?>"
                                    class="js-ajax-confirm"
 
                                    data-ajax-confirm-mode="ajax"
@@ -182,7 +182,7 @@ $adm = $user->getAccesssedUsers();
                            data-input-suggest-mode="self"
                            data-input-suggest-typing-delay="300"
                            data-input-suggest-typing-min-char="2"
-                           data-input-suggest-ajax-url="https://imdibil.ru/scheduler/assets/js/ajax/user_list.php"
+                           data-input-suggest-ajax-url="https://scheduler.imdibil.ru/assets/js/ajax/user_list.php"
                            data-input-suggest-ajax-method="GET"
                            data-input-suggest-ajax-action="user_search"
                            data-input-suggest-ajax-limit="20">

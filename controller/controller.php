@@ -21,16 +21,18 @@ require ROOT.'models/Desk.php';
 $uri = explode('/',$_SERVER['REQUEST_URI']);
 $GLOBALS['sitemap'] = array (
 	'_404' => 'page404.php',   // Страница 404</span>
-	'' => 'index.php',   // Главная страница
-	'profile/?' => 'profile/index.php',
-	'profile/settings' => 'profile/settings.php',
-	'profile/blog' => 'profile/blog.php',
-	'profile/access' => 'profile/access.php',
-	'profile/history' => 'profile/history.php',
-	'profile/export' => 'profile/export.php',
-	'profile/design' => 'profile/design.php',
-	'profile/notifications' => 'profile/notifications.php',
-	'desk/?(.*)?' => 'index.php'
+	'/' => 'index.php',   // Главная страница,
+	'' => 'index.php',   // Главная страница,
+//    '/login' => 'controller/login.php',
+	'/profile/?' => 'profile/index.php',
+	'/profile/settings' => 'profile/settings.php',
+	'/profile/blog' => 'profile/blog.php',
+	'/profile/access' => 'profile/access.php',
+	'/profile/history' => 'profile/history.php',
+	'/profile/export' => 'profile/export.php',
+	'/profile/design' => 'profile/design.php',
+	'/profile/notifications' => 'profile/notifications.php',
+	'/desk/?(.*)?' => 'index.php'
 
 	// Больше правил
 );
@@ -58,14 +60,12 @@ class uSitemap {
 
 		$map = &$GLOBALS['sitemap'];
 		$this->request_uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-		$this->url_info = parse_url($this->request_uri);
-		$uri = urldecode($this->url_info['path']);
-		//echo $uri.'<br>';
+        $this->url_info = parse_url($this->request_uri);
+        $uri = urldecode($this->url_info['path']);
+        //echo $uri.'<br>';
 		$data = false;
 		foreach ($map as $term => $dd) {
 			$match = array();
-			$term = '/scheduler/'.$term;
-			
 			$i = preg_match('@^'.$term.'$@Uu', $uri, $match);
 			if ($i > 0) {
 				// Get class name and main title part
@@ -101,38 +101,47 @@ class uSitemap {
 		return $this;
 	}
 }
+//$_SESSION['user'] = 45;
 $sm = new uSitemap();
 $routed_file = $sm->classname; // Получаем имя файла для подключения через require()
 $did = trim($sm->params[1], '/') ?: $_SESSION['user'];
+
+
+
+//dd($did);
 if(!$routed_file)
 {
-	$routed_file = $page = $uri[2].'.php';
+    $routed_file = $page = $uri[1].'.php';
 }
+
 $db = new DB();
+
+
 if(!in_array($routed_file, ['login.php', 'signup.php', 'reset.php']))
 {
     if(!($_SESSION['user']))
     {
         ob_start();
 
-        header("Location: https://imdibil.ru/scheduler/login");
+        header("Location: https://scheduler.imdibil.ru/login");
 
         ob_end_flush();
     }
+
 	$user = new User($_SESSION['user']);
 	$adm = $user->getAccesssedUsers();
     $set = new \models\DeskSettings();
     $set->get($did);
     if($set->picture and $routed_file == 'index.php')
     {
-        echo "<style>body{background: url(https://imdibil.ru/scheduler/assets/images/uploads/".$set->picture.") no-repeat; background-size: cover; background-attachment: fixed; }</style>";
+        echo "<style>body{background: url(https://scheduler.imdibil.ru/assets/images/uploads/".$set->picture.") no-repeat; background-size: cover; background-attachment: fixed; }</style>";
     }
 }
 $tasks = new \models\Desk($did);
+require ROOT . 'views/inc/header.php';
 
-
-include ROOT . 'views/inc/header.php';
 //die('s');
+
 if(!file_exists(ROOT.'views/'.$routed_file))
 {
 	die(ROOT.'views/'.$routed_file);

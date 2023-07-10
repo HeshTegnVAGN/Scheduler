@@ -208,7 +208,7 @@ $tasks->done = array_slice($tasks->done, 0 ,8);
                             <?php endforeach; ?>
                         </div>
                         <div class="bg-warning mt-3 mx-3 mx-auto py-2 rounded-3 text-center w-50">
-                            <a href="https://imdibil.ru/scheduler/profile/history" class="text-white">Предыдущие</a>
+                            <a href="https://scheduler.imdibil.ru/profile/history" class="text-white">Предыдущие</a>
                         </div>
                     </div>
 
@@ -601,7 +601,7 @@ $tasks->done = array_slice($tasks->done, 0 ,8);
                 NOTE: WE USE method="GET" insted of "POST" because this is a pure html demo
             -->
             <form class="js-ajax bs-validate p-4" novalidate
-                  action="https://imdibil.ru/scheduler/assets/js/ajax/new_comment.php"
+                  action="https://scheduler.imdibil.ru/assets/js/ajax/new_comment.php"
                   method="POST"
 
                   data-ajax-inline-alert-succes="#alert_success"

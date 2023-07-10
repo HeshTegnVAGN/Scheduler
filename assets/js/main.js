@@ -62,7 +62,7 @@ $(document).ready(function () {
 				}
 				$.ajax(
 					{
-						url: 'https://imdibil.ru/scheduler/assets/js/ajax/change_status.php',
+						url: 'https://scheduler.imdibil.ru/assets/js/ajax/change_status.php',
 						method: 'post',
 						data: {id: id, status: 2},
 						success: function (ans) {
@@ -181,7 +181,7 @@ $(document).ready(function () {
 		let id = $(this).parents('.list-item').data('id');
 		$.ajax(
 			{
-				url: 'https://imdibil.ru/scheduler/assets/js/ajax/get_task.php',
+				url: 'https://scheduler.imdibil.ru/assets/js/ajax/get_task.php',
 				method: 'post',
 				data: {id: id},
 				success: function (ans) {
@@ -214,7 +214,7 @@ $(document).ready(function () {
 						$('.com-block').append('<div class="border border-light rounded p-4">' +
 							'<div class="row">\n' +
 							'<div class="col-md-3 text-center">\n' +
-							'<div class="avatar avatar-lg rounded-circle" style="background-image:url(https://imdibil.ru/scheduler/assets/images/avatars/av.png)"></div>\n' +
+							'<div class="avatar avatar-lg rounded-circle" style="background-image:url(https://scheduler.imdibil.ru/assets/images/avatars/av.png)"></div>\n' +
 							'<p class="text-gray-900">\n' +
 							'<span class="d-block fw-medium">'+comment.user_name+'</span>\n' +
 							'</p>\n' +
@@ -245,7 +245,7 @@ $(document).ready(function () {
 		e.preventDefault();
 		let email = $(this).find('input').val();
 		$.ajax({
-			url: 'https://imdibil.ru/scheduler/assets/js/ajax/reset_send.php',
+			url: 'https://scheduler.imdibil.ru/assets/js/ajax/reset_send.php',
 			method: 'post',
 			data: {email: email},
 			success: function ()

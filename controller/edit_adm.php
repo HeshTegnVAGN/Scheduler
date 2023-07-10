@@ -14,5 +14,5 @@ $deadlines = $_POST['deadlines'] ?: 0;
 
 
 $db->conn->query("UPDATE user_admissions set adding = '$add', comment = '$comment', edit = '$edit', deadlines = '$deadlines' where id = '$id'");
-header('Location: https://imdibil.ru/scheduler/profile/access');
+header('Location: https://scheduler.imdibil.ru/profile/access');
 

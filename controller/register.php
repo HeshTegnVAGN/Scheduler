@@ -16,7 +16,7 @@ $rr = $bd->conn->query("SELECT * from users where email = '{$_POST['email']}'");
 if($rr->num_rows > 0)
 {
 	$_SESSION['error'] = 'Пользователь с таким email уже зарегистрирован';
-	header("Location: https://imdibil.ru/scheduler/signup");
+	header("Location: https://scheduler.imdibil.ru/signup");
 	die();
 
 }

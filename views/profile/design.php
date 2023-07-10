@@ -32,11 +32,11 @@ $set = (new \models\DeskSettings()); $set->get($user->id)
                                data-file-preview-img-cover="false"
 
                                data-file-ajax-upload-enable="true"
-                               data-file-ajax-upload-url="https://imdibil.ru/scheduler/assets/js/ajax/upload_image.php"
+                               data-file-ajax-upload-url="https://scheduler.imdibil.ru/assets/js/ajax/upload_image.php"
                                data-file-ajax-upload-params="['action','upload']['param2','value2']"
 
                                data-file-ajax-delete-enable="true"
-                               data-file-ajax-delete-url="https://imdibil.ru/scheduler/assets/js/ajax/delete_image.php"
+                               data-file-ajax-delete-url="https://scheduler.imdibil.ru/assets/js/ajax/delete_image.php"
                                data-file-ajax-delete-params="['action','delete_file']"
 
 
@@ -90,7 +90,7 @@ $set = (new \models\DeskSettings()); $set->get($user->id)
                                     It's adjusted if not set but there is a small delay so height is recommended to avoid "jump" effect!
 
                                 -->
-                        <img height="120" src="https://imdibil.ru/scheduler/assets/images/uploads/<?=$set->picture?>" alt="...">
+                        <img height="120" src="https://scheduler.imdibil.ru/assets/images/uploads/<?=$set->picture?>" alt="...">
 
                     </span>
                         <?php endif; ?>
@@ -100,7 +100,7 @@ $set = (new \models\DeskSettings()); $set->get($user->id)
                 </div>
                 <div class="col-3">
                     <div class="checkgroup"
-                         data-checkgroup-ajax-url="https://imdibil.ru/scheduler/assets/js/ajax/user_settings.php"
+                         data-checkgroup-ajax-url="https://scheduler.imdibil.ru/assets/js/ajax/user_settings.php"
                          data-checkgroup-ajax-method="POST"
                          data-checkgroup-ajax-params="['method','fill']"
                          data-checkgroup-ajax-toast-success="Сохранено!"

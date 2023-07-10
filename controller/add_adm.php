@@ -8,14 +8,14 @@ $db = new DB();
 
 if(!$_POST['name'])
 {
-    header('Location: https://imdibil.ru/scheduler/profile/access');
+    header('Location: https://scheduler.imdibil.ru/profile/access');
 }
 $email = $_POST['name'];
 $res = $db->conn->query("SELECT id from users where email = '$email'");
 
 if($res->num_rows == 0)
 {
-    header('Location: https://imdibil.ru/scheduler/profile/access');
+    header('Location: https://scheduler.imdibil.ru/profile/access');
 }
 
 $id = ($res->fetch_assoc())['id'];
@@ -28,11 +28,11 @@ if($check->num_rows > 0)
 {
     $id_a = ($check->fetch_assoc())['id'];
     $db->conn->query("UPDATE user_admissions set `adding` = '$add', `edit` = '$edit', `comment` = '$comment' where id = '$id_a'");
-    header('Location: https://imdibil.ru/scheduler/profile/access');
+    header('Location: https://scheduler.imdibil.ru/profile/access');
     die();
 }
 
 $db->conn->query("INSERT INTO `user_admissions`(`user_from`, `user_to`, `adding`, `edit`, `comment`) 
 VALUES ('$from', '$id','$add','$edit','$comment')");
 
-header('Location: https://imdibil.ru/scheduler/profile/access');
+header('Location: https://scheduler.imdibil.ru/profile/access');

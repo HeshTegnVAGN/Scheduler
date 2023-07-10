@@ -28,4 +28,4 @@ elseif($_POST['type'] == 'finished'){
     $finish = $_POST['finished'] ?: 0;
     $db->conn->query("UPDATE user_admissions set finish_note = '$finish' where id = '$id'");
 }
-header('Location: https://imdibil.ru/scheduler/profile/notifications');
+header('Location: https://scheduler.imdibil.ru/profile/notifications');

@@ -1,5 +1,7 @@
 <?php
 
+//ini_set('display_errors', 1);
+//error_reporting(E_ALL);
 $t1 = count($tasks->new);
 $t2 = count($tasks->work);
 $t3 = count($tasks->done);
@@ -36,189 +38,191 @@ if($t1 or $t2 or  $t3)
 </head>
 
 <?php if(!in_array($routed_file, ['login.php', 'signup.php', 'reset.php'])): ?>
-    <body class="header-sticky header-fixed <?=str_contains($routed_file, 'profile') ? 'aside-start aside-sticky' : ''?>">
+    <body class="header-sticky header-fixed <?=strpos($routed_file, 'profile') === true ? 'aside-start aside-sticky' : ''?>">
     <header id="header" class="shadow-dark-sm ">
 
 
-	<!-- Navbar -->
-	<div class="container position-relative">
+        <!-- Navbar -->
+        <div class="container position-relative">
 
-		<!-- /SEARCH -->
-		<nav class="navbar navbar-expand-lg navbar-light justify-content-lg-between justify-content-md-inherit">
-			<div class="align-items-start">
+            <!-- /SEARCH -->
+            <nav class="navbar navbar-expand-lg navbar-light justify-content-lg-between justify-content-md-inherit">
+                <div class="align-items-start">
 
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainNav" aria-controls="navbarMainNav" aria-expanded="false" aria-label="Toggle navigation">
-					<svg width="25" viewBox="0 0 20 20">
-						<path d="M 19.9876 1.998 L -0.0108 1.998 L -0.0108 -0.0019 L 19.9876 -0.0019 L 19.9876 1.998 Z"></path>
-						<path d="M 19.9876 7.9979 L -0.0108 7.9979 L -0.0108 5.9979 L 19.9876 5.9979 L 19.9876 7.9979 Z"></path>
-						<path d="M 19.9876 13.9977 L -0.0108 13.9977 L -0.0108 11.9978 L 19.9876 11.9978 L 19.9876 13.9977 Z"></path>
-						<path d="M 19.9876 19.9976 L -0.0108 19.9976 L -0.0108 17.9976 L 19.9876 17.9976 L 19.9876 19.9976 Z"></path>
-					</svg>
-				</button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainNav" aria-controls="navbarMainNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <svg width="25" viewBox="0 0 20 20">
+                            <path d="M 19.9876 1.998 L -0.0108 1.998 L -0.0108 -0.0019 L 19.9876 -0.0019 L 19.9876 1.998 Z"></path>
+                            <path d="M 19.9876 7.9979 L -0.0108 7.9979 L -0.0108 5.9979 L 19.9876 5.9979 L 19.9876 7.9979 Z"></path>
+                            <path d="M 19.9876 13.9977 L -0.0108 13.9977 L -0.0108 11.9978 L 19.9876 11.9978 L 19.9876 13.9977 Z"></path>
+                            <path d="M 19.9876 19.9976 L -0.0108 19.9976 L -0.0108 17.9976 L 19.9876 17.9976 L 19.9876 19.9976 Z"></path>
+                        </svg>
+                    </button>
 
-				<!-- navbar : brand (logo) -->
-				<a class="navbar-brand" href="<?=PATH?>">
-					<img src="<?=PATH?>assets/images/logo/logo.png" width="150" height="55" alt="...">
-				</a>
+                    <!-- navbar : brand (logo) -->
+                    <a class="navbar-brand" href="<?=PATH?>">
+                        <img src="<?=PATH?>assets/images/logo/logo.png" width="150" height="55" alt="...">
+                    </a>
 
-			</div>
-			<div class="collapse navbar-collapse navbar-animate-fadein" id="navbarMainNav">
+                </div>
+                <div class="collapse navbar-collapse navbar-animate-fadein" id="navbarMainNav">
 
-				<!-- navbar : mobile menu -->
-				<div class="navbar-xs d-none"><!-- .sticky-top -->
+                    <!-- navbar : mobile menu -->
+                    <div class="navbar-xs d-none"><!-- .sticky-top -->
 
-					<!-- mobile menu button : close -->
-					<button class="navbar-toggler pt-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainNav" aria-controls="navbarMainNav" aria-expanded="false" aria-label="Toggle navigation">
-						<svg width="20" viewBox="0 0 20 20">
-							<path d="M 20.7895 0.977 L 19.3752 -0.4364 L 10.081 8.8522 L 0.7869 -0.4364 L -0.6274 0.977 L 8.6668 10.2656 L -0.6274 19.5542 L 0.7869 20.9676 L 10.081 11.679 L 19.3752 20.9676 L 20.7895 19.5542 L 11.4953 10.2656 L 20.7895 0.977 Z"></path>
-						</svg>
-					</button>
+                        <!-- mobile menu button : close -->
+                        <button class="navbar-toggler pt-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainNav" aria-controls="navbarMainNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <svg width="20" viewBox="0 0 20 20">
+                                <path d="M 20.7895 0.977 L 19.3752 -0.4364 L 10.081 8.8522 L 0.7869 -0.4364 L -0.6274 0.977 L 8.6668 10.2656 L -0.6274 19.5542 L 0.7869 20.9676 L 10.081 11.679 L 19.3752 20.9676 L 20.7895 19.5542 L 11.4953 10.2656 L 20.7895 0.977 Z"></path>
+                            </svg>
+                        </button>
 
-					<!--
-						Mobile Menu Logo
-						Logo : height: 70px max
-					-->
-					<a class="navbar-brand" href="index.html">
-						<img src="<?=PATH?>assets/images/logo/logo.png" width="160" height="60" alt="...">
-					</a>
+                        <!--
+                            Mobile Menu Logo
+                            Logo : height: 70px max
+                        -->
+                        <a class="navbar-brand" href="index.html">
+                            <img src="<?=PATH?>assets/images/logo/logo.png" width="160" height="60" alt="...">
+                        </a>
 
-				</div>
-				<!-- /navbar : mobile menu -->
+                    </div>
+                    <!-- /navbar : mobile menu -->
 
-				<!-- navbar : navigation -->
-				<ul class="navbar-nav">
+                    <!-- navbar : navigation -->
+                    <ul class="navbar-nav">
 
-					<!-- home -->
-					<li class="nav-item dropdown active">
+                        <!-- home -->
+                        <li class="nav-item dropdown active">
 
-						<a href="https://imdibil.ru/scheduler/" id="mainNavHome" class="nav-link dropdown-toggle js-stoppropag" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Доски
-						</a>
+                            <a href="https://scheduler.imdibil.ru/" id="mainNavHome" class="nav-link dropdown-toggle js-stoppropag" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Доски
+                            </a>
 
-						<div aria-labelledby="mainNavBlog" class="dropdown-menu dropdown-menu-clean dropdown-menu-hover dropdown-fadeinup">
-							<ul class="list-unstyled m-0 p-0">
-								<li class="dropdown-item fw-bold"><a class="dropdown-link" href="<?=PATH?>">Моя доска</a></li>
-								<?php foreach($user->admissions	 as $a): ?>
-									<li class="dropdown-item"><a class="dropdown-link" href="<?=PATH?>desk/<?=$a['uid']?>"><?=$a['name']?></a></li>
-								<?php endforeach; ?>
-							</ul>
-						</div>
-						<hr>
+                            <div aria-labelledby="mainNavBlog" class="dropdown-menu dropdown-menu-clean dropdown-menu-hover dropdown-fadeinup">
+                                <ul class="list-unstyled m-0 p-0">
+                                    <li class="dropdown-item fw-bold"><a class="dropdown-link" href="<?=PATH?>">Моя доска</a></li>
+                                    <?php foreach($user->admissions	 as $a): ?>
+                                        <li class="dropdown-item"><a class="dropdown-link" href="<?=PATH?>desk/<?=$a['uid']?>"><?=$a['name']?></a></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                            <hr>
 
-					</li>
+                        </li>
 
-					<!-- social icons : mobile only -->
-					<li class="nav-item d-block d-sm-none text-center mb-4">
+                        <!-- social icons : mobile only -->
+                        <li class="nav-item d-block d-sm-none text-center mb-4">
 
-					</li>
-				</ul>
-				<!-- /navbar : navigation -->
+                        </li>
+                    </ul>
+                    <!-- /navbar : navigation -->
 
-			</div>
+                </div>
 
 
-			<!-- OPTIONS -->
-            <ul class="mx-1 mb-0 d-none d-md-block">
-                <?php if(isset($counters)): ?>
-									<div class="col">
-										<div class="d-inline-block">
-											<div class="row text-center mb-2">
-												<div class="col-auto h-100 py-2 px-lg-3 px-xl-4 lh-sm text-dark">
-													<span class="fs-6"><?=$t1?></span>
-													<p class="small mb-0">В очереди</p>
-												</div>
-												<div class="col-auto h-100 py-2 px-lg-3 px-xl-4 border-start lh-sm text-muted">
-													<span class="fs-6"><?=$t2?></span>
-													<p class="small mb-0">В работе</p>
-												</div>
-												<div class="col-auto h-100 py-2 px-lg-3 px-xl-4 border-start lh-sm text-success">
-													<span class="fs-6"><?=$t3?></span>
-													<p class="small mb-0">Выполнено</p>
-												</div>
-											</div>
+                <!-- OPTIONS -->
+                <ul class="mx-1 mb-0 d-none d-md-block">
+                    <?php if(isset($counters)): ?>
+                        <div class="col">
+                            <div class="d-inline-block">
+                                <div class="row text-center mb-2">
+                                    <div class="col-auto h-100 py-2 px-lg-3 px-xl-4 lh-sm text-dark">
+                                        <span class="fs-6"><?=$t1?></span>
+                                        <p class="small mb-0">В очереди</p>
+                                    </div>
+                                    <div class="col-auto h-100 py-2 px-lg-3 px-xl-4 border-start lh-sm text-muted">
+                                        <span class="fs-6"><?=$t2?></span>
+                                        <p class="small mb-0">В работе</p>
+                                    </div>
+                                    <div class="col-auto h-100 py-2 px-lg-3 px-xl-4 border-start lh-sm text-success">
+                                        <span class="fs-6"><?=$t3?></span>
+                                        <p class="small mb-0">Выполнено</p>
+                                    </div>
+                                </div>
 
-											<!-- project progress -->
-											<div class="progress" style="height: 4px;">
-												<div class="progress-bar bg-warning" role="progressbar" style="width: <?=($t3/($t1+$t2+$t3))*100?>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-											</div>
-										</div>
-									</div>
-<?php endif; ?>
-            </ul>
-			<ul class="list-inline list-unstyled mb-0 d-flex align-items-end">
+                                <!-- project progress -->
+                                <div class="progress" style="height: 4px;">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: <?=($t3/($t1+$t2+$t3))*100?>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </ul>
+                <ul class="list-inline list-unstyled mb-0 d-flex align-items-end">
 
-				<li class="list-inline-item mx-1 dropdown">
+                    <li class="list-inline-item mx-1 dropdown">
 
-					<a href="#" aria-label="Account Options" id="dropdownAccountOptions" class="btn btn-sm rounded-circle btn-light bg-transparent text-muted shadow-none js-stoppropag" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                        <a href="#" aria-label="Account Options" id="dropdownAccountOptions" class="btn btn-sm rounded-circle btn-light bg-transparent text-muted shadow-none js-stoppropag" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
 									<span class="group-icon">
 										<i class="fi fi-user-male"></i>
 										<i class="fi fi-close"></i>
 									</span>
-					</a>
+                        </a>
 
 
-					<!--
+                        <!--
 
-						Dropdown Classes
-							.dropdown-menu-dark 		- dark dropdown (desktop only, will be white on mobile)
-							.dropdown-menu-hover 		- open on hover
-							.dropdown-menu-clean 		- no background color on hover
-							.dropdown-menu-invert 		- open dropdown in oposite direction (left|right, according to RTL|LTR)
-							.dropdown-click-ignore 		- keep dropdown open on inside click (useful on forms inside dropdown)
+                            Dropdown Classes
+                                .dropdown-menu-dark 		- dark dropdown (desktop only, will be white on mobile)
+                                .dropdown-menu-hover 		- open on hover
+                                .dropdown-menu-clean 		- no background color on hover
+                                .dropdown-menu-invert 		- open dropdown in oposite direction (left|right, according to RTL|LTR)
+                                .dropdown-click-ignore 		- keep dropdown open on inside click (useful on forms inside dropdown)
 
-							Dropdown prefix icon (optional, if enabled in variables.scss)
-								.prefix-link-icon .prefix-icon-dot 		- link prefix
-								.prefix-link-icon .prefix-icon-line 	- link prefix
-								.prefix-link-icon .prefix-icon-ico 		- link prefix
-								.prefix-link-icon .prefix-icon-arrow 	- link prefix
+                                Dropdown prefix icon (optional, if enabled in variables.scss)
+                                    .prefix-link-icon .prefix-icon-dot 		- link prefix
+                                    .prefix-link-icon .prefix-icon-line 	- link prefix
+                                    .prefix-link-icon .prefix-icon-ico 		- link prefix
+                                    .prefix-link-icon .prefix-icon-arrow 	- link prefix
 
-								.prefix-icon-ignore 					- ignore, do not use on a specific link
+                                    .prefix-icon-ignore 					- ignore, do not use on a specific link
 
-					-->
-					<!-- dropdown -->
-					<div aria-labelledby="dropdownAccountOptions" class="list-unstyled dropdown-menu dropdown-menu-clean dropdown-click-ignore end-0 py-2 rounded-xl" style="min-width:215px;">
+                        -->
+                        <!-- dropdown -->
+                        <div aria-labelledby="dropdownAccountOptions" class="list-unstyled dropdown-menu dropdown-menu-clean dropdown-click-ignore end-0 py-2 rounded-xl" style="min-width:215px;">
 
-						<div class="dropdown-header px-4 mb-1 text-wrap fw-medium"><?=$user->name?></div>
-						<div class="dropdown-divider mb-3"></div>
-						<a class="dropdown-item active" href="/scheduler/profile">
-							<svg class="text-gray-600 float-start" width="18px" height="18px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-								<path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"></path>
-								<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"></path>
-							</svg>
-							<span>Мой аккакунт</span>
-						</a>
-						<a class="dropdown-item" href="https://imdibil.ru/scheduler/profile/access">
-							<svg class="text-gray-600 float-start" width="18px" height="18px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-								<path fill-rule="evenodd" d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"></path>
-								<path fill-rule="evenodd" d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zm4.354 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"></path>
-							</svg>
-							<span>Мои доски</span>
-						</a>
+                            <div class="dropdown-header px-4 mb-1 text-wrap fw-medium"><?=$user->name?></div>
+                            <div class="dropdown-divider mb-3"></div>
+                            <a class="dropdown-item active" href="/profile">
+                                <svg class="text-gray-600 float-start" width="18px" height="18px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"></path>
+                                    <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"></path>
+                                </svg>
+                                <span>Мой аккакунт</span>
+                            </a>
+                            <a class="dropdown-item" href="https://scheduler.imdibil.ru/profile/access">
+                                <svg class="text-gray-600 float-start" width="18px" height="18px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"></path>
+                                    <path fill-rule="evenodd" d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zm4.354 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"></path>
+                                </svg>
+                                <span>Мои доски</span>
+                            </a>
 
-						<a class="dropdown-item" href="https://imdibil.ru/scheduler/profile/design">
-							<svg class="text-gray-600 float-start" width="18px" height="18px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-								<path fill-rule="evenodd" d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z"></path>
-							</svg>
-							<span>Настройки</span>
-						</a>
-						<div class="dropdown-divider mt-3"></div>
-						<a href="<?=PATH?>logout" title="Log Out" class="dropdown-item mt-1">
-							<i class="fi fi-power float-start"></i>
-							Выйти
-						</a>
-					</div>
+                            <a class="dropdown-item" href="https://scheduler.imdibil.ru/profile/design">
+                                <svg class="text-gray-600 float-start" width="18px" height="18px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z"></path>
+                                </svg>
+                                <span>Настройки</span>
+                            </a>
+                            <div class="dropdown-divider mt-3"></div>
+                            <a href="<?=PATH?>logout" title="Log Out" class="dropdown-item mt-1">
+                                <i class="fi fi-power float-start"></i>
+                                Выйти
+                            </a>
+                        </div>
 
-				</li>
+                    </li>
 
-			</ul>
-			<!-- /OPTIONS -->
+                </ul>
+                <!-- /OPTIONS -->
 
-		</nav>
+            </nav>
 
-	</div>
-	<!-- /Navbar -->
+        </div>
+        <!-- /Navbar -->
 
-</header>
+    </header>
 <?php else: ?>
 <body>
 <?php endif; ?>
+
+
