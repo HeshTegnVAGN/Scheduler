@@ -32,7 +32,8 @@ $GLOBALS['sitemap'] = array (
 	'/profile/export' => 'profile/export.php',
 	'/profile/design' => 'profile/design.php',
 	'/profile/notifications' => 'profile/notifications.php',
-	'/desk/?(.*)?' => 'index.php'
+    '/desk/?(.*)?/history' => 'profile/history.php',
+	'/desk/?(.*)?' => 'index.php',
 
 	// Больше правил
 );
@@ -101,11 +102,11 @@ class uSitemap {
 		return $this;
 	}
 }
+
 //$_SESSION['user'] = 45;
 $sm = new uSitemap();
 $routed_file = $sm->classname; // Получаем имя файла для подключения через require()
 $did = trim($sm->params[1], '/') ?: $_SESSION['user'];
-
 
 
 //dd($did);

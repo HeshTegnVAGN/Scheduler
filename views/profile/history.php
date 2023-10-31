@@ -1,5 +1,5 @@
 <div id="wrapper">
-    <?php include ROOT.'views/inc/sidebar.php';  $ts = new \models\TaskService(); $tasks = $ts->getFinishedMonth($user->id)?>
+    <?php include ROOT.'views/inc/sidebar.php';  $ts = new \models\TaskService(); $tasks = $ts->getFinishedMonth($did)?>
     <main class="w-100 container">
         <div class="container p-3 py-4">
             <h2>История</h2>
