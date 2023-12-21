@@ -51,7 +51,7 @@ class Desk extends DB
 					$diff = (new \DateTime('now', new DateTimeZone('Europe/Moscow')))->diff($task->created_at);
                     if($row['created_by'] != $_SESSION['user'])
                     {
-                        $res1 = $this->conn->query("SELECT `name`, `email` from users where id = '{$_SESSION['user']}'");
+                        $res1 = $this->conn->query("SELECT `name`, `email` from users_sched where id = '{$_SESSION['user']}'");
                         $user = $res1->fetch_object();
                         $task->author = $user->name; //." (".$user->email.")"
                     }

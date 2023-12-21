@@ -23,9 +23,9 @@ class Task extends DB
 			$this->task->text= $text;
 			$this->task->priority= $priority;
 			$this->task->status= TaskModel::NEW;
-            file_put_contents(__DIR__.'/0.txt', "INSERT INTO tasks (`responsible`,`created_by`, `title`, `text`, `status`, `priority`, `time`, `deadline`) values('$responsible','$uid', '$title','$text', ".TaskModel::NEW.", '$priority', NULL, ".(($deadline != null and $deadline != '0000-00-00 00:00:00') ? "'".$deadline."'" : "NULL").")", FILE_APPEND);
 			$this->conn->query("INSERT INTO tasks (`responsible`,`created_by`, `title`, `text`, `status`, `priority`, `time`, `deadline`) values('$responsible','$uid', '$title','$text', ".TaskModel::NEW.", '$priority', NULL, ".(($deadline != null and $deadline != '0000-00-00 00:00:00') ? "'".$deadline."'" : "NULL").")");
             $this->task->id = $this->conn->insert_id;
+            return true;
 	}
 
 
@@ -54,7 +54,7 @@ class Task extends DB
         if($row['created_by'] != $row['responsible'])
         {
             $this->task->created_by = $row['created_by'];
-            $res1 = $this->conn->query("SELECT `name`, `email` from users where id = '{$row['created_by']}'");
+            $res1 = $this->conn->query("SELECT `name`, `email` from users_sched where id = '{$row['created_by']}'");
             if($res1->num_rows)
             {
                 $user = $res1->fetch_object();
@@ -69,7 +69,7 @@ class Task extends DB
 
 	public function getComments(): Task
 	{
-		$res = $this->conn->query("SELECT * FROM `comments` join users on user_id=users.id WHERE task_id = '{$this->task->id}'");
+		$res = $this->conn->query("SELECT * FROM `comments` join users_sched on user_id=users_sched.id WHERE task_id = '{$this->task->id}'");
 		$comm = [];
 		if($res->num_rows > 0)
 		{

@@ -44,6 +44,7 @@ $(document).ready(function () {
 
 		$('#edit-admission').modal('show');
 	});
+
 	if($('[data-type="2"]').length && $('[data-type="1"]').length)
 	{
 		//region second-col-observer

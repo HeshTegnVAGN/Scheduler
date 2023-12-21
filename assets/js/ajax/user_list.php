@@ -5,7 +5,7 @@ if( $_GET['action'] == 'user_search' ) {
     $keyword = $_GET['key'];
     $db = new \models\DB();
     // ... search database
-    $sql_result = "SELECT * FROM users WHERE name LIKE '%{$keyword}%' or email LIKE '%{$keyword}%'";
+    $sql_result = "SELECT * FROM users_sched WHERE name LIKE '%{$keyword}%' or email LIKE '%{$keyword}%'";
     $res = $db->conn->query($sql_result);
     // create array
     while ( $row = $res->fetch_assoc() ) {

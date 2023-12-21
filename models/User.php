@@ -13,7 +13,7 @@ class User extends DB
 	public function __construct($id)
 	{
         parent::__construct();
-        $res = $this->conn->query("SELECT * from users where id = '$id'");
+        $res = $this->conn->query("SELECT * from users_sched where id = '$id'");
         $row = $res->fetch_assoc();
         $this->name = $row['name'];
         $this->id = $row['id'];
@@ -24,7 +24,7 @@ class User extends DB
 
 	public function getAdmissions($id = null)
 	{
-        $q = "SELECT user_admissions.id as aid, `comment`, `edit`, `adding`, users.id as uid, name, email, finish_note FROM `user_admissions` join users on user_from = users.id where user_to = '$this->id'";
+        $q = "SELECT user_admissions.id as aid, `comment`, `edit`, `adding`, users_sched.id as uid, name, email, finish_note FROM `user_admissions` join users_sched on user_from = users_sched.id where user_to = '$this->id'";
         if($id)
         {
             $q.=" AND user_from = '$id'";
@@ -40,7 +40,7 @@ class User extends DB
 	}
     public function getAccesssedUsers($id = null)
     {
-        $q = "SELECT user_admissions.id as aid, users.id as uid, `user_to`, `adding`, `edit`, `comment`, `name`, `email`, `add_note`, `comm_note`, `deadlines` FROM `user_admissions` join users on user_to = users.id where user_from = '$this->id'";
+        $q = "SELECT user_admissions.id as aid, users_sched.id as uid, `user_to`, `adding`, `edit`, `comment`, `name`, `email`, `add_note`, `comm_note`, `deadlines` FROM `user_admissions` join users_sched on user_to = users_sched.id where user_from = '$this->id'";
         if($id)
         {
             $q.=" AND user_to = '$id'";

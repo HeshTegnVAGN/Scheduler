@@ -11,7 +11,7 @@ if(!$_POST['name'])
     header('Location: https://scheduler.imdibil.ru/profile/access');
 }
 $email = $_POST['name'];
-$res = $db->conn->query("SELECT id from users where email = '$email'");
+$res = $db->conn->query("SELECT id from users_sched where email = '$email'");
 
 if($res->num_rows == 0)
 {

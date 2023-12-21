@@ -34,6 +34,7 @@ $GLOBALS['sitemap'] = array (
 	'/profile/notifications' => 'profile/notifications.php',
     '/desk/?(.*)?/history' => 'profile/history.php',
 	'/desk/?(.*)?' => 'index.php',
+    '/new-task?(.*)?' => 'new-task.php'
 
 	// Больше правил
 );
@@ -108,8 +109,7 @@ $sm = new uSitemap();
 $routed_file = $sm->classname; // Получаем имя файла для подключения через require()
 $did = trim($sm->params[1], '/') ?: $_SESSION['user'];
 
-
-//dd($did);
+$tit = $_GET['title'];
 if(!$routed_file)
 {
     $routed_file = $page = $uri[1].'.php';
@@ -118,7 +118,7 @@ if(!$routed_file)
 $db = new DB();
 
 
-if(!in_array($routed_file, ['login.php', 'signup.php', 'reset.php']))
+if(!in_array($routed_file, ['login.php', 'signup.php', 'reset.php', 'new-task.php']))
 {
     if(!($_SESSION['user']))
     {

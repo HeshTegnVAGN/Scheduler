@@ -21,7 +21,7 @@ require '../../../../vendor/autoload.php';
 //];
 //$_POST['email'] = 'kochura2017@yandex.ru';
 $bd = new \models\DB();
-$res = $bd->conn->query("SELECT reset_code from users where email = '{$_POST['email']}'");
+$res = $bd->conn->query("SELECT reset_code from users_sched where email = '{$_POST['email']}'");
 if($res->num_rows == 0)
 {
     throw new Exception();

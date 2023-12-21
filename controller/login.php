@@ -7,7 +7,7 @@ session_start();
 
 $bd = new \models\DB();
 $pw = md5($_POST['password']);
-$res = $bd->conn->query("SELECT * from users where email = '{$_POST['email']}'");
+$res = $bd->conn->query("SELECT * from users_sched where email = '{$_POST['email']}'");
 if($res->num_rows == 0)
 {
     $_SESSION['error'] = 'Полльзователь с таким логинои не найден';

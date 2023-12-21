@@ -208,7 +208,7 @@ $tasks->done = array_slice($tasks->done, 0 ,8);
                             <?php endforeach; ?>
                         </div>
                         <div class="bg-warning mt-3 mx-3 mx-auto py-2 rounded-3 text-center w-50">
-                            <a href="https://scheduler.imdibil.ru/profile/history" class="text-white">Предыдущие</a>
+                            <a href="https://scheduler.imdibil.ru/desk/<?=$did?>/history" class="text-white">Предыдущие</a>
                         </div>
                     </div>
 

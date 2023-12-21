@@ -34,6 +34,7 @@ if($t1 or $t2 or  $t3)
 	<link rel="stylesheet" href="<?=PATH?>assets/css/vendor_bundle.min.css">
 	<link rel="stylesheet" href="<?=PATH?>assets/css/custom.css">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://imdibil.ru/image/favicon.ico" type="image/x-icon">
 
 </head>
 

@@ -20,7 +20,7 @@ require '../../../../vendor/autoload.php';
 //];
 //$_POST['email'] = 'kochura2017@yandex.ru';
 $bd = new \models\DB();
-    $res = $bd->conn->query("SELECT * from users where email = '{$_POST['email']}'");
+    $res = $bd->conn->query("SELECT * from users_sched where email = '{$_POST['email']}'");
 if($res->num_rows == 0)
 {
     throw new Exception();
@@ -31,7 +31,7 @@ else
     $user = $res->fetch_assoc();
     $code = uniqid();
 
-    $bd->conn->query("UPDATE users set reset_code = '$code' where id = '{$user['id']}'");
+    $bd->conn->query("UPDATE users_sched set reset_code = '$code' where id = '{$user['id']}'");
     $msg = $user['name'].', зафиксирована попытка сброса пароля. Ваш код подтверждения: '.$code;
 
     sendEmail($_POST['email'], $user['name'], $msg, 'Восстановление пароля');

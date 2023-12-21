@@ -21,9 +21,9 @@ require '../../../../vendor/autoload.php';
 //$_POST['email'] = 'kochura2017@yandex.ru';
 $bd = new \models\DB();
 $pw = md5($_POST['password']);
-$res = $bd->conn->query("SELECT * from users where email = '{$_POST['email']}'");
+$res = $bd->conn->query("SELECT * from users_sched where email = '{$_POST['email']}'");
 $id = $res->fetch_assoc()['id'];
-$bd->conn->query("UPDATE users set password = '$pw' where id = '$id' ");
+$bd->conn->query("UPDATE users_sched set password = '$pw' where id = '$id' ");
 if($bd->conn->affected_rows == 0)
 {
     throw new Exception();
