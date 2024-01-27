@@ -44,7 +44,6 @@ $(document).ready(function () {
 
 		$('#edit-admission').modal('show');
 	});
-
 	if($('[data-type="2"]').length && $('[data-type="1"]').length)
 	{
 		//region second-col-observer
@@ -188,12 +187,11 @@ $(document).ready(function () {
 				success: function (ans) {
 					let task = JSON.parse(ans);
 					console.log(task);
-
 					$('input#alt_descr').empty();
 					$('#task-id').empty();
 					$('#task-id').val(id);
 					$('#id_task').val(id);
-
+					$('.subtask-add-show').attr('data-id', id)
 					$('[name="edit_title"]').empty();
 					$('[name="edit_descr"]').empty();
 					$('[name="edit_priority"]').empty();
@@ -202,13 +200,11 @@ $(document).ready(function () {
 					$('[name="edit_title"]').val(task.title.trim());
 					$('input#alt_descr').val(task.text);
 					$('[name="author"]').val(task.author);
-						$('.descr-show').empty();
-						$('.descr-show').append(task.text);
-						$('[name="edit_descr"]').next().children('.note-editing-area').children('.note-placeholder').remove();
-						$('[name="edit_descr"]').next().children('.note-editing-area').children('.card-block').empty().append(task.text);
-
+					$('.descr-show').empty();
+					$('.descr-show').append(task.text);
+					$('[name="edit_descr"]').next().children('.note-editing-area').children('.note-placeholder').remove();
+					$('[name="edit_descr"]').next().children('.note-editing-area').children('.card-block').empty().append(task.text);
 					$('.com-block').empty();
-					console.log(task.comments)
 					for(let comment of task.comments)
 					{
 						console.log(comment);
@@ -226,6 +222,86 @@ $(document).ready(function () {
 							'</div>\n' +
 							'</div><hr>\n')
 					}
+
+					let subtwrapper = $('.edit-subtasks')
+					subtwrapper.empty()
+					for (let sut of task.subtasks)
+					{
+						let newT = subtwrapper.siblings('#task-template').clone()
+						newT.removeAttr('id')
+						newT.attr('id', sut.id)
+						newT.find('.task-title').text(sut.title)
+						newT.removeClass('d-none')
+
+						let input = document.createElement('input')
+						input.setAttribute('value', sut.title)
+						input.setAttribute('name', 'subtask[]')
+						input.setAttribute('type', 'hidden')
+						newT.append(input)
+						newT.find('.remove-subtasks').on('click', function() {
+							$(this).closest('.task-template').remove();
+						})
+						subtwrapper.append(newT)
+					}
+					let subtwrapperS = $('.show-tasks')
+					subtwrapperS.empty()
+					for (let sut of task.subtasks)
+					{
+						let newT = subtwrapperS.siblings('#task-template').clone()
+						newT.removeAttr('id')
+						newT.attr('id', sut.id)
+						newT.find('.task-title').text(sut.title)
+						newT.removeClass('d-none')
+						newT.find('.remove-subtasks').on('click', function() {
+							let btn = $(this)
+							$.ajax({
+								url: 'https://scheduler.imdibil.ru/assets/js/ajax/delete_subtask.php',
+								method: 'post',
+								data: {id: sut.id},
+								success: function ()
+								{
+									newT.find('.remove-subtasks').closest('.task-template').remove();
+									$.SOW.core.toast.show('success', '', 'Подзадача удалена!', 'top-center', 4000, true);
+								},
+								error: function () {
+									$.SOW.core.toast.show('error', '', 'Ошибка!', 'top-center', 4000, true);
+
+								}
+							});
+						})
+						newT.find('.submit-task').on('click', function() {
+							let btn = $(this)
+							$.ajax({
+								url: 'https://scheduler.imdibil.ru/assets/js/ajax/change_subtask_status.php',
+								method: 'post',
+								data: {id: sut.id},
+								success: function ()
+								{
+									btn.remove()
+									newT.addClass('subtasks-success');
+									$.SOW.core.toast.show('success', '', 'Подзадача удалена!', 'top-center', 4000, true);
+								},
+								error: function () {
+									$.SOW.core.toast.show('error', '', 'Ошибка!', 'top-center', 4000, true);
+
+								}
+							});
+						})
+						let input = document.createElement('input')
+						input.setAttribute('value', sut.title)
+						input.setAttribute('name', 'subtask[]')
+						input.setAttribute('type', 'hidden')
+						newT.append(input)
+						if(sut.status === '1')
+						{
+							newT.find('.submit-task').remove()
+							newT.addClass('subtasks-success')
+						}
+
+
+						subtwrapperS.append(newT)
+
+					}
 					let opts = $('select[name="edit_responsible"] option[value='+task.responsibile+']');
 					$.each(opts, function (key, value) {
 						console.log(value)
@@ -240,6 +316,126 @@ $(document).ready(function () {
 	});
 
 
+	// Добавление подзадачи - сделать
+
+	let createBtn = $('.createSubtask')  //document.querySelectorAll()
+	const listElement = $('#list')
+
+	// const notes = [
+	// 	{
+	// 		title: ' 123',
+	// 		completed: true,
+	// 		hide: true
+	// 	}
+	// ]
+
+	// function render() {
+	// 	listElement.innerHTML = ''
+	// 	for (let i = 0; i < notes.length; i++) {
+	// 		listElement.insertAdjacentHTML('beforeend', getNoteTemplate(notes[i], i))
+	// 	}
+	// }
+
+	// render()
+
+	function render(note){
+
+
+	}
+
+
+	createBtn.on('click', function (event) {
+		console.log(event.target)
+		console.log(this)
+		let form = $(this).parents('form')
+		console.log(form)
+		const inputElement = $(form).find('input#subtaskTitle')
+
+
+		console.log(inputElement)
+		console.log($(inputElement).val())
+		if ($(inputElement).val().length === 0) {
+			return
+		}
+
+		const newNote = {
+			title: $(inputElement).val(),
+			completed: false,
+		}
+		let listElementE = $(form).find('#list')
+		console.log(listElementE)
+		let div = $(form).find('#task-template').clone()
+		div.removeAttr('id')
+		div.find('.task-title').text(newNote.title)
+		div.removeClass('d-none')
+
+		let input = document.createElement('input')
+		input.setAttribute('value', newNote.title)
+		input.setAttribute('name', 'subtask[]')
+		input.setAttribute('type', 'hidden')
+		div.append(input)
+
+		if($(this).data("action"))
+		{
+			$.ajax({
+				url: 'https://scheduler.imdibil.ru/assets/js/ajax/add_subtask.php',
+				method: 'post',
+				data: {title: newNote.title, task_id: $(this).data("id")},
+				success: function ()
+				{
+					listElementE.append(div)
+					$(inputElement).val('')
+					$.SOW.core.toast.show('success', '', 'Подзадача добавлена!', 'top-center', 4000, true);
+				},
+				error: function () {
+					$.SOW.core.toast.show('error', '', 'Ошибка!', 'top-center', 4000, true);
+
+				}
+			});
+		} else {
+			div.find('.remove-subtasks').on('click', function() {
+				$(this).closest('.task-template').remove();
+			})
+
+			listElementE.append(div)
+			$(inputElement).val('')
+		}
+
+	})
+
+	listElement.onclick = function (event) {
+		if (event.target.dataset.index) {
+			const index = parseInt(event.target.dataset.index)
+			const type = event.target.dataset.type
+
+			if (type === 'toggle') {
+				notes[index].completed = !notes[index].completed
+			} else if (type === 'remove')
+				notes.splice(index, 1)
+
+			render()
+		}
+	}
+
+
+	$('.remove-subtaks').on('click', function ()
+	{
+		console.log($(this))
+	})
+
+	function getNoteTemplate(note, index) {
+		return `
+		<input type="hidden" name="subtask[]" value="${note.title}">
+		<input type="hidden" name="completed[]" value="${note.completed ? '1' : '0'}">
+        <li class="bg-gray-300 mt-3 px-3 py-2 justify-content-between align-items-center ${note.hide ? 'hide' : 'd-flex'}" style="border-radius: 5px">
+			<span class="${note.completed ? 'text-decoration-line-through' : ''}">${note.title}</span>
+			<span>
+				<span class="btn btn-sm btn-${note.completed ? 'warning' : 'success'}" data-type="toggle" data-index="${index}">&check;</span>
+				<span class="btn btn-sm btn-danger" data-type="remove" data-index="${index}">&times;</span>
+			</span>
+		</li>
+    `
+	}
 
 	//сброс пароля
 	$('#email_send').submit(function (e) {
@@ -345,7 +541,9 @@ function getPriority(number)
 	}
 }
 
+// Date actual
 
+const dateActual = document.getElementById('dateActual').innerHTML = new Date().getFullYear();
 
 
 

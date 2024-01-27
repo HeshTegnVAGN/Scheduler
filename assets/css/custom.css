@@ -1,5 +1,9 @@
 .rad-10{
-    border-radius: 10px!important;
+    border-radius: 40px!important;
+}
+
+.rad-03{
+    border-radius: 0.35rem!important;
 }
 .fs-7
 {
@@ -7,7 +11,9 @@
 }
 
 .edit{
-
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 pre
@@ -19,6 +25,12 @@ pre
     border: 1px solid #6c757d!important;
     border-radius: 0.45rem!important;
     box-shadow: 0 0px 5px rgb(0, 0, 0, 0.4);
+    margin-left: 10px;
+    padding-left: 5px;
+    margin-top: 5px;
+    white-space: normal;
+    width: 95%;
+    transition: 0.1s;
 }
 #offcanvasWithBackdrop
 {
@@ -69,7 +81,6 @@ body.dark-theme>header, body.dark-theme aside
     opacity: .9!important;
 }
 
-
 .card-warning-theme{
     background-color: #ffb9b9!important;
 }
@@ -85,4 +96,33 @@ body.dark-theme>header, body.dark-theme aside
 #wrapper
 {
     display: flex;
+}
+
+[mytitle]:after {
+    content: '';
+    transition: 0.2s;
+}
+
+[mytitle]:hover:after {
+    content: attr(mytitle);
+    background-color: #0f0f0f;
+    color: #FFFFFF;
+    position: absolute;
+}
+
+.bg-blue-priority {
+    background-color: #2196f3!important;
+}
+
+.subtasks-success {
+    border: 1px solid #80dd1b78!important;
+    background: #80dd1b1c!important;
+}
+
+.subtasks-success .task-title {
+    text-decoration: line-through;
+}
+
+.task-template {
+    transition: 2s;
 }
