@@ -19,6 +19,18 @@ require '../../../../vendor/autoload.php';
 //	'priority' => 70
 //];
 
+
+function dd($arr)
+{
+    echo '<pre>';
+    print_r($arr);
+    echo  '</pre>';
+}
+//
+//dd($_POST);
+//die();
+
+
 file_put_contents(__DIR__.'/0.txt', print_r($_POST, 1), FILE_APPEND);
 
 $task = new Task();
@@ -33,6 +45,15 @@ if($_POST['date'])
 	}
 }
 $task->add($_POST['TaskTitle'],$_POST['responsible'],$_POST['descr'],$_POST['priority'], $deadline);
+
+
+
+foreach ($_POST['subtask'] as $st)
+{
+    $task->addSubtask($st);
+}
+
+
 
 if($_POST['responsible'] != $_SESSION['user'])
 {

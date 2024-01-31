@@ -28,6 +28,7 @@ class TaskModel
 
     public bool $frozen;
 
+    public array $subtasks;
     public function __construct()
     {
         

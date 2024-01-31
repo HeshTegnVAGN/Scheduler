@@ -1,5 +1,6 @@
 <div id="wrapper">
     <?php include ROOT.'views/inc/sidebar.php';  $ts = new \models\TaskService(); $tasks = $ts->getFinishedMonth($did)?>
+
     <main class="w-100 container">
         <div class="container p-3 py-4">
             <h2>История</h2>
@@ -52,6 +53,7 @@
                     <th>Дата завершения</th>
                     <th>Автор</th>
                     <th>Приоритет</th>
+                    <th>Подзадачи</th>
                     <th>Текст</th>
                 </tr>
             </thead>
@@ -64,6 +66,11 @@
                         <td><?=$task->finished_at?></td>
                         <td><?=$task->created_by?></td>
                         <td><?=$task->priority?></td>
+                        <td><ul><?php foreach ($task->subtasks as $tsk): ?>
+
+                                <li><?=$tsk?>.</li>
+
+                    <?php endforeach; ?></ul></td>
                         <td><?=$task->text?></td>
                     </tr>
                 <?php endforeach; ?>

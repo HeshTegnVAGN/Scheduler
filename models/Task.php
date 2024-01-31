@@ -23,12 +23,41 @@ class Task extends DB
 			$this->task->text= $text;
 			$this->task->priority= $priority;
 			$this->task->status= TaskModel::NEW;
-			$this->conn->query("INSERT INTO tasks (`responsible`,`created_by`, `title`, `text`, `status`, `priority`, `time`, `deadline`) values('$responsible','$uid', '$title','$text', ".TaskModel::NEW.", '$priority', NULL, ".(($deadline != null and $deadline != '0000-00-00 00:00:00') ? "'".$deadline."'" : "NULL").")");
+        			$this->conn->query("INSERT INTO tasks (`responsible`,`created_by`, `title`, `text`, `status`, `priority`, `time`, `deadline`) values('$responsible','$uid', '$title','$text', ".TaskModel::NEW.", '$priority', NULL, ".(($deadline != null and $deadline != '0000-00-00 00:00:00') ? "'".$deadline."'" : "NULL").")");
             $this->task->id = $this->conn->insert_id;
-            return true;
+            return $this;
 	}
 
 
+    public function addSubtask($title)
+    {
+        $id = $this->task->id;
+        $this->conn->query("INSERT into subtasks(`task_id`, `title`, `status`) VALUES ('$id', '$title', 0)");
+    }
+
+
+    public function getSubTasks()
+    {
+        $id = $this->task->id;
+        $res= $this->conn->query("SELECT * from subtasks where task_id = '$id'");
+        if($res->num_rows > 0)
+        {
+            while ($row = $res->fetch_assoc())
+            {
+                $this->task->subtasks[] = $row;
+            }
+        }
+        return $this;
+
+    }
+
+
+    public function deleteSubTasks()
+    {
+        $id = $this->task->id;
+        $res= $this->conn->query("delete from subtasks where task_id = '$id'");
+
+    }
 	public function save()
 	{
 
@@ -62,6 +91,7 @@ class Task extends DB
             }
         }
         $this->task->priority = $row['priority'];
+        $this->getSubTasks();
 				return $this;
 
 
